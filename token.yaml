@@ -1,0 +1,32 @@
+github_token: ENC[AES256_GCM,data:ta7IsswrnCL4khmMHR60q0DPzyXwFIaqxlFC6EA7w0VLGFIwlR47qg==,iv:Qy11HxDWiAzGMtlk78A3gP2qVd9zbtT0rVzbR1GQQc8=,tag:R0/iqjJBNL8OIXQdpSMnng==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-05-19T17:29:09Z"
+    mac: ENC[AES256_GCM,data:lRyRofkGQxtfxKjHN9f3zvqs9WsgvvYxZP5XDN2yMyflc3es10VNKJN7fMTCxOsVRsZcCCCGqbXZtW/Z6UVTl6h9FmzureoQYhAHp7EPaM0QoKdNkniyrLpLOS4UfnGhmcuFMIs92CAKDBK6xZ5fGUyp1F5ff5BGcUPdFxPoWqU=,iv:X2Obd4YfRF8UK7lyo6XdzMK+1N6hRr5HEv7PlFbLDok=,tag:rXXLbVY1HOc9xotssw05VA==,type:str]
+    pgp:
+        - created_at: "2021-05-19T17:28:50Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA20bWARD53MtARAAgbLi+wz8LO4SpONaJkOelqmFx9cTzfjEdtoADBZDNLcJ
+            pXux8CWOobt/0cGJBW6KF/cIanEeOrwrUThBcJTPhIuaQ0Hne7V0umCz7jtzkM8B
+            OaocSeI+/o2d3bYdAOg6t6TvBDO8Mv/HKW1gj+l8JXtkxgUitSxzPhppHAfbkHSa
+            mbRMvPB7rITAcp7rVCyYWnFRIz3nctD5QpKp1jTMXUjJMO6SLwRipNbdjhr4j+do
+            cxpLQJg6XG9CkTQnTko0Gn0yZJqRAs86I+T1garqt2dSmBik582naL5rZHdgQe0o
+            WaIFbL0v711CapoCzNfnY95TtBDh23W9TIfzZ9QWN9KnzDAlZSA/ZWPEv95DDs+z
+            3Ldlm+KAeOFjcXSuxmjE+V/+9spDnqjtRgsLgbpR5KyoA7iCBAacLTYA7F+6ozEx
+            JV7IUg4JGXfJKOsAOJVUZmSY4auVjpnKGRjbrHZOvDEmSJMPml/qSgZvon0+gMvo
+            uIojgr+/G/8WW0mkloM0v7CgMXZsvrqX76NZXny5iUk+FnSfXS4rf+XNVs7L7O3w
+            JPmqxn2DsV01uReREPUR+wdQpyhKsmVxEU0qQ/EcMOT/xw/T6MYLMn6lDJLNC+pX
+            7aFUMEdMjCDjoIVXtaquCPL3kzXeKe2gIz2y6blOdse8maUp3NryLeDPKTjvinLS
+            UQHJm3uiMscMuPrjS5hx+x1nWG1fpE9LuWOAqb5mlLmWr5PCNtvi793br6pMFkTE
+            +Ot0/joHibsyu9pV2y92lTbFb8mDxZVWCMfttBDDEGKrQw==
+            =AOi3
+            -----END PGP MESSAGE-----
+          fp: D50AAE9F3D480563ADF651CC8D9CFAE676F5074B
+    unencrypted_suffix: _unencrypted
+    version: 3.7.1
