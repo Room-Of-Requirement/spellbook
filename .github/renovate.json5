@@ -2,15 +2,23 @@
   enabled: true,
   timezone: "America/Chicago",
   extends: ["config:base"],
-  rebaseWhen: "behind-base-branch",
+  rebaseWhen: "conflicted",
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard",
+  prConcurrentLimit: 0,
+  prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
+  "kubernetes": {
+    "fileMatch": ["cluster/.+\\.yaml$"],
+    "ignorePaths": [
+      "cluster/base/"
+    ]
+  },
   "helm-values": {
-    "fileMatch": ["cluster/.+helm-release\\.yaml$"],
+    "fileMatch": ["cluster/.+helm-release\\.yaml$"]
   },
   "regexManagers": [
-    // regexManager to read and process HelmRelease files
+    // regexManager to read and process HelmReleases and CRDs
     {
       "fileMatch": [
         "cluster/.+\\.yaml$"
@@ -18,8 +26,24 @@
       "matchStrings": [
         // helm releases
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
+        // cert-manager crd
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
       ],
       "datasourceTemplate": "helm"
+    },
+  ],
+  "packageRules": [
+    // setup datasources
+    {
+      "matchDatasources": ["helm"],
+    },
+    // global docker datasource settings
+    {
+      "matchDatasources": ["docker"],
+      "enabled": true,
+      "commitMessageTopic": "container image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "matchUpdateTypes": ["major", "minor", "patch"],
     }
   ]
 }
