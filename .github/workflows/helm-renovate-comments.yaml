@@ -7,20 +7,20 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   renovate-helm-releases:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 1
 
     - name: Renovate Helm Releases
-      uses: k8s-at-home/renovate-helm-releases@v1
+      uses: k8s-at-home/renovate-helm-releases@v1.0.0
       with:
         cluster-path: "./cluster"
 
     - name: Create pull request for renovatebot helm-release annotations
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v3.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: renovate-annotations
