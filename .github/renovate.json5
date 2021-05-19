@@ -1,0 +1,25 @@
+{  
+  enabled: true,
+  timezone: "America/Chicago",
+  extends: ["config:base"],
+  rebaseWhen: "behind-base-branch",
+  dependencyDashboard: true,
+  dependencyDashboardTitle: "Renovate Dashboard",
+  assignees: ["jmmaloney4"],
+  "helm-values": {
+    "fileMatch": ["cluster/.+helm-release\\.yaml$"],
+  },
+  "regexManagers": [
+    // regexManager to read and process HelmRelease files
+    {
+      "fileMatch": [
+        "cluster/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        // helm releases
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "helm"
+    }
+  ]
+}
