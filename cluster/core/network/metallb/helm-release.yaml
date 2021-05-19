@@ -29,4 +29,4 @@ spec:
       - name: local
         protocol: layer2
         addresses:
-        - 192.168.1.192/26
+        - ${METALLB_RANGE}
