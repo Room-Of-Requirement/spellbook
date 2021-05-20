@@ -5,3 +5,4 @@ metadata:
   name: cluster-settings
 data:
   METALLB_RANGE: 192.168.1.192/26
+  FORWARDED_IP: 192.168.1.240

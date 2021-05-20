@@ -1,0 +1,64 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: network
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: nginx-ingress
+      version: 0.45.0
+      sourceRef:
+        kind: HelmRepository
+        name: nginx-ingress
+        namespace: flux-system
+      interval: 1m
+  values:
+    # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
+    controller:
+      service:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ${ FORWARDED_IP }
+        # https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/
+        externalTrafficPolicy: Local
+      ingressClass: nginx
+      # replicaCount: 3
+      minAvailable: 2
+      autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 5
+        targetCPUUtilizationPercentage: 50
+        targetMemoryUtilizationPercentage: 90
+      updateStrategy:
+        rollingUpdate:
+          maxUnavailable: 1
+        type: RollingUpdate
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - ingress-nginx
+              topologyKey: "kubernetes.io/hostname"
+      resources:
+        limits:
+          cpu: 150m
+          memory: 300Mi
+        requests:
+          cpu: 150m
+          memory: 150Mi
+    defaultBackend:
+      enabled: true
+      metrics:
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
