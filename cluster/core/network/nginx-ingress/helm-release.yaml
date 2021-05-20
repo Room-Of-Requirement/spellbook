@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nginx-ingress
+  name: nginx
   namespace: network
 spec:
   interval: 1m
   chart:
     spec:
       # renovate: registryUrl=https://kubernetes.github.io/ingress-nginx
-      chart: nginx-ingress
+      chart: ingress-nginx
       version: 0.45.0
       sourceRef:
         kind: HelmRepository
