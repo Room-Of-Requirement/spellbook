@@ -25,3 +25,7 @@ k3sup join \
   --k3s-channel v1.21.0+k3s1 \
   --user k3s --ip 192.168.1.23 \
   --server-user k3s --server-ip 192.168.1.20
+
+mv ~/.kube/config ~/.kube/config.bup
+mv ./kubeconfig ~/.kube/config
+
