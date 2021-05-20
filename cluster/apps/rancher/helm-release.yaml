@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-  - hostname: roomofrequirement.xyz
+    hostname: roomofrequirement.xyz
     ingress:
       extraAnnotations:
         cert-manager.io/cluster-issuer: letsencrypt-staging
