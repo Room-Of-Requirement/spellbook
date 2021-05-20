@@ -12,7 +12,7 @@ spec:
       version: 0.45.0
       sourceRef:
         kind: HelmRepository
-        name: nginx-ingress
+        name: nginx
         namespace: flux-system
       interval: 1m
   values:
