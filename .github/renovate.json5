@@ -9,10 +9,7 @@
   prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
   "kubernetes": {
-    "fileMatch": ["cluster/.+\\.yaml$"],
-    "ignorePaths": [
-      "cluster/base/"
-    ]
+    "fileMatch": ["cluster/.+\\.yaml$"]
   },
   "helm-values": {
     "fileMatch": ["cluster/.+helm-release\\.yaml$"]
