@@ -17,6 +17,8 @@ spec:
       interval: 1m
   values:
     # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
+    config:
+      hsts: "false"
     service:
       enabled: true
       type: LoadBalancer
