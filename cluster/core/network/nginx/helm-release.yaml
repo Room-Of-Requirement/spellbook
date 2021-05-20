@@ -20,7 +20,7 @@ spec:
     service:
       enabled: true
       type: LoadBalancer
-      loadBalancerIP: ${ FORWARDED_IP }
+      loadBalancerIP: "${FORWARDED_IP}"
       # https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/
       externalTrafficPolicy: Local
     updateStrategy:
