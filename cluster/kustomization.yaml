@@ -5,3 +5,5 @@ resources:
 - flux-system
 - repos
 - core
+- cluster-settings.yaml
+- cluster-secrets.yaml
