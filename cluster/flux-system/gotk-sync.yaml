@@ -6,17 +6,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  url: ssh://git@github.com/Room-Of-Requirement/spellbook
   ref:
     branch: main
   secretRef:
     name: flux-system
-  ignore: |
-    # Ignore all
-    /*
-    # Deploy directory
-    !/cluster
-  
+  url: ssh://git@github.com/Room-Of-Requirement/spellbook
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
@@ -24,7 +18,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10m0s
   path: ./cluster
   prune: true
   sourceRef:
