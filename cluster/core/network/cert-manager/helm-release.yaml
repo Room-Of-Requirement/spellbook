@@ -16,4 +16,4 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    installCRDs: true
+    installCRDs: false
