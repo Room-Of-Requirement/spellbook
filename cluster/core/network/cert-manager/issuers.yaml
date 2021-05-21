@@ -1,8 +1,8 @@
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
-  namespace: cert-manager
+  namespace: network
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
@@ -16,11 +16,11 @@ spec:
 
 ---
 
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
-  namespace: cert-manager
+  namespace: network
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory

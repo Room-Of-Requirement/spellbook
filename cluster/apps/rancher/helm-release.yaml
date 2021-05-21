@@ -19,7 +19,7 @@ spec:
     hostname: roomofrequirement.xyz
     ingress:
       extraAnnotations:
-        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/cluster-issuer: letsencrypt-prod
       tls:
         source: secret
     replicas: 2
