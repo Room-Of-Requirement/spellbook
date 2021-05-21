@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  apply:
+    desc: Apply Flux manifests
+    cmds:
+      - kubectl apply --kustomize=./cluster/base/flux-system
+      - kubectl apply --kustomize=./cluster/base/flux-system

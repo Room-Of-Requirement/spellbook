@@ -9,6 +9,10 @@ vars:
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/script/ansible"
   HOSTS_YAML: "{{.ANSIBLE_DIR}}/inventory/hosts.yaml"
 
+includes:
+  sops: .taskfiles/sops.yaml
+  flux: .taskfiles/flux.yaml
+
 tasks:
 
   teardown-agents:
@@ -22,11 +26,7 @@ tasks:
     silent: true
 
   teardown:
+    desc: Teardown k3s cluster
     cmds:
       - task: teardown-servers
       - task: teardown-agents
-
-  apply:
-    cmds:
-      - kubectl apply --kustomize=./cluster/base/flux-system
-      - kubectl apply --kustomize=./cluster/base/flux-system
