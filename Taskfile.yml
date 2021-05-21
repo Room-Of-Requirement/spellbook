@@ -1,0 +1,28 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  PROJECT_DIR:
+    sh: "git rev-parse --show-toplevel"
+  CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
+  ANSIBLE_DIR: "{{.PROJECT_DIR}}/script/ansible"
+  HOSTS_YAML: "{{.ANSIBLE_DIR}}/inventory/hosts.yml"
+
+tasks:
+  teardown-agents:
+    cmds:
+      - ansible agents -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-agent-uninstall.sh'
+    silent: true
+
+  teardown-servers:
+    cmds:
+      -  ansible servers -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-uninstall.sh'
+    silent: true
+
+  teardown:
+    cmds:
+      - task: teardown-servers
+      - task: teardown-agents
+
+
