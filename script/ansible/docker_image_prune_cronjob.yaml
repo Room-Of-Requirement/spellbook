@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: rke
+  become: true
+  tasks:
+  - cron:
+      name: docker-image-prune
+      state: present
+      hour: "2"
+      minute: "30"
+      user: root
+      job: "docker image prune --all --force"

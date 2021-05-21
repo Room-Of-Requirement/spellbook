@@ -1,0 +1,7 @@
+collections:
+  - ericsysmin.docker
+  - crivetimihai.virtualization
+  - community.general
+roles:
+  - nvidia.nvidia_driver
+  - nvidia.nvidia_docker

@@ -1,0 +1,81 @@
+- name: Fix RaspberryPi cmdline 
+  hosts: rpi
+  become: true
+  tasks:
+  - name: Fix cmdline
+    register: fix_cmdline
+    ansible.builtin.command:
+      argv:
+      - "bash"
+      - "-c"
+      - |
+        mv /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bup;
+        head -n 1 /boot/firmware/cmdline.txt.bup | tr -d '\n' | cat - <(echo ' cgroup_memory=1 cgroup_enable=cpuset cgroup_enable=memory') > /boot/firmware/cmdline.txt;
+        touch /boot/firmware/.CMDLINE_FIXED"
+      creates: /boot/firmware/.CMDLINE_FIXED
+  - name: Reboot
+    ansible.builtin.reboot:
+    when: fix_cmdline is changed
+
+- name: Passwordless sudo for user
+  hosts: all
+  become: true
+  tasks:
+  - name: Update sudoers file
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%{{ ansible_user }}'
+      line: '%{{ ansible_user }} ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
+
+- name: Disable Swap
+  hosts: all
+  become: true
+  tasks:
+  - name: Remove swap from /etc/fstab
+    mount:
+      name: "{{ item }}"
+      fstype: swap
+      state: absent
+    with_items:
+      - swap
+      - none
+  - name: Disable swap
+    command: swapoff -a
+    when: ansible_swaptotal_mb > 0
+
+- name: Install/Upgrade and configure Docker
+  hosts: all
+  become: true
+  tasks:
+  - name: Install/Upgrade Docker
+    ansible.builtin.apt:
+      name: docker.io
+      update_cache: yes
+      state: latest
+  - name: Start Docker service
+    ansible.builtin.systemd:
+      name: docker
+      enabled: yes
+      state: started
+  - name: Add user to docker group
+    ansible.builtin.user: 
+      name: "{{ ansible_user }}"
+      groups: docker
+      append: yes
+
+- name: Install other packages
+  hosts: all
+  become: true
+  tasks:
+  - name: Upgrade packages
+    ansible.builtin.apt:
+      update_cache: yes
+      upgrade: "safe"
+  - name: Install packages
+    ansible.builtin.apt:
+      autoremove: yes
+      pkg:
+        - smartmontools
+        - ubuntu-drivers-common

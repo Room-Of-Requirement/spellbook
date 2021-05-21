@@ -1,0 +1,15 @@
+- hosts: gpus
+  remote_user: rke
+  become: true
+  roles:
+  - role: nvidia.nvidia_driver
+  - role: nvidia.nvidia_docker
+  tasks:
+  - name: fix daemon.json storage-driver
+    lineinfile:
+      path: /etc/docker/daemon.json
+      insertafter: '{'
+      firstmatch: yes
+      line: '    "storage-driver": "aufs",'
+  - apt:
+      autoremove: yes
