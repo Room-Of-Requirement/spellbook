@@ -19,6 +19,8 @@ spec:
     nfd:
       deploy: true
     node-feature-discovery:
+      image:
+        repository: gcr.io/k8s-staging-nfd/node-feature-discovery
       master:
         extraLabelNs:
         - nvidia.com
