@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: rke
+  become: true
+  tasks:
+  - name: Prune Docker images
+    community.general.docker_prune:
+      containers: no
+      images: yes
+      networks: no
+      volumes: no
+      builder_cache: yes
