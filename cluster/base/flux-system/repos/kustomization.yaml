@@ -5,5 +5,6 @@ resources:
 - jetstack.yaml
 - node-feature-discovery.yaml
 - nvgfd.yaml
+- prometheus-community.yaml
 - rancher.yaml
 - uptimerobot-operator.yaml
