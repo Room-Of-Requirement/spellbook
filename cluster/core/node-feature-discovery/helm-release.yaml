@@ -9,13 +9,15 @@ spec:
   chart:
     spec:
       chart: node-feature-discovery
-      version: 0.8.2
+      version: 0.8.1
       sourceRef:
         kind: HelmRepository
         name: node-feature-discovery
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      repository: docker.io/raspbernetes/node-feature-discovery
     master:
       extraLabelNs:
       - nvidia.com
