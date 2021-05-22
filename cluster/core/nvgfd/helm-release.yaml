@@ -8,6 +8,7 @@ spec:
   interval: 1m
   chart:
     spec:
+      # renovate: registryUrl=https://nvidia.github.io/gpu-feature-discovery
       chart: gpu-feature-discovery
       version: 0.4.1
       sourceRef:
