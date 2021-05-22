@@ -17,29 +17,4 @@ spec:
       interval: 1m
   values:
     nfd:
-      deploy: true
-    node-feature-discovery:
-      image:
-        repository: gcr.io/k8s-staging-nfd/node-feature-discovery
-      master:
-        extraLabelNs:
-        - nvidia.com
-        resources:
-          requests:
-            cpu: 75m
-            memory: 100Mi
-          limits:
-            cpu: 150m
-            memory: 200Mi
-      worker:
-        tolerations:
-        - key: "RaspberryPi"
-          operator: "Exists"
-          effect: "NoSchedule"
-        resources:
-          requests:
-            cpu: 25m
-            memory: 50Mi
-          limits:
-            cpu: 150m
-            memory: 200Mi
+      deploy: false

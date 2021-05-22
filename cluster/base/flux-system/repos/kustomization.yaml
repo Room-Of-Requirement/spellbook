@@ -5,3 +5,4 @@ resources:
 - jetstack.yaml
 - rancher.yaml
 - nvgfd.yaml
+- node-feature-discovery.yaml

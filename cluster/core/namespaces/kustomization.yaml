@@ -4,3 +4,4 @@ resources:
 - cattle-system.yaml
 - network.yaml
 - nvidia.yaml
+- node-feature-discovery.yaml
