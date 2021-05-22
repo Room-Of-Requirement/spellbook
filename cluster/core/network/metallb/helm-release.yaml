@@ -24,6 +24,10 @@ spec:
       image:
         repository: metallb/speaker
         tag: v0.9.6
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
     configInline:
       address-pools:
       - name: local
