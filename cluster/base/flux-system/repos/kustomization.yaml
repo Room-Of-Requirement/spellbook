@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - bitnami.yaml
 - jetstack.yaml
-- rancher.yaml
-- nvgfd.yaml
 - node-feature-discovery.yaml
+- nvgfd.yaml
+- rancher.yaml
+- uptimerobot-operator.yaml
