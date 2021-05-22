@@ -19,13 +19,13 @@ spec:
     alertmanager:
       ingress:
         enabled: true
+        pathType: Prefix
+        ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - alert-manager.roomofrequirement.xyz
-        paths:
-        - /
         tls:
         - secretName: alert-manager-cert
           hosts:
@@ -47,6 +47,8 @@ spec:
     prometheus:
       ingress:
         enabled: true
+        pathType: Prefix
+        ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
           uroperator.brennerm.github.io/monitor.type: HTTPS
