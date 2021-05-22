@@ -4,4 +4,3 @@ resources:
 - cert-manager
 - metallb
 - nginx
-- uptimerobot-operator
