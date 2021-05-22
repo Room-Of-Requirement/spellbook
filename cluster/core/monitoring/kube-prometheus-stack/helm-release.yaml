@@ -24,6 +24,8 @@ spec:
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - alert-manager.roomofrequirement.xyz
+        paths:
+        - /
         tls:
         - secretName: alert-manager-cert
           hosts:
