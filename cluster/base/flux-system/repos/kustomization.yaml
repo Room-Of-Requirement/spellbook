@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - bitnami.yaml
 - jetstack.yaml
+- jmmaloney4.yaml
+- k8s-at-home.yaml
 - node-feature-discovery.yaml
 - nvgfd.yaml
 - prometheus-community.yaml
