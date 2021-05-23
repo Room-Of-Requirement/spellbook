@@ -1,0 +1,49 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: heimdall
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: heimdall
+      version:
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    # persistence:
+    #   config:
+    #     enabled: true
+    #     size: 2Gi
+    #     storageClass: rook-ceph-block
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        uroperator.brennerm.github.io/monitor.type: HTTPS
+        nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+        nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+        nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+          access_by_lua_block {
+            if ngx.var.name_upstream_1 ~= "" then
+              ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+            end
+          }
+      hosts:
+      - host: secure.roomofrequirement.xyz
+        paths:
+        - path: "/"
+          pathType: Prefix
+      tls:
+      - secretName: secure-cert
+        hosts:
+        - secure.roomofrequirement.xyz
+    env:
+      TZ: "America/Chicago"
