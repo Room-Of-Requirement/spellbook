@@ -12,3 +12,5 @@ ssh $host -- sh -c 'ls /dev/mapper/ceph-* | xargs -I% -- sudo dmsetup remove %'
 ssh $host -- sudo rm -rf /dev/ceph-*
 ssh $host -- sudo rm -rf /dev/mapper/ceph-*
 ssh $host -- sudo rm -rf /dev/dm-*
+
+ssh $host -- sudo reboot
