@@ -1,0 +1,94 @@
+apiVersion: ceph.rook.io/v1
+kind: CephFilesystem
+metadata:
+  name: cephfs
+  namespace: rook-ceph # namespace:cluster
+spec:
+  # The metadata pool spec
+  metadataPool:
+    replicated:
+      size: 3
+    failureDomain: osd
+    deviceClass: hdd
+  # The list of data pool specs
+  dataPools:
+    # You need at least three `bluestore` OSDs on different nodes for this config to work
+    - erasureCoded:
+        dataChunks: 2
+        codingChunks: 1
+      failureDomain: osd
+      deviceClass: hdd
+      # Inline compression mode for the data pool
+      parameters:
+        compression_mode: none
+  # Whether to preserve filesystem after CephFilesystem CRD deletion
+  preserveFilesystemOnDelete: false
+  # The metadata service (mds) configuration
+  metadataServer:
+    # The number of active MDS instances
+    activeCount: 1
+    # Whether each active MDS instance will have an active standby with a warm metadata cache for faster failover.
+    # If false, standbys will be available, but will not have a warm cache.
+    activeStandby: true
+    # The affinity rules to apply to the mds deployment
+    placement:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - rook-ceph-mds
+            # topologyKey: kubernetes.io/hostname will place MDS across different hosts
+            topologyKey: kubernetes.io/hostname
+    # A key/value list of annotations
+    annotations:
+    #  key: value
+    # A key/value list of labels
+    labels:
+    #  key: value
+    resources:
+    # The requests and limits set here, allow the filesystem MDS Pod(s) to use half of one CPU core and 1 gigabyte of memory
+    #  limits:
+    #    cpu: "500m"
+    #    memory: "1024Mi"
+    #  requests:
+    #    cpu: "500m"
+    #    memory: "1024Mi"
+    # priorityClassName: my-priority-class
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cephfs
+provisioner: rook-ceph.cephfs.csi.ceph.com # driver:namespace:operator
+parameters:
+  # clusterID is the namespace where operator is deployed.
+  clusterID: rook-ceph # namespace:cluster
+
+  # CephFS filesystem name into which the volume shall be created
+  fsName: cephfs
+
+  # Ceph pool into which the volume shall be created
+  # Required for provisionVolume: "true"
+  pool: cephfs-data0
+
+  # The secrets contain Ceph admin credentials. These are generated automatically by the operator
+  # in the same namespace as the cluster.
+  csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+  csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph # namespace:cluster
+  csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+  csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph # namespace:cluster
+  csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+  csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph # namespace:cluster
+
+  # (optional) The driver can use either ceph-fuse (fuse) or ceph kernel client (kernel)
+  # If omitted, default volume mounter will be used - this is determined by probing for ceph-fuse
+  # or by setting the default mounter explicitly via --volumemounter command-line argument.
+  # mounter: kernel
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+mountOptions:
+  # uncomment the following line for debugging
+  #- debug
