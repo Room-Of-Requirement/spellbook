@@ -49,13 +49,12 @@ spec:
     labels:
     #  key: value
     resources:
-    # The requests and limits set here, allow the filesystem MDS Pod(s) to use half of one CPU core and 1 gigabyte of memory
-    #  limits:
-    #    cpu: "500m"
-    #    memory: "1024Mi"
-    #  requests:
-    #    cpu: "500m"
-    #    memory: "1024Mi"
+      requests:
+        cpu: "1000m"
+        memory: "4096Mi"
+      limits:
+        cpu: "2500m"
+        memory: "5120Mi"
     # priorityClassName: my-priority-class
 ---
 apiVersion: storage.k8s.io/v1
