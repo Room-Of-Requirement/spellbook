@@ -8,3 +8,4 @@ resources:
 - ceph-rbd-ssd.yaml
 - ceph-rbd-hdd-ec.yaml
 - cephfs.yaml
+- rgw.yaml
