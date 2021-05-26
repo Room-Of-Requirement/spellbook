@@ -47,13 +47,13 @@ spec:
     instances: 2
     # The affinity rules to apply to the rgw deployment or daemonset.
     placement:
-      # topologySpreadConstraints:
-      # - maxSkew: 1
-      #   topologyKey: kubernetes.io/hostname
-      #   whenUnsatisfiable: ScheduleAnyway
-      #   labelSelector:
-      #     app: rook-ceph-mds
-      #     rook_cluster: rook-ceph
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          app: rook-ceph-rgw
+          rook_cluster: rook-ceph
     annotations:
     #  key: value
     # A key/value list of labels
