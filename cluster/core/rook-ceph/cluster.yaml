@@ -76,24 +76,15 @@ spec:
   # To control where various services will be scheduled by kubernetes, use the placement configuration sections below.
   # The example under 'all' would have all services scheduled on kubernetes nodes labeled with 'role=storage-node' and
   # tolerate taints with a key of 'storage-node'.
-#  placement:
-#    all:
-#      nodeAffinity:
-#        requiredDuringSchedulingIgnoredDuringExecution:
-#          nodeSelectorTerms:
-#          - matchExpressions:
-#            - key: role
-#              operator: In
-#              values:
-#              - storage-node
-#      podAffinity:
-#      podAntiAffinity:
-#      topologySpreadConstraints:
-#      tolerations:
-#      - key: storage-node
-#        operator: Exists
-# The above placement information can also be specified for mon, osd, and mgr components
-#    mon:
+  placement:
+    mon:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          app: rook-ceph-mon
+          rook_cluster: rook-ceph
 # Monitor deployments may contain an anti-affinity rule for avoiding monitor
 # collocation on the same node. This is a required rule when host network is used
 # or when AllowMultiplePerNode is false. Otherwise this anti-affinity rule is a
@@ -101,7 +92,7 @@ spec:
 #    osd:
 #    mgr:
 #    cleanup:
-  annotations:
+  # annotations:
 #    all:
 #    mon:
 #    osd:
@@ -109,7 +100,7 @@ spec:
 #    prepareosd:
 # If no mgr annotations are set, prometheus scrape annotations will be set by default.
 #    mgr:
-  labels:
+  # labels:
 #    all:
 #    mon:
 #    osd:
