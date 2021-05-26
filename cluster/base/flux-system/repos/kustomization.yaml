@@ -9,4 +9,5 @@ resources:
 - nvgfd.yaml
 - prometheus-community.yaml
 - rancher.yaml
+- rook-ceph.yaml
 - uptimerobot-operator.yaml

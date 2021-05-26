@@ -7,3 +7,4 @@ resources:
 - nvidia.yaml
 - node-feature-discovery.yaml
 - oauth2.yaml
+- rook-ceph.yaml
