@@ -4,3 +4,4 @@ resources:
 - helm-release.yaml
 - cluster.yaml
 - toolbox.yaml
+- dashboard-ingress-https.yaml
