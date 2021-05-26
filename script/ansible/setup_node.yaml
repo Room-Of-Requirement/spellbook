@@ -9,9 +9,9 @@
       - "bash"
       - "-c"
       - |
-        mv /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bup;
-        head -n 1 /boot/firmware/cmdline.txt.bup | tr -d '\n' | cat - <(echo ' cgroup_memory=1 cgroup_enable=cpuset cgroup_enable=memory') > /boot/firmware/cmdline.txt;
-        touch /boot/firmware/.CMDLINE_FIXED"
+          mv /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bup;
+          head -n 1 /boot/firmware/cmdline.txt.bup | tr -d '\n' | cat - <(echo ' cgroup_memory=1 cgroup_enable=cpuset cgroup_enable=memory') > /boot/firmware/cmdline.txt;
+          touch /boot/firmware/.CMDLINE_FIXED
       creates: /boot/firmware/.CMDLINE_FIXED
   - name: Reboot
     ansible.builtin.reboot:
