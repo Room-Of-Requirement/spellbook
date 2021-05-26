@@ -85,6 +85,14 @@ spec:
         labelSelector:
           app: rook-ceph-mon
           rook_cluster: rook-ceph
+    mds:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          app: rook-ceph-mds
+          rook_cluster: rook-ceph
 # Monitor deployments may contain an anti-affinity rule for avoiding monitor
 # collocation on the same node. This is a required rule when host network is used
 # or when AllowMultiplePerNode is false. Otherwise this anti-affinity rule is a
