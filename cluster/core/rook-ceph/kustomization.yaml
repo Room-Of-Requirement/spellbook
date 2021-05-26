@@ -5,3 +5,4 @@ resources:
 - cluster.yaml
 - toolbox.yaml
 - dashboard-ingress-https.yaml
+- ceph-rbd-ssd.yaml
