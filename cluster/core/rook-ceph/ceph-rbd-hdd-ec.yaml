@@ -1,29 +1,30 @@
 apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
-  name: ceph-rbd-ssd-metadata
+  name: ceph-rbd-hdd-ec-metadata
   namespace: rook-ceph # namespace:cluster
 spec:
   failureDomain: osd
   replicated:
     size: 2
-  deviceClass: ssd
+  deviceClass: hdd
 ---
 apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
-  name: ceph-rbd-ssd-data
+  name: ceph-rbd-hdd-ec-data
   namespace: rook-ceph # namespace:cluster
 spec:
   failureDomain: osd
-  replicated:
-    size: 2
-  deviceClass: ssd
+  erasureCoded:
+    dataChunks: 2
+    codingChunks: 1
+  deviceClass: hdd
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: ceph-rbd-ssd
+  name: ceph-rbd-hdd-ec
 # Change "rook-ceph" provisioner prefix to match the operator namespace if needed
 provisioner: rook-ceph.rbd.csi.ceph.com # driver:namespace:operator
 parameters:
@@ -36,8 +37,8 @@ parameters:
   # You need to specify the replicated pool here in the `pool` parameter, it is
   # used for the metadata of the images.
   # The erasure coded pool must be set as the `dataPool` parameter below.
-  dataPool: ceph-rbd-ssd-data
-  pool: ceph-rbd-ssd-metadata
+  dataPool: ceph-rbd-hdd-ec-data
+  pool: ceph-rbd-hdd-ec-metadata
 
   # (optional) mapOptions is a comma-separated list of map options.
   # For krbd options refer

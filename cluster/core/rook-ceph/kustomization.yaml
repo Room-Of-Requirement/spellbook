@@ -6,3 +6,4 @@ resources:
 - toolbox.yaml
 - dashboard-ingress-https.yaml
 - ceph-rbd-ssd.yaml
+- ceph-rbd-hdd-ec.yaml
