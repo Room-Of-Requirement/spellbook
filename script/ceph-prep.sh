@@ -3,7 +3,8 @@
 host="$1"
 shift
 
-for DISK in "$@"; do 
+for DISK in "$@"; do
+    ssh $host -- sudo sgdisk --zap-all --clear --mbrtogpt "$DISK"
     ssh $host -- sudo sgdisk --zap-all "$DISK"
     ssh $host -- sudo dd if=/dev/zero of="$DISK" bs=1M count=100 oflag=direct,dsync
 done
