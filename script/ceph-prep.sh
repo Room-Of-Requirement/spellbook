@@ -14,4 +14,6 @@ ssh $host -- sudo rm -rf /dev/ceph-*
 ssh $host -- sudo rm -rf /dev/mapper/ceph-*
 ssh $host -- sudo rm -rf /dev/dm-*
 
+ssh $host -- sudo rm -rf /var/lib/rook/
+
 ssh $host -- sudo reboot
