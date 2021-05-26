@@ -1,5 +1,5 @@
+---
 # https://taskfile.dev
-
 version: '3'
 
 vars:
@@ -7,7 +7,7 @@ vars:
     sh: "git rev-parse --show-toplevel"
   CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/script/ansible"
-  HOSTS_YAML: "{{.ANSIBLE_DIR}}/inventory/hosts.yaml"
+  HOSTS_YAML: "{{.ANSIBLE_DIR}}/inventory.yaml"
 
 includes:
   sops: .taskfiles/sops.yaml
@@ -22,7 +22,7 @@ tasks:
 
   teardown-servers:
     cmds:
-      -  ansible servers -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-uninstall.sh'
+      - ansible servers -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-uninstall.sh'
     silent: true
 
   teardown:
@@ -30,3 +30,18 @@ tasks:
     cmds:
       - task: teardown-servers
       - task: teardown-agents
+
+  ansible:
+    desc: Run a command with ansible on all nodes
+    cmds:
+      - ansible all -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+
+  ansible-servers:
+    desc: Run a command with ansible on the server nodes
+    cmds:
+      - ansible servers -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+
+  ansible-agents:
+    desc: Run a command with ansible on the agent nodes
+    cmds:
+      - ansible agents -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
