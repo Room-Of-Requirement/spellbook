@@ -10,3 +10,4 @@ resources:
 - node-feature-discovery.yaml
 - oauth2.yaml
 - rook-ceph.yaml
+- roon.yaml
