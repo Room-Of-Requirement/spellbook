@@ -1,0 +1,58 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: minio
+      version: 8.0.10
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+      interval: 1m
+  values:
+    accessKey: admin
+    secretKey: ${MINIO_ADMIN_PASSWORD}
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+        nginx.ingress.kubernetes.io/proxy-buffering: "off"
+        nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+      hosts:
+      - s3.roomofrequirement.xyz
+      tls:
+      - secretName: minio-cert
+        hosts:
+        - s3.roomofrequirement.xyz
+    persistence:
+      enabled: false
+    s3gateway:
+      enabled: true
+      replicas: 2
+      serviceEndpoint: "http://rook-ceph-rgw-object-store.rook-ceph.svc.cluster.local"
+      # kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-minio -o yaml | grep AccessKey | awk '{print $2}' | base64 --decode
+      accessKey: ${AccessKey}
+      # kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-minio -o yaml | grep SecretKey | awk '{print $2}' | base64 --decode
+      secretKey: ${SecretKey}
+    service:
+      port: 80
+      type: LoadBalancer
+      loadBalancerIP: 192.168.1.200
+    resources:
+      requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
+        cpu: 150m
+        memory: 150Mi
+    podDisruptionBudget:
+      enabled: true
+      maxUnavailable: 1
+      minAvaliable: 2

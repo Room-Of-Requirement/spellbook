@@ -9,3 +9,4 @@ resources:
 - ceph-rbd-hdd-ec.yaml
 - cephfs.yaml
 - rgw.yaml
+- minio-rgw-user.yaml
