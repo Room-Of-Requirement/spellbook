@@ -7,6 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: roon
       version: 2.0.0
       sourceRef:
