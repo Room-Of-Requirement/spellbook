@@ -38,9 +38,9 @@ spec:
       replicas: 2
       serviceEndpoint: "http://rook-ceph-rgw-object-store.rook-ceph.svc.cluster.local"
       # kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-minio -o yaml | grep AccessKey | awk '{print $2}' | base64 --decode
-      accessKey: ${AccessKey}
+      accessKey: ${MINIO_RGW_ACCESS_KEY}
       # kubectl -n rook-ceph get secret rook-ceph-object-user-object-store-minio -o yaml | grep SecretKey | awk '{print $2}' | base64 --decode
-      secretKey: ${SecretKey}
+      secretKey: ${MINIO_RGW_SECRET_KEY}
     service:
       port: 80
       type: LoadBalancer
