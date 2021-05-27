@@ -38,7 +38,7 @@ spec:
     # serve the dashboard at the given port.
     # port: 8443
     # serve the dashboard using SSL
-    ssl: false
+    ssl: true
   # enable prometheus alerting for cluster
   monitoring:
     # requires Prometheus to be pre-installed
