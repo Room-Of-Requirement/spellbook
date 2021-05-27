@@ -19,6 +19,8 @@ jobs:
       uses: k8s-at-home/renovate-helm-releases@v1.4.1
       with:
         cluster-path: "./cluster"
+        debug: 'yes'
+        tolerate-yaml-errors: 'yes'
 
     - name: Create pull request for renovatebot helm-release annotations
       uses: peter-evans/create-pull-request@v3.10.0
