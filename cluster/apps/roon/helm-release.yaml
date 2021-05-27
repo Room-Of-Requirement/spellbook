@@ -16,17 +16,20 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    # persistence:
-    #   music:
-    #     storageClass: "rook-cephfs"
-    #     size: "350Gi"
-    #   config:
-    #     hostPath: "/var/roon/"
-    #     # storageClass: "rook-ceph-block"
-    #     # size: "20Gi"
-    #   backup:
-    #     storageClass: "rook-cephfs"
-    #     size: "20Gi"
+    persistence:
+      music:
+        enabled: true
+        storageClass: "cephfs"
+        size: "350Gi"
+      config:
+        enabled: true
+        # hostPath: "/var/roon/"
+        storageClass: "ceph-rbd-ssd"
+        size: "5Gi"
+      backup:
+        enabled: true
+        storageClass: "cephfs"
+        size: "20Gi"
     resources:
       requests:
         cpu: 2
