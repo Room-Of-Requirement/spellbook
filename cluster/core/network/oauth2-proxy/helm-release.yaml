@@ -37,6 +37,7 @@ spec:
       - secure.roomofrequirement.xyz
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
+        uroperator.brennerm.github.io/monitor.type: HTTPS
       tls:
       - secretName: secure-cert
         hosts:
