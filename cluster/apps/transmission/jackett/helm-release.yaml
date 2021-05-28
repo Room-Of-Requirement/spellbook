@@ -49,8 +49,8 @@ spec:
       - host: secure.roomofrequirement.xyz
         paths:
         - path: "/jackett"
-    # service:
-    #   type: LoadBalancer
-    #   port:
-    #     port: 80
-    #     targetPort: 9117
+    service:
+      # type: LoadBalancer
+      port:
+        port: 80
+        targetPort: 9117
