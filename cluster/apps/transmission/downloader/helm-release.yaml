@@ -23,6 +23,8 @@ spec:
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
       TRANSMISSION_RPC_URL: /downloader/
       TRANSMISSION_WEB_HOME: /kettu/
+      TRANSMISSION_RPC_USERNAME: transmission
+      TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
       config:
         enabled: true
