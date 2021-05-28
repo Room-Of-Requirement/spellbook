@@ -18,12 +18,14 @@ spec:
     image:
       repository: docker.io/jesec/flood
       tag: 4.1.1
+    env:
+      FLOOD_OPTION_RUNDIR: /data
     persistence:
       data:
-        enabled: false
-        size: 500Mi
-        storageClass: ceph-rbd-ssd
-        skipuninstall: true
+        enabled: true
+        emptyDir:
+          enabled: true
+        mountPath: /data
     ingress:
       enabled: true
       annotations:
