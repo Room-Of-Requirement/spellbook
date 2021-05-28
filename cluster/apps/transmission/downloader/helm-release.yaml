@@ -19,12 +19,14 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/transmission
       tag: v3.00
+    # To view more enviornment variables see here:
+    # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
     env:
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
       TRANSMISSION_RPC_URL: /downloader/
-      TRANSMISSION_WEB_HOME: /config/flood-for-transmission/
       TRANSMISSION_RPC_USERNAME: transmission
       TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
+      TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: true
     persistence:
       config:
         enabled: true
@@ -38,41 +40,8 @@ spec:
         accessMode: ReadWriteMany
         skipuninstall: true
     ingress:
-      enabled: true
-      annotations:
-        uroperator.brennerm.github.io/monitor.type: HTTPS
-        nginx.ingress.kubernetes.io/auth-response-headers: Authorization
-        nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          auth_request_set $name_upstream_1 $upstream_cookie_name_1;
-
-          access_by_lua_block {
-            if ngx.var.name_upstream_1 ~= "" then
-              ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
-            end
-          }
-      hosts:
-      - host: secure.roomofrequirement.xyz
-        paths:
-        - path: "/downloader"
+      enabled: false
     service:
-      # type: LoadBalancer
       port:
         port: 80
         targetPort: 9091
-    # Use an initContainer to download the Flood web ui
-    # Set UI with env TRANSMISSION_WEB_HOME: /config/flood-for-transmission/
-    initContainers:
-    - name: custom-webui
-      image: curlimages/curl:7.76.1
-      command:
-      - "/bin/sh"
-      - "-c"
-      - "curl -o- -sL https://github.com/johman10/flood-for-transmission/releases/download/latest/flood-for-transmission.tar.gz | tar xzf - -C /config"
-      volumeMounts:
-      - name: config
-        mountPath: /config
-      securityContext:
-        runAsUser: 568
-        runAsGroup: 568
