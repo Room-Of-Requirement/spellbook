@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - airflow.yaml
 - cattle-system.yaml
+- intel.yaml
 - media.yaml
 - minio.yaml
 - monitoring.yaml
