@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: music-pvc
+  name: downloads-pvc
   namespace: music
   annotations:
     kustomize.toolkit.fluxcd.io/prune: disabled
