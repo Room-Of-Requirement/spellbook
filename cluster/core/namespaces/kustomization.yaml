@@ -6,6 +6,7 @@ resources:
 - media.yaml
 - minio.yaml
 - monitoring.yaml
+- music.yaml
 - network.yaml
 - nvidia.yaml
 - node-feature-discovery.yaml
