@@ -5,4 +5,4 @@ resources:
 - flood
 - jackett
 - radarr
-- rclone
+# - rclone
