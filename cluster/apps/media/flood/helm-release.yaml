@@ -1,15 +1,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radarr
-  namespace: transmission
+  name: flood
+  namespace: media
 spec:
   interval: 1m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: radarr
-      version: 11.1.0
+      chart: flood
+      version:
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -17,20 +17,21 @@ spec:
       interval: 1m
   values:
     image:
-      repository: ghcr.io/linuxserver/radarr
-      tag: 3.2.0.5048-ls104
+      repository: docker.io/jesec/flood
+      tag: 4.6.0
+    env:
+      FLOOD_OPTION_RUNDIR: /data
+      FLOOD_OPTION_BASEURI: /flood
+      FLOOD_OPTION_AUTH: none
+      FLOOD_OPTION_TRURL: http://downloader-transmission.transmission.svc.cluster.local/downloader/rpc
+      FLOOD_OPTION_TRUSER: transmission
+      FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
-      config:
+      data:
         enabled: true
-        size: 500Mi
-        storageClass: ceph-rbd-ssd
-        skipuninstall: true
-      media:
-        enabled: true
-        size: 500Gi
-        storageClass: cephfs
-        accessMode: ReadWriteMany
-        skipuninstall: true
+        emptyDir:
+          enabled: true
+        mountPath: /data
     ingress:
       enabled: true
       annotations:
@@ -49,4 +50,9 @@ spec:
       hosts:
       - host: secure.roomofrequirement.xyz
         paths:
-        - path: "/radarr"
+        - path: "/flood"
+    service:
+      # type: LoadBalancer
+      port:
+        port: 80
+        targetPort: 3000

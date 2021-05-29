@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flood
-  namespace: transmission
+  name: jackett
+  namespace: media
 spec:
   interval: 1m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: flood
+      chart: jackett
       version:
       sourceRef:
         kind: HelmRepository
@@ -17,21 +17,16 @@ spec:
       interval: 1m
   values:
     image:
-      repository: docker.io/jesec/flood
-      tag: 4.6.0
-    env:
-      FLOOD_OPTION_RUNDIR: /data
-      FLOOD_OPTION_BASEURI: /flood
-      FLOOD_OPTION_AUTH: none
-      FLOOD_OPTION_TRURL: http://downloader-transmission.transmission.svc.cluster.local/downloader/rpc
-      FLOOD_OPTION_TRUSER: transmission
-      FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
+      repository: ghcr.io/linuxserver/jackett
+      tag: v0.18.171-ls32
     persistence:
-      data:
+      config:
         enabled: true
-        emptyDir:
-          enabled: true
-        mountPath: /data
+        size: 500Mi
+        storageClass: ceph-rbd-ssd
+        skipuninstall: true
+      torrentblackhole:
+        enabled: false
     ingress:
       enabled: true
       annotations:
@@ -50,9 +45,8 @@ spec:
       hosts:
       - host: secure.roomofrequirement.xyz
         paths:
-        - path: "/flood"
+        - path: "/jackett"
     service:
-      # type: LoadBalancer
       port:
         port: 80
-        targetPort: 3000
+        targetPort: 9117

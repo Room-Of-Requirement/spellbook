@@ -3,8 +3,7 @@ kind: Kustomization
 resources:
 - airflow
 - heimdall
-- jellyfin
+- media
 - minio
 - rancher
 - roon
-- transmission

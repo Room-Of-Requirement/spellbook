@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: downloader
-  namespace: transmission
+  namespace: media
 spec:
   interval: 1m
   chart:
@@ -35,10 +35,7 @@ spec:
         skipuninstall: true
       downloads:
         enabled: true
-        size: 200Gi
-        storageClass: cephfs
-        accessMode: ReadWriteMany
-        skipuninstall: true
+        existingClaim: media-pvc
     ingress:
       enabled: false
     service:

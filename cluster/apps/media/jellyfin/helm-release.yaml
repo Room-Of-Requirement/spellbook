@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: jellyfin
-  namespace: jellyfin
+  namespace: media
 spec:
   interval: 1m
   chart:
@@ -40,9 +40,8 @@ spec:
         enabled: false
       media:
         enabled: true
-        size: 200Gi
-        storageClass: "cephfs"
-        accessMode: ReadWriteMany
+        existingClaim: media-pvc
+        readOnly: true
       transcodes:
         enabled: true
         emptyDir:
