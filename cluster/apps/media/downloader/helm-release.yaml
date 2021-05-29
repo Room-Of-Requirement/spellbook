@@ -66,3 +66,10 @@ spec:
           PublicKey = ${MULLVAD_WIREGUARD_PUBLIC_KEY}
           AllowedIPs = 0.0.0.0/0,::0/0
           Endpoint = 68.235.43.130:51820
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "400Mi"
+      limits:
+        cpu: "500m"
+        memory: "800Mi"
