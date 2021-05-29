@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - airflow.yaml
 - cattle-system.yaml
-- jellyfin.yaml
 - media.yaml
 - minio.yaml
 - monitoring.yaml
@@ -13,4 +12,3 @@ resources:
 - oauth2.yaml
 - rook-ceph.yaml
 - roon.yaml
-- transmission.yaml
