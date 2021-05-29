@@ -34,7 +34,7 @@ spec:
         skipuninstall: true
       downloads:
         enabled: true
-        existingClaim: media-pvc
+        existingClaim: downloads-pvc
     ingress:
       enabled: false
     service:

@@ -28,6 +28,9 @@ spec:
       media:
         enabled: true
         existingClaim: media-pvc
+      downloads:
+        enabled: true
+        existingClaim: downloads-pvc
     ingress:
       enabled: true
       annotations:
