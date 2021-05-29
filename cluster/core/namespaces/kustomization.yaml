@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - airflow.yaml
 - cattle-system.yaml
+- jellyfin.yaml
 - minio.yaml
 - monitoring.yaml
 - network.yaml
