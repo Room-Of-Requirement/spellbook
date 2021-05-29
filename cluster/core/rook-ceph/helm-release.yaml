@@ -44,6 +44,6 @@ spec:
     snapshotter:
       image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.0.0
     attacher:
-      image: k8s.gcr.io/sig-storage/csi-attacher:v3.0.2
+      image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1
     resizer:
       image: k8s.gcr.io/sig-storage/csi-resizer:v1.0.1
