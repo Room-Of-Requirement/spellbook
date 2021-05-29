@@ -27,3 +27,23 @@ spec:
       limits:
         cpu: 1000m
         memory: 256Mi
+    provisionerTolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
+    pluginTolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
+    cephcsi:
+      image: quay.io/cephcsi/cephcsi:v3.3.1
+    registrar:
+      image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.0.1
+    provisioner:
+      image: k8s.gcr.io/sig-storage/csi-provisioner:v2.0.4
+    snapshotter:
+      image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.0.0
+    attacher:
+      image: k8s.gcr.io/sig-storage/csi-attacher:v3.0.2
+    resizer:
+      image: k8s.gcr.io/sig-storage/csi-resizer:v1.0.1
