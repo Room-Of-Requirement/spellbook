@@ -23,7 +23,7 @@ spec:
       FLOOD_OPTION_RUNDIR: /flood
       FLOOD_OPTION_BASEURI: /flood
       FLOOD_OPTION_AUTH: none
-      FLOOD_OPTION_TRURL: http://downloader-transmission.media.svc.cluster.local/rpc
+      FLOOD_OPTION_TRURL: http://downloader-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
