@@ -23,7 +23,7 @@ spec:
     # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
     env:
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
-      TRANSMISSION_RPC_URL: ""
+      TRANSMISSION_RPC_URL: "/"
       TRANSMISSION_RPC_USERNAME: transmission
       TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
       TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: true
