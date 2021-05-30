@@ -71,6 +71,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        uroperator.brennerm.github.io/monitor.type: HTTPS
       tlsSecretName: airflow-cert
       hosts:
       - name: af.roomofrequirement.xyz
