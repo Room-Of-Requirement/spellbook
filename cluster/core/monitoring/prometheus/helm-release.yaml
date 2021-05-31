@@ -16,3 +16,12 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    alertmanager:
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
+    server:
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
+    pushgateway:
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
