@@ -17,11 +17,35 @@ spec:
       interval: 1m
   values:
     alertmanager:
+      image:
+        repository: quay.io/prometheus/alertmanager
+        tag: v0.21.0
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
+    kubeStateMetrics:
+      prometheusScrape: true
+      image:
+        repository: k8s.gcr.io/kube-state-metrics/kube-state-metrics
+        tag: v2.0.0
+      autosharding:
+        enabled: false
+    nodeExporter:
+      image:
+        repository: quay.io/prometheus/node-exporter
+        tag: v1.1.2
     server:
+      image:
+        repository: quay.io/prometheus/prometheus
+        tag: v2.26.0
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
+      global:
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        evaluation_interval: 1m
     pushgateway:
+      image:
+        repository: docker.io/prom/pushgateway
+        tag: v1.3.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
