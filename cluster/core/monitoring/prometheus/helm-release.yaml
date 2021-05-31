@@ -22,6 +22,15 @@ spec:
         tag: v0.22.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
+    configmapReload:
+      prometheus:
+        image:
+          repository: jimmidyson/configmap-reload
+          tag: v0.5.0
+      alertmanager:
+        image:
+          repository: jimmidyson/configmap-reload
+          tag: v0.5.0
     kubeStateMetrics:
       prometheusScrape: true
       image:
