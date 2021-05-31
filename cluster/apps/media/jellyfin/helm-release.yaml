@@ -38,9 +38,15 @@ spec:
         accessMode: ReadWriteOnce
       cache:
         enabled: false
-      media:
+      movies:
         enabled: true
-        existingClaim: media-pvc
+        existingClaim: movies-pvc
+        mountPath: /media/movies
+        readOnly: true
+      tv:
+        enabled: true
+        existingClaim: tv-pvc
+        mountPath: /media/tv
         readOnly: true
       transcodes:
         enabled: true

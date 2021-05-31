@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tv-transmission
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: transmission
+      version:
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/transmission
+      tag: v3.00
+    # To view more enviornment variables see here:
+    # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
+    env:
+      TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
+      TRANSMISSION_RPC_USERNAME: transmission
+      TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
+      TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: true
+    persistence:
+      config:
+        enabled: true
+        size: 100Mi
+        storageClass: ceph-rbd-ssd
+        skipuninstall: true
+      downloads:
+        enabled: true
+        existingClaim: tv-downloads-pvc
+    ingress:
+      enabled: false
+    service:
+      port:
+        port: 80
+        targetPort: 9091
+    addons:
+      vpn:
+        enabled: true
+        # This Should be set to `wireguard`. This will set the add-on to use the default settings for Wireguard based connections.
+        type: wireguard
+        # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
+        # This is required for it to be able to read certain configuration files.
+        securityContext:
+          runAsUser: 568
+          runAsGroup: 568
+        env:
+          # Enable a killswitch that kills all trafic when the VPN is not connected
+          KILLSWITCH: "true"
+        configFile: |
+          [Interface]
+          PrivateKey = ${MULLVAD_WIREGUARD_PRIVATE_KEY}
+          Address = 10.65.71.69/32,fc00:bbbb:bbbb:bb01::2:4744/128
+          DNS = 193.138.218.74
+          PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+          PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+
+          [Peer]
+          PublicKey = ${MULLVAD_WIREGUARD_PUBLIC_KEY}
+          AllowedIPs = 0.0.0.0/0,::0/0
+          Endpoint = 68.235.43.130:51820

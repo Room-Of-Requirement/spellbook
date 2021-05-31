@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flood
+  name: movies-flood
   namespace: media
 spec:
   interval: 1m
@@ -20,10 +20,10 @@ spec:
       repository: docker.io/jesec/flood
       tag: 4.6.0
     env:
-      FLOOD_OPTION_RUNDIR: /flood
-      FLOOD_OPTION_BASEURI: /flood
+      FLOOD_OPTION_RUNDIR: /rundir
+      FLOOD_OPTION_BASEURI: /flood/movies
       FLOOD_OPTION_AUTH: none
-      FLOOD_OPTION_TRURL: http://downloader-transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
@@ -31,7 +31,7 @@ spec:
         enabled: true
         emptyDir:
           enabled: true
-        mountPath: /flood
+        mountPath: /rundir
     ingress:
       enabled: true
       annotations:
@@ -50,7 +50,7 @@ spec:
       hosts:
       - host: secure.roomofrequirement.xyz
         paths:
-        - path: "/flood"
+        - path: "/flood/movies"
     service:
       # type: LoadBalancer
       port:

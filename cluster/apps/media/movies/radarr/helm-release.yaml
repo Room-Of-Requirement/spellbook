@@ -22,15 +22,15 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 500Mi
+        size: 100Mi
         storageClass: ceph-rbd-ssd
         skipuninstall: true
       media:
         enabled: true
-        existingClaim: media-pvc
+        existingClaim: movies-pvc
       downloads:
         enabled: true
-        existingClaim: downloads-pvc
+        existingClaim: movies-downloads-pvc
     ingress:
       enabled: true
       annotations:

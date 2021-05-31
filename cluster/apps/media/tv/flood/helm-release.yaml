@@ -1,0 +1,58 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tv-flood
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: flood
+      version:
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/jesec/flood
+      tag: 4.6.0
+    env:
+      FLOOD_OPTION_RUNDIR: /rundir
+      FLOOD_OPTION_BASEURI: /flood/tv
+      FLOOD_OPTION_AUTH: none
+      FLOOD_OPTION_TRURL: http://tv-transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_TRUSER: transmission
+      FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
+    persistence:
+      flood:
+        enabled: true
+        emptyDir:
+          enabled: true
+        mountPath: /rundir
+    ingress:
+      enabled: true
+      annotations:
+        uroperator.brennerm.github.io/monitor.type: HTTPS
+        nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+        nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+        nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+          access_by_lua_block {
+            if ngx.var.name_upstream_1 ~= "" then
+              ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+            end
+          }
+      hosts:
+      - host: secure.roomofrequirement.xyz
+        paths:
+        - path: "/flood/tv"
+    service:
+      # type: LoadBalancer
+      port:
+        port: 80
+        targetPort: 3000

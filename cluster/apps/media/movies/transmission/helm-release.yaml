@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: downloader
+  name: movies-transmission
   namespace: media
 spec:
   interval: 1m
@@ -29,12 +29,12 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 500Mi
+        size: 100Mi
         storageClass: ceph-rbd-ssd
         skipuninstall: true
       downloads:
         enabled: true
-        existingClaim: downloads-pvc
+        existingClaim: movies-downloads-pvc
     ingress:
       enabled: false
     service:
