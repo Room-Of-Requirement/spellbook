@@ -59,3 +59,18 @@ spec:
         tag: v1.4.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
+    serverFiles:
+      prometheus.yml:
+        rule_files:
+        - /etc/config/recording_rules.yml
+        - /etc/config/alerting_rules.yml
+      ## Below two files are DEPRECATED will be removed from this default values file
+        - /etc/config/rules
+        - /etc/config/alerts
+
+      scrape_configs:
+      - job_name: prometheus
+        scrape_interval: 5s
+        static_configs:
+        - targets:
+          - localhost:9090
