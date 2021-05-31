@@ -4,3 +4,4 @@ resources:
 # - kube-prometheus-stack
 - uptimerobot-operator
 - kube-state-metrics
+- node-exporter
