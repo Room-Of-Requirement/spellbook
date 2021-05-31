@@ -14,3 +14,4 @@ resources:
 - oauth2.yaml
 - rook-ceph.yaml
 - roon.yaml
+- system.yaml

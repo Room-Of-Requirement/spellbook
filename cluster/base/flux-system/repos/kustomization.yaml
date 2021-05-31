@@ -11,4 +11,5 @@ resources:
 - prometheus-community.yaml
 - rancher.yaml
 - rook-ceph.yaml
+- stakater.yaml
 - uptimerobot-operator.yaml

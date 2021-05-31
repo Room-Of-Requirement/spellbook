@@ -7,3 +7,4 @@ resources:
 - network
 - node-feature-discovery
 - rook-ceph
+- reloader
