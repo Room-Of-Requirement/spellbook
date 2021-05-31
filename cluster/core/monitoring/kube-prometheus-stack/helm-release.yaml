@@ -22,7 +22,7 @@ spec:
         pathType: Prefix
         ingressClassName: "nginx"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
+          cert-manager.io/cluster-issuer: letsencrypt-staging
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - alert-manager.roomofrequirement.xyz
@@ -35,7 +35,7 @@ spec:
       ingress:
         enabled: true
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
+          cert-manager.io/cluster-issuer: letsencrypt-staging
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - grafana.roomofrequirement.xyz
@@ -50,7 +50,7 @@ spec:
         pathType: Prefix
         ingressClassName: "nginx"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
+          cert-manager.io/cluster-issuer: letsencrypt-staging
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - prometheus.roomofrequirement.xyz
