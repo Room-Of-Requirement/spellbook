@@ -40,7 +40,7 @@ spec:
     server:
       image:
         repository: quay.io/prometheus/prometheus
-        tag: v2.26.0
+        tag: v2.27.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
       global:
