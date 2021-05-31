@@ -33,6 +33,10 @@ spec:
       image:
         repository: quay.io/prometheus/node-exporter
         tag: v1.1.2
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
     server:
       image:
         repository: quay.io/prometheus/prometheus
