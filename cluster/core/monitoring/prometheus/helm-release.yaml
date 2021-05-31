@@ -19,7 +19,7 @@ spec:
     alertmanager:
       image:
         repository: quay.io/prometheus/alertmanager
-        tag: v0.21.0
+        tag: v0.22.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
     kubeStateMetrics:
