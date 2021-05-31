@@ -50,6 +50,6 @@ spec:
     pushgateway:
       image:
         repository: docker.io/prom/pushgateway
-        tag: v1.3.1
+        tag: v1.4.1
       persistentVolume:
         storageClass: "ceph-rbd-hdd-ec"
