@@ -24,6 +24,7 @@ spec:
     # To view more enviornment variables see here:
     # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
     env:
+      TZ: America/Chicago
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
       TRANSMISSION_RPC_USERNAME: transmission
       TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}

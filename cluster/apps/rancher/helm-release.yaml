@@ -17,6 +17,8 @@ spec:
       interval: 1m
   values:
     hostname: roomofrequirement.xyz
+    env:
+      TZ: America/Chicago
     ingress:
       extraAnnotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod

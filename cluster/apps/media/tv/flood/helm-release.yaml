@@ -20,6 +20,7 @@ spec:
       repository: docker.io/jesec/flood
       tag: 4.6.0
     env:
+      TZ: America/Chicago
       FLOOD_OPTION_RUNDIR: /rundir
       FLOOD_OPTION_BASEURI: /flood/tv
       FLOOD_OPTION_AUTH: none

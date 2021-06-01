@@ -18,6 +18,8 @@ spec:
   values:
     accessKey: admin
     secretKey: ${MINIO_ADMIN_PASSWORD}
+    env:
+      TZ: America/Chicago
     ingress:
       enabled: true
       annotations:

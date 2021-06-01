@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    env:
+      TZ: America/Chicago
     persistence:
       music:
         enabled: true

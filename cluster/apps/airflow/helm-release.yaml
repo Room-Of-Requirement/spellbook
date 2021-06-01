@@ -48,6 +48,9 @@ spec:
     global:
       imageRegistry: quay.io
 
+    env:
+      TZ: America/Chicago
+
     externalDatabase:
       host: postgresql.airflow.svc.cluster.local
       port: 5432

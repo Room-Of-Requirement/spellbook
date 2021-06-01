@@ -19,6 +19,8 @@ spec:
     image:
       repository: ghcr.io/linuxserver/jackett
       tag: v0.18.210-ls32
+    env:
+      TZ: America/Chicago
     persistence:
       config:
         enabled: true

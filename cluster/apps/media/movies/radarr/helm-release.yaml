@@ -19,6 +19,8 @@ spec:
     image:
       repository: ghcr.io/linuxserver/radarr
       tag: 3.2.0.5048-ls104
+    env:
+      TZ: America/Chicago
     persistence:
       config:
         enabled: true
