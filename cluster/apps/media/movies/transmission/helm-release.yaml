@@ -33,6 +33,7 @@ spec:
       TRANSMISSION_PEX_ENABLED: false
       TRANSMISSION_DHT_ENABLED: false
       TRANSMISSION_LPD_ENABLED: false
+      TRANSMISSION_UTP_ENABLED: false
     persistence:
       config:
         enabled: true
