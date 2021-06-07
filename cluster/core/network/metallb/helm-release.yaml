@@ -19,7 +19,7 @@ spec:
     controller:
       image:
         repository: metallb/controller
-        tag: v0.9.6@sha256:99b79462af3d8b7d3b18dd31b854148b9d05365843d2c69ce7c3dd8a1f0d015d
+        tag: v0.9.6@sha256:fbfdb9d3f55976b0ee38f3309d83a4ca703efcf15d6ca7889cd8189142286502
     speaker:
       image:
         repository: metallb/speaker
