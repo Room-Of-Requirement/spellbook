@@ -62,7 +62,6 @@ spec:
         cpu: 5000m
         memory: 2.5Gi
       limits:
-        intel.com/gpu: 1
         cpu: 10000m
         memory: 8Gi
     service:
