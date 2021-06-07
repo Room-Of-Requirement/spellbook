@@ -1,4 +1,4 @@
-{  
+{
   enabled: true,
   timezone: "America/Chicago",
   extends: ["config:base"],
@@ -41,6 +41,10 @@
       "commitMessageTopic": "container image {{depName}}",
       "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
       "matchUpdateTypes": ["major", "minor", "patch"],
+    },
+    {
+      matchPackageNames: ["ghcr.io/linuxserver/jackett"],
+      automerge: true
     }
   ]
 }
