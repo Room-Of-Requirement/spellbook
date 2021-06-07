@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/linuxserver/radarr
-      tag: 3.2.0.5048-ls104@sha256:23bade93dac0bcdd33c943bda024485af7852b41d4560b57247a9e3250407975
+      tag: 3.2.0.5048-ls104@sha256:1a8311b7cfeeb90500a091775db6277219385f779362c1e1111b3b46e3b27f0b
     env:
       TZ: America/Chicago
     persistence:
