@@ -17,6 +17,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      repository: docker.io/rook/ceph
+      tag: v1.6.4@sha256:8ee9e6701b6be4764583716a5b23a35ae4887912aaa435eff8a56603bcd32b34
     crds:
       enabled: false
     currentNamespaceOnly: true
