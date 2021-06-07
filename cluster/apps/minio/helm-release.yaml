@@ -18,6 +18,9 @@ spec:
   values:
     accessKey: admin
     secretKey: ${MINIO_ADMIN_PASSWORD}
+    image:
+      repository: minio/minio
+      tag: RELEASE.2021-05-27T22-06-31Z@sha256:dd3c186af3cf32b3f1c9d3f2f69aaa6714b3dbbb5a899de8e9aca2ebf4cad3cf
     env:
       TZ: America/Chicago
     ingress:

@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/linuxserver/sonarr
-      tag: 3.0.6.1196-ls106
+      tag: 3.0.6.1196-ls106@sha256:93c7e5cd727cd5316b0b7b17a17a0c878a1c6aacfae9fa3c3742be2ecbf2dce2
     env:
       TZ: America/Chicago
     persistence:

@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      repository: docker.io/intel/intel-gpu-plugin
+      tag: 0.20.0@sha256:143f0a45e1742fd6d34b64f1873c8045e848b4f7d73703df9c1a666d94d6428c
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
