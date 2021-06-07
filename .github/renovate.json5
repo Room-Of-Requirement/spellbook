@@ -43,7 +43,9 @@
       "matchUpdateTypes": ["major", "minor", "patch"],
     },
     {
+      matchDatasources: ["docker"],
       matchPackageNames: ["ghcr.io/linuxserver/jackett"],
+      matchUpdateTypes: ["minor", "patch"],
       automerge: true
     }
   ]
