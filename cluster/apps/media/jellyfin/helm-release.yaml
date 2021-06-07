@@ -19,8 +19,8 @@ spec:
     env:
       TZ: America/Chicago
     image:
-      repository: docker.io/jellyfin/jellyfin
-      tag: 10.7.0
+      repository: ghcr.io/linuxserver/jellyfin
+      tag: 10.7.5-1-ls115@sha256:84a423f6786f8c588edd4fbcda8646aab9ee62a3c2eaf5c95fde46e9f4ee2514
     ingress:
       enabled: true
       annotations:
