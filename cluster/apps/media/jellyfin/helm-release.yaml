@@ -20,7 +20,7 @@ spec:
       TZ: America/Chicago
     image:
       repository: docker.io/jellyfin/jellyfin
-      tag: 10.7.5
+      tag: 10.7.5@sha256:f0473e7b5c5d0b8dbbe894d8600c38bab9f63ff0b3d61214aa2558f64c52d86d
     ingress:
       enabled: true
       annotations:
