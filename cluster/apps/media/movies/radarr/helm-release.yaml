@@ -24,7 +24,7 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 100Mi
+        size: 500Mi
         storageClass: ceph-rbd-ssd
         skipuninstall: true
       media:
