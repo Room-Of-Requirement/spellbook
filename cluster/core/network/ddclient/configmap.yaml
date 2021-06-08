@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ddclient-config
+  namespace: network
+data:
+  ddclient.conf: |
+    daemon=600
+    syslog=yes
+    ssl=yes
+    use=web
+    web=dynamicdns.park-your-domain.com/getip
+    protocol=namecheap
+    server=dynamicdns.park-your-domain.com
+
+    login=roomofrequirement.xyz
+    password=${DDCLIENT_ROOMOFREQUIREMENT_XYZ_PASSWORD}
+
+    login=jmmaloney4.xyz
+    password=${DDCLIENT_JMMALONEY4_XYZ_PASSWORD}
