@@ -1,0 +1,20 @@
+name: Push `main` branch to `deploy`
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
+    
+    - uses: ad-m/github-push-action@master
+      with:
+        branch: deploy
+        force: true
+        
