@@ -7,3 +7,8 @@ Uses [`go-task`](https://taskfile.dev).
 ```
 task --list
 ```
+
+### Push local branch to `deploy` branch
+```
+git push --force origin <local-branch>:deploy
+```
