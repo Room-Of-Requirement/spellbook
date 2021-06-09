@@ -23,7 +23,7 @@ spec:
     speaker:
       image:
         repository: metallb/speaker
-        tag: v0.9.6@sha256:c66585a805bed1a3b829d8fb4a4aab9d87233497244ebff96f1b88f1e7f8f991
+        tag: v0.10.1@sha256:2aa54d5ac771c3426567fef25f1d13c326d80627a8286ca88f2817e35859456b
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"
