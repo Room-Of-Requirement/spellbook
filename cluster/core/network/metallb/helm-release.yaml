@@ -18,10 +18,12 @@ spec:
   values:
     controller:
       image:
-        repository: docker.io/metallb/controller
+        registry: docker.io
+        repository: metallb/controller
         tag: v0.10.1@sha256:ec4ae863ee0f4f55c314dd2e415eafee7225250a68440fd899e2cfea2f6070d0
     speaker:
       image:
+        registry: docker.io
         repository: docker.io/metallb/speaker
         tag: v0.10.1@sha256:2aa54d5ac771c3426567fef25f1d13c326d80627a8286ca88f2817e35859456b
       tolerations:
