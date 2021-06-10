@@ -56,7 +56,7 @@
     },
     {
       matchDatasources: ["docker"],
-      matchPackagePatterns: ["^docker.io/metallb/"],
+      matchPackagePatterns: ["^quay.io/metallb/"],
       groupName: "metallb-suite",
       additionalBranchPrefix: ""
     }
