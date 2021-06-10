@@ -5,6 +5,7 @@ resources:
 - jetstack.yaml
 - jmmaloney4.yaml
 - k8s-at-home.yaml
+- metallb.yaml
 - minio.yaml
 - node-feature-discovery.yaml
 - nvgfd.yaml
