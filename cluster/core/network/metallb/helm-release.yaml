@@ -19,11 +19,11 @@ spec:
     controller:
       image:
         repository: docker.io/metallb/controller
-        tag: v0.9.6@sha256:fbfdb9d3f55976b0ee38f3309d83a4ca703efcf15d6ca7889cd8189142286502
+        tag: v0.10.1@sha256:ec4ae863ee0f4f55c314dd2e415eafee7225250a68440fd899e2cfea2f6070d0
     speaker:
       image:
         repository: docker.io/metallb/speaker
-        tag: v0.9.6@sha256:c66585a805bed1a3b829d8fb4a4aab9d87233497244ebff96f1b88f1e7f8f991
+        tag: v0.10.1@sha256:2aa54d5ac771c3426567fef25f1d13c326d80627a8286ca88f2817e35859456b
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"
