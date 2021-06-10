@@ -54,5 +54,11 @@
       groupName: "fluxcd-suite",
       additionalBranchPrefix: ""
     },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["^docker.io/metallb/"],
+      groupName: "metallb-suite",
+      additionalBranchPrefix: ""
+    }
   ]
 }
