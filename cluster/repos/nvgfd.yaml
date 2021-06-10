@@ -4,5 +4,5 @@ metadata:
   name: nvgfd
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: ${REPO_INTERVAL}
   url: https://nvidia.github.io/gpu-feature-discovery

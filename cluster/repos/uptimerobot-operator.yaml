@@ -4,5 +4,5 @@ metadata:
   name: uptimerobot-operator
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: ${REPO_INTERVAL}
   url: https://brennerm.github.io/uptimerobot-operator/helm
