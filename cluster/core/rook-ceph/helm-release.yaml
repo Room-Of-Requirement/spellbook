@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: docker.io/rook/ceph
-      tag: v1.6.4@sha256:504fcf39fd2dc0a594aa48d851c1405e4433e4b00723e624793a7bc0460b4a74
+      tag: v1.6.5@sha256:477aa2ea5379f38b1f5a79ff716d1fc1e71d7ffe16ec95219676b9755f286e63
     crds:
       enabled: false
     currentNamespaceOnly: true
