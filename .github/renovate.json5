@@ -50,6 +50,11 @@
     },
     {
       matchDatasources: ["docker"],
+      matchUpdateTypes: ["digest"],
+      automerge: true
+    },
+    {
+      matchDatasources: ["docker"],
       matchPackagePatterns: ["^ghcr.io/fluxcd/"],
       groupName: "fluxcd-suite",
       additionalBranchPrefix: ""
