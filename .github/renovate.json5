@@ -64,6 +64,12 @@
       matchPackagePatterns: ["^quay.io/metallb/"],
       groupName: "metallb-suite",
       additionalBranchPrefix: ""
+    },
+    {
+      matchDatasources: ["docker", "helm"],
+      matchPackagePatterns: ["docker.io/rook/ceph", "rook-ceph"],
+      groupName: "rook-ceph",
+      additionalBranchPrefix: ""
     }
   ]
 }
