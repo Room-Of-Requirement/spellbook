@@ -74,6 +74,12 @@
     {
       "matchUpdateTypes": ["major"],
       "labels": ["dep/major"],
-    }
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["^k8s.gcr.io/sig-storage/csi-"],
+      groupName: "csi",
+      additionalBranchPrefix: ""
+    },
   ]
 }
