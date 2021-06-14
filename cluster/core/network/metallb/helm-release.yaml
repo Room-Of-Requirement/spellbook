@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://metallb.github.io/metallb
       chart: metallb
-      version: 0.10.1
+      version: 0.10.2
       sourceRef:
         kind: HelmRepository
         name: metallb
@@ -22,8 +22,8 @@ spec:
         tag: v0.10.2@sha256:21164241c045443595439f2821a193ef823dbbd1ccc8959e1c363c44cc6d1e18
     speaker:
       image:
-        repository: quay.io/metallb/controller
-        tag: v0.10.2@sha256:21164241c045443595439f2821a193ef823dbbd1ccc8959e1c363c44cc6d1e18
+        repository: quay.io/metallb/speaker
+        tag: v0.10.2@sha256:58cb99053bb33db1944f8b67c9d3335afe98c8ba810fca45f19cfde1442064c4
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"
