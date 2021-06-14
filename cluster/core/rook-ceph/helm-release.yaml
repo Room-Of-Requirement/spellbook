@@ -29,7 +29,7 @@ spec:
         memory: 128Mi
       limits:
         cpu: 1000m
-        memory: 256Mi
+        memory: 512Mi
     provisionerTolerations:
     - key: "RaspberryPi"
       operator: "Exists"
@@ -39,7 +39,7 @@ spec:
       operator: "Exists"
       effect: "NoSchedule"
     cephcsi:
-      image: quay.io/cephcsi/cephcsi:v3.3.1
+      image: quay.io/cephcsi/cephcsi:v3.3.1@sha256:21ee2b825b2b238330bc3a7877b6798a700dfcdb559245e992637e19dbd35b5b
     registrar:
       image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0
     provisioner:
