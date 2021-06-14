@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: flood
-      version:
+      version: 5.0.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -27,33 +27,29 @@ spec:
       FLOOD_OPTION_TRURL: http://tv-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
-    persistence:
-      flood:
-        enabled: false
-        emptyDir:
-          enabled: true
-        mountPath: /rundir
     ingress:
-      enabled: true
-      annotations:
-        uroperator.brennerm.github.io/monitor.type: HTTPS
-        nginx.ingress.kubernetes.io/auth-response-headers: Authorization
-        nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+      main:
+        enabled: true
+        annotations:
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
 
-          access_by_lua_block {
-            if ngx.var.name_upstream_1 ~= "" then
-              ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
-            end
-          }
-      hosts:
-      - host: secure.roomofrequirement.xyz
-        paths:
-        - path: "/flood/tv"
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/flood/tv"
     service:
-      # type: LoadBalancer
-      port:
-        port: 80
-        targetPort: 3000
+      main:
+        # type: LoadBalancer
+        port:
+          port: 80
+          targetPort: 3000

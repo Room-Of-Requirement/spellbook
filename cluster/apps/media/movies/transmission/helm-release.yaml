@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: transmission
-      version:
+      version: 6.2.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -38,17 +38,20 @@ spec:
       config:
         enabled: true
         size: 100Mi
+        accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
         skipuninstall: true
       downloads:
         enabled: true
         existingClaim: movies-downloads-pvc
     ingress:
-      enabled: false
+      main:
+        enabled: false
     service:
-      port:
-        port: 80
-        targetPort: 9091
+      main:
+        port:
+          port: 80
+          targetPort: 9091
     addons:
       vpn:
         enabled: true
