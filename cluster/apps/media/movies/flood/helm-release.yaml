@@ -29,7 +29,7 @@ spec:
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
       flood:
-        enabled: true
+        enabled: false
         emptyDir:
           enabled: true
         mountPath: /rundir
