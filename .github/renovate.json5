@@ -70,6 +70,10 @@
       matchPackagePatterns: ["docker.io/rook/ceph", "rook-ceph"],
       groupName: "rook-ceph",
       additionalBranchPrefix: ""
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dep/major"],
     }
   ]
 }
