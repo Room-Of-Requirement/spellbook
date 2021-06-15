@@ -21,12 +21,16 @@ spec:
       tag: 4.6.0@sha256:60bd59cfb4ebead2148ed40717c23fc23b8157d413ff741a2297b8894cf2e557
     env:
       TZ: America/Chicago
-      FLOOD_OPTION_RUNDIR: /rundir
+      FLOOD_OPTION_RUNDIR: /data
       FLOOD_OPTION_BASEURI: /flood/movies
       FLOOD_OPTION_AUTH: none
       FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
+    persistence:
+      data:
+        enabled: true
+        type: emptyDir
     ingress:
       main:
         enabled: true
