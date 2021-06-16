@@ -47,6 +47,10 @@
       "labels": ["dep/major"],
     },
     {
+      "matchUpdateTypes": ["minor"],
+      "labels": ["dep/minor"],
+    },
+    {
       matchDatasources: ["docker"],
       matchUpdateTypes: ["digest", "patch"],
       automerge: true
