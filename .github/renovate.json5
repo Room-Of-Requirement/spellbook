@@ -43,14 +43,23 @@
       "matchUpdateTypes": ["major", "minor", "patch"],
     },
     {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dep/major"],
+    },
+    {
       matchDatasources: ["docker"],
-      matchPackageNames: ["ghcr.io/linuxserver/jackett"],
-      matchUpdateTypes: ["minor", "patch"],
+      matchUpdateTypes: ["digest", "patch"],
+      automerge: true
+    },
+    {
+      matchDatasources: ["helm"],
+      matchUpdateTypes: ["patch"],
       automerge: true
     },
     {
       matchDatasources: ["docker"],
-      matchUpdateTypes: ["digest"],
+      matchPackageNames: ["ghcr.io/linuxserver/jackett"],
+      matchUpdateTypes: ["minor", "patch"],
       automerge: true
     },
     {
@@ -72,14 +81,10 @@
       additionalBranchPrefix: ""
     },
     {
-      "matchUpdateTypes": ["major"],
-      "labels": ["dep/major"],
-    },
-    {
       matchDatasources: ["docker"],
       matchPackagePatterns: ["^k8s.gcr.io/sig-storage/csi-"],
       groupName: "csi",
       additionalBranchPrefix: ""
-    },
+    }
   ]
 }
