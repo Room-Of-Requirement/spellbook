@@ -42,9 +42,10 @@ spec:
       enabled: false
     service:
       main:
-        port:
-          port: 80
-          targetPort: 9091
+        ports:
+          http:
+            port: 80
+            targetPort: 9091
     addons:
       vpn:
         enabled: true
