@@ -8,6 +8,7 @@
   prConcurrentLimit: 0,
   prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
+  requiredStatusChecks: null,
   "kubernetes": {
     "fileMatch": ["cluster/.+\\.yaml$"]
   },
