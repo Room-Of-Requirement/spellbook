@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flood
-  namespace: music
+  name: music-flood
+  namespace: media
 spec:
   interval: 1m
   chart:

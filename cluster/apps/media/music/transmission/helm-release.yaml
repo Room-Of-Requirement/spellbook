@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: transmission
-  namespace: music
+  name: music-transmission
+  namespace: media
 spec:
   interval: 1m
   chart:
@@ -37,7 +37,7 @@ spec:
         skipuninstall: true
       downloads:
         enabled: true
-        existingClaim: downloads-pvc
+        existingClaim: music-downloads-pvc
     ingress:
       enabled: false
     service:

@@ -4,4 +4,5 @@ resources:
 - jackett
 - jellyfin
 - movies
+- music
 - tv
