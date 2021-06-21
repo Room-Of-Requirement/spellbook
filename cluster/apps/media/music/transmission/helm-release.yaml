@@ -39,7 +39,8 @@ spec:
         enabled: true
         existingClaim: music-downloads-pvc
     ingress:
-      enabled: false
+      main:
+        enabled: false
     service:
       main:
         enabled: true
