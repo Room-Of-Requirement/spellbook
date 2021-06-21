@@ -69,6 +69,7 @@ spec:
         env:
           # Enable a killswitch that kills all trafic when the VPN is not connected
           KILLSWITCH: "true"
+          TZ: America/Chicago
         configFile: |
           [Interface]
           PrivateKey = ${MULLVAD_WIREGUARD_PRIVATE_KEY}
