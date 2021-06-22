@@ -20,3 +20,33 @@ spec:
       TZ: America/Chicago
     routed_namespaces:
     - media
+    addons:
+      vpn:
+        enabled: true
+        # This Should be set to `wireguard`. This will set the add-on to use the default settings for Wireguard based connections.
+        type: wireguard
+        wireguard:
+          image:
+            repository: ghcr.io/k8s-at-home/wireguard
+            tag: v1.0.20210424
+        # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
+        # This is required for it to be able to read certain configuration files.
+        securityContext:
+          runAsUser: 568
+          runAsGroup: 568
+        env:
+          # Enable a killswitch that kills all trafic when the VPN is not connected
+          KILLSWITCH: "true"
+          TZ: America/Chicago
+        configFile: |
+          [Interface]
+          PrivateKey = ${MULLVAD_WIREGUARD_PRIVATE_KEY}
+          Address = 10.65.71.69/32,fc00:bbbb:bbbb:bb01::2:4744/128
+          DNS = 193.138.218.74
+          PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+          PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+
+          [Peer]
+          PublicKey = ${MULLVAD_WIREGUARD_PUBLIC_KEY}
+          AllowedIPs = 0.0.0.0/0,::0/0
+          Endpoint = 68.235.43.130:51820
