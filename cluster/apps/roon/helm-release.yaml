@@ -22,14 +22,17 @@ spec:
       music:
         enabled: true
         size: 300Gi
+        accessMode: ReadWriteMany
         storageClass: "cephfs"
       config:
         enabled: true
         size: 5Gi
+        accessMode: ReadWriteOnce
         storageClass: "ceph-rbd-ssd"
       backups:
         enabled: true
         size: 20Gi
+        accessMode: ReadWriteMany
         storageClass: "cephfs"
     resources:
       requests:
