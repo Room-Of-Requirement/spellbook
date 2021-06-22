@@ -31,7 +31,7 @@ spec:
         storageClass: "ceph-rbd-ssd"
       backups:
         enabled: true
-        size: 20Gi
+        size: 50Gi
         accessMode: ReadWriteMany
         storageClass: "cephfs"
     resources:
