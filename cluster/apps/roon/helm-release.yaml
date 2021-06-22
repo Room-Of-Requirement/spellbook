@@ -25,7 +25,7 @@ spec:
       config:
         enabled: true
         storageClass: "ceph-rbd-ssd"
-      backup:
+      backups:
         enabled: true
         storageClass: "cephfs"
     resources:
