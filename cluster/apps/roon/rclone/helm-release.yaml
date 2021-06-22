@@ -19,12 +19,12 @@ spec:
     schedule: 0/5 * * * *
     startingDeadlineSeconds: 5000
     volumes:
-    - name: backups
+    - name: music
       persistentVolumeClaim:
-        claimName: roon-backups
+        claimName: roon-music
     volumeMounts:
-    - mountPath: /backups
-      name: backups
+    - mountPath: /music
+      name: music
     config: |
       [ceph]
       type = s3
@@ -55,5 +55,5 @@ spec:
     - "5M"
     - "--exclude"
     - "*.part"
-    - "b2:roon-backups"
-    - "/backups"
+    - "b2:jmmaloney4-music"
+    - "/music"
