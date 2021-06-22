@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - music-pvc.yaml
 - flood
-- transmission
+# - transmission

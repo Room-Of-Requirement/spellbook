@@ -4,6 +4,6 @@ resources:
 - gateway
 - jackett
 - jellyfin
-# - movies
-# - music
-# - tv
+- movies
+- music
+- tv
