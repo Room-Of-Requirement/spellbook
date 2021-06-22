@@ -22,16 +22,19 @@ spec:
       music:
         enabled: true
         size: 300Gi
+        skipuninstall: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
       config:
         enabled: true
         size: 10Gi
+        skipuninstall: true
         accessMode: ReadWriteOnce
         storageClass: "ceph-rbd-ssd"
       backups:
         enabled: true
         size: 50Gi
+        skipuninstall: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
     resources:
