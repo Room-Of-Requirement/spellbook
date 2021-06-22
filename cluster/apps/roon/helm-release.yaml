@@ -21,12 +21,15 @@ spec:
     persistence:
       music:
         enabled: true
+        size: 300Gi
         storageClass: "cephfs"
       config:
         enabled: true
+        size: 5Gi
         storageClass: "ceph-rbd-ssd"
       backups:
         enabled: true
+        size: 20Gi
         storageClass: "cephfs"
     resources:
       requests:
