@@ -55,5 +55,5 @@ spec:
     - "5M"
     - "--exclude"
     - "*.part"
-    - "b2:roon-backups"
     - "/backups"
+    - "s3:roon-backups"
