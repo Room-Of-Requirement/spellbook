@@ -29,8 +29,8 @@ spec:
       [ceph]
       type = s3
       env_auth = false
-      access_key_id = admin
-      secret_access_key = ${MINIO_ADMIN_PASSWORD}
+      access_key_id = ${MINIO_ACCESS_KEY}
+      secret_access_key = ${MINIO_SECRET_KEY}
       endpoint = http://minio.minio.svc.cluster.local
 
       [b2]

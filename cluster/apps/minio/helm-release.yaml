@@ -16,8 +16,8 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    accessKey: admin
-    secretKey: ${MINIO_ADMIN_PASSWORD}
+    accessKey: "${MINIO_ACCESS_KEY}"
+    secretKey: "${MINIO_SECRET_KEY}"
     image:
       repository: minio/minio
       tag: RELEASE.2021-05-27T22-06-31Z@sha256:c7c93274ae7594c7a9756775eba8fa745b562977bfd39b32609b77e0f4468642
