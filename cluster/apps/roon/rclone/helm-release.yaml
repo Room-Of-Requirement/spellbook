@@ -18,6 +18,10 @@ spec:
   values:
     schedule: 0/5 * * * *
     startingDeadlineSeconds: 5000
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
     volumes:
     - name: music
       persistentVolumeClaim:
