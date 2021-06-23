@@ -31,7 +31,7 @@ spec:
       env_auth = false
       access_key_id = admin
       secret_access_key = ${MINIO_ADMIN_PASSWORD}
-      endpoint = minio.minio.svc.cluster.local
+      endpoint = http://minio.minio.svc.cluster.local
 
       [b2]
       type = s3
@@ -55,5 +55,5 @@ spec:
     - "5M"
     - "--exclude"
     - "*.part"
-    - "b2:jmmaloney4-music"
     - "/music"
+    - "ceph:music"
