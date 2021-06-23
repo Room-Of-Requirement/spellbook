@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    schedule: 0/5 * * * *
+    schedule: 0/1 * * * *
     startingDeadlineSeconds: 5000
     tolerations:
     - key: "RaspberryPi"
