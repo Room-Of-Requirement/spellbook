@@ -6,5 +6,6 @@ resources:
 - namespaces
 - network
 - node-feature-discovery
-- rook-ceph
 - reloader
+- rook-ceph
+- system-upgrade
