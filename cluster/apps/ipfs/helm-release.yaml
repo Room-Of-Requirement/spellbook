@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ipfs
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: ipfs
+      version: 0.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: "America/Chicago"
