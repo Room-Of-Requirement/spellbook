@@ -83,7 +83,8 @@
       matchDatasources: ["docker", "helm"],
       matchPackagePatterns: ["docker.io/rook/ceph", "rook-ceph"],
       groupName: "rook-ceph",
-      additionalBranchPrefix: ""
+      additionalBranchPrefix: "",
+      automerge: false
     },
     {
       matchDatasources: ["docker"],
