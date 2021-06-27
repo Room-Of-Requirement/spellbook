@@ -1,4 +1,4 @@
-name: Push `main` branch to `deploy`
+name: Deploy main branch
 on:
   push:
     branches:
