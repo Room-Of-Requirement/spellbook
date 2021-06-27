@@ -18,3 +18,18 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-staging
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+        hosts:
+        - host: ipfs.roomofrequirement.xyz
+          paths:
+          - path: "/"
+            pathType: Prefix
+        tls:
+        - secretName: ipfs-cert
+          hosts:
+          - ipfs.roomofrequirement.xyz
