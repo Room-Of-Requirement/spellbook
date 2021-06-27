@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: ipfs
       version: 0.2.0
       sourceRef:
