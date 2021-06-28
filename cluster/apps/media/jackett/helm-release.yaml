@@ -50,8 +50,9 @@ spec:
         - host: secure.roomofrequirement.xyz
           paths:
           - path: "/jackett"
-    service:
-      main:
-        port:
-          port: 80
-          targetPort: 9117
+    # service:
+    #   main:
+    #     ports:
+    #       http:
+    #         port: 80
+    #         targetPort: 9117
