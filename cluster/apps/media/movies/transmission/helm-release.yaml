@@ -67,6 +67,7 @@ spec:
         env:
           # Enable a killswitch that kills all trafic when the VPN is not connected
           KILLSWITCH: "true"
+          TZ: America/Chicago
         configFile: |
           [Interface]
           PrivateKey = ${MULLVAD_WIREGUARD_PRIVATE_KEY}
@@ -79,3 +80,10 @@ spec:
           PublicKey = ${MULLVAD_WIREGUARD_PUBLIC_KEY}
           AllowedIPs = 0.0.0.0/0,::0/0
           Endpoint = 68.235.43.130:51820
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "800Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1200Mi"

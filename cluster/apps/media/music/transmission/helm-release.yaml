@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: transmission
-      version: 7.0.0
+      version: 6.2.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -39,19 +39,11 @@ spec:
         enabled: true
         existingClaim: music-downloads-pvc
     ingress:
-      main:
-        enabled: false
+      enabled: false
     service:
-      main:
-        enabled: true
-        primary: true
-        ports:
-          http:
-            enabled: true
-            primary: true
-            port: 80
-            protocol: HTTP
-            targetPort: 9091
+      port:
+        port: 80
+        targetPort: 9091
     addons:
       vpn:
         enabled: true
@@ -84,8 +76,8 @@ spec:
           Endpoint = 68.235.43.130:51820
     resources:
       requests:
-        cpu: "100m"
-        memory: "400Mi"
-      limits:
         cpu: "500m"
         memory: "800Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1200Mi"
