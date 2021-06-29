@@ -22,7 +22,7 @@ spec:
     env:
       TZ: America/Chicago
       FLOOD_OPTION_RUNDIR: /data
-      FLOOD_OPTION_BASEURI: /music
+      FLOOD_OPTION_BASEURI: /flood/music
       FLOOD_OPTION_AUTH: none
       FLOOD_OPTION_TRURL: http://music-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
@@ -50,7 +50,7 @@ spec:
         hosts:
         - host: secure.roomofrequirement.xyz
           paths:
-          - path: "/music"
+          - path: "/flood/music"
     service:
       main:
         # type: LoadBalancer

@@ -16,8 +16,6 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    controllerAnnotations:
-      reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/k8s-at-home/transmission
       tag: v3.00@sha256:0dc1d9c53a2831fe9af69e55a1950fa5bed70a2ee7d01b2d7e554819082416b8
