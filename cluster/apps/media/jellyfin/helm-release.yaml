@@ -22,19 +22,20 @@ spec:
       repository: ghcr.io/linuxserver/jellyfin
       tag: 10.7.1-1-ls104
     ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
-        uroperator.brennerm.github.io/monitor.type: HTTPS
-      hosts:
-      - host: jf.roomofrequirement.xyz
-        paths:
-        - path: "/"
-      tls:
-      - secretName: jellyfin-cert
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
-        - jf.roomofrequirement.xyz
+        - host: jf.roomofrequirement.xyz
+          paths:
+          - path: "/"
+        tls:
+        - secretName: jellyfin-cert
+          hosts:
+          - jf.roomofrequirement.xyz
     persistence:
       config:
         enabled: true
@@ -55,16 +56,11 @@ spec:
         readOnly: true
       transcodes:
         enabled: true
-        emptyDir:
-          enabled: true
+        type: emptyDir
     resources:
       requests:
-        cpu: 5000m
-        memory: 2.5Gi
+        cpu: 6000m
+        memory: 5Gi
       limits:
         cpu: 10000m
-        memory: 8Gi
-    service:
-      port:
-        port: 80
-        targetPort: 8096
+        memory: 10Gi
