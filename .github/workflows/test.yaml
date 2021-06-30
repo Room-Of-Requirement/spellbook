@@ -5,12 +5,20 @@ on:
 
 jobs:
   test:
+    strategy:
+      fail-fast: false
+      matrix:
+        k3s: [latest, v1.21, v1.20, v1.19, v1.18, v1.17, v1.16]
+    name: K3s ${{matrix.k3s}}
     runs-on: ubuntu-latest
-    
+
     steps:
+    - uses: actions/checkout@v2.3.4
+    
     - uses: nolar/setup-k3d-k3s@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         k3d-args: --servers 3 --no-lb
+        version: ${{ matrix.k3s }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
     
     - run: kubectl get nodes
