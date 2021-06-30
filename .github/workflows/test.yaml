@@ -28,5 +28,6 @@ jobs:
       
     - run: flux check --pre
     - run: flux check
+    - run: flux install
 #     - run: kubectl apply -f https://raw.githubusercontent. com/fluxcd/flux2/main/manifests/crds/kustomization.yaml
 #     - run: kubectl apply -f ./cluster/base/flux-system/
