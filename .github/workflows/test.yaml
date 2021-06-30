@@ -29,5 +29,29 @@ jobs:
     - run: flux check --pre
     - run: flux check
     - run: flux install
-#     - run: kubectl apply -f https://raw.githubusercontent. com/fluxcd/flux2/main/manifests/crds/kustomization.yaml
-#     - run: kubectl apply -f ./cluster/base/flux-system/
+    
+    - name: Setup cluster reconciliation
+      run: |
+        flux create source git flux-system \
+        --url=${{ github.event.repository.html_url }} \
+        --branch=${GITHUB_REF#refs/heads/}
+        flux create kustomization flux-system \
+        --source=flux-system \
+        --path=./clusters/staging
+    - name: Verify cluster reconciliation
+      run: |
+        kubectl -n flux-system wait kustomization/infrastructure --for=condition=ready --timeout=5m
+        kubectl -n flux-system wait kustomization/apps --for=condition=ready --timeout=5m
+    - name: Verify helm reconciliation
+      run: |
+        kubectl -n nginx wait helmrelease/nginx --for=condition=ready --timeout=5m
+        kubectl -n redis wait helmrelease/redis --for=condition=ready --timeout=5m
+        kubectl -n podinfo wait helmrelease/podinfo --for=condition=ready --timeout=5m
+    - name: Debug failure
+      if: failure()
+      run: |
+        kubectl -n flux-system get all
+        kubectl -n flux-system logs deploy/source-controller
+        kubectl -n flux-system logs deploy/kustomize-controller
+        kubectl -n flux-system logs deploy/helm-controller
+        flux get all --all-namespaces
