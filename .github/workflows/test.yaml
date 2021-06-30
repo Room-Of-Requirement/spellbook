@@ -11,5 +11,6 @@ jobs:
     - uses: nolar/setup-k3d-k3s@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        k3d-args: --servers 3 --no-lb
     
     - run: kubectl get nodes
