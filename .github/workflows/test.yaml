@@ -22,5 +22,11 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     
     - run: kubectl get nodes
-    - run: kubectl apply -f https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/crds/kustomization.yaml
-    - run: kubectl apply -f ./cluster/base/flux-system/
+    
+    - name: Setup Flux CLI
+      uses: fluxcd/flux2/action@main
+      
+    - run: flux check --pre
+    - run: flux check
+#     - run: kubectl apply -f https://raw.githubusercontent. com/fluxcd/flux2/main/manifests/crds/kustomization.yaml
+#     - run: kubectl apply -f ./cluster/base/flux-system/
