@@ -1,0 +1,15 @@
+name: Test
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: nolar/setup-k3d-k3s@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - run: kubectl get nodes
