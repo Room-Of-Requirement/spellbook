@@ -22,3 +22,5 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     
     - run: kubectl get nodes
+    
+    - run: kubectl apply -f ./cluster/base/flux-system/
