@@ -18,6 +18,13 @@ spec:
   values:
     env:
       TZ: "America/Chicago"
+      IPFS_PATH: "/data"
+    persistence:
+      data:
+        enabled: true
+        size: 20Gi
+        accessMode: ReadWriteMany
+        storageClass: cephfs
     ingress:
       main:
         enabled: true
