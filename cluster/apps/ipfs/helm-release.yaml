@@ -52,12 +52,27 @@ spec:
         - host: secure.roomofrequirement.xyz
           paths:
           - path: "/webui"
+            service:
+              name: api
+              port: 5001
     service:
       swarm:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 192.168.1.241
+        ports:
+          swarm:
+            enabled: true
+            primary: true
+            port: 4001
+            protocol: TCP
       api:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 192.168.1.251
+        ports:
+          api:
+            enabled: true
+            primary: true
+            port: 5001
+            protocol: HTTP
