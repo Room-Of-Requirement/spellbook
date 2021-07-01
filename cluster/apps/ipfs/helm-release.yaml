@@ -53,7 +53,7 @@ spec:
           paths:
           - path: "/webui"
             service:
-              name: api
+              name: ipfs-api
               port: 5001
     service:
       swarm:
