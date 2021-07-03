@@ -31,7 +31,9 @@ jobs:
     - run: flux install
     
     - run: echo $SOPS_PRIVATE_KEY | kubectl create secret generic sops-gpg --namespace=flux-system --from-file=sops.asc=/dev/stdin
-    
+      env:
+        SOPS_PRIVATE_KEY: ${{ secrets.SOPS_PRIVATE_KEY }}
+        
     - name: Setup cluster reconciliation
       run: |
         flux create source git flux-system \
