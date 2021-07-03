@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/rclone/rclone
-      tag: 1.55.1@sha256:bf9b9de8f0b22ae61b92713cf802202b4d2684b51f375c37db204b7665849733
+      tag: 1.55.1@sha256:b400c809f34ba185ffce656ba5cd1b2e6e2aaca063a0ede821730cba6f1e80b5
     schedule: 0/1 * * * *
     startingDeadlineSeconds: 5000
     tolerations:
