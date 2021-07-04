@@ -22,3 +22,8 @@ spec:
       data:
         enabled: true
         existingClaim: music-library-pvc
+    service:
+      main:
+        ports:
+          http:
+            port: 8337
