@@ -22,6 +22,12 @@ spec:
       data:
         enabled: true
         existingClaim: music-library-pvc
+      music:
+        enabled: true
+        accessMode: ReadWriteMany
+        storageClass: cephfs
+        skipuninstall: true
+        size: 300Gi
     service:
       main:
         enabled: true
