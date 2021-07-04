@@ -4,4 +4,5 @@ resources:
 - beets
 - flood
 - transmission
+- rclone
 - music-pvc.yaml
