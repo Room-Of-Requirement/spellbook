@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/jesec/flood
-      tag: 4.6.0@sha256:60bd59cfb4ebead2148ed40717c23fc23b8157d413ff741a2297b8894cf2e557
+      tag: 4.6.1@sha256:95dd5112471e3afcb85b1760026d9b6370540bb2a238e22b094236d74afb67e0
     env:
       TZ: America/Chicago
       FLOOD_OPTION_RUNDIR: /data
