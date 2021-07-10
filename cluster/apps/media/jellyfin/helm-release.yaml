@@ -59,8 +59,8 @@ spec:
         type: emptyDir
     resources:
       requests:
-        cpu: 6000m
-        memory: 5Gi
+        cpu: 7000m
+        memory: 12Gi
       limits:
         cpu: 10000m
-        memory: 10Gi
+        memory: 15Gi
