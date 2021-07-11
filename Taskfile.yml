@@ -17,31 +17,36 @@ tasks:
 
   teardown-agents:
     cmds:
-      - ansible agents -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-agent-uninstall.sh'
+    - ansible agents -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-agent-uninstall.sh'
     silent: true
 
   teardown-servers:
     cmds:
-      - ansible servers -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-uninstall.sh'
+    - ansible servers -i {{.HOSTS_YAML}} --one-line -a '/usr/local/bin/k3s-uninstall.sh'
     silent: true
 
   teardown:
     desc: Teardown k3s cluster
     cmds:
-      - task: teardown-servers
-      - task: teardown-agents
+    - task: teardown-servers
+    - task: teardown-agents
 
   ansible:
     desc: Run a command with ansible on all nodes
     cmds:
-      - ansible all -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+    - ansible all -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
 
   ansible-servers:
     desc: Run a command with ansible on the server nodes
     cmds:
-      - ansible servers -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+    - ansible servers -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
 
   ansible-agents:
     desc: Run a command with ansible on the agent nodes
     cmds:
-      - ansible agents -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+    - ansible agents -i {{.HOSTS_YAML}} -u k3s -a '{{.CLI_ARGS}}'
+
+  deploy:
+    desc: Push the current branch to origin/deploy
+    cmds:
+    - git push --force origin $(git rev-parse --abbrev-ref HEAD):deploy
