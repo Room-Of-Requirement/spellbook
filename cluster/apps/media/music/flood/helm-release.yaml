@@ -64,3 +64,7 @@ spec:
       limits:
         cpu: "200m"
         memory: "400Mi"
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
