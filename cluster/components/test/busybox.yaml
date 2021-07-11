@@ -6,6 +6,9 @@ metadata:
     app: busybox1
 spec:
   replicas: 1
+  selector:
+    labels:
+      app: busybox1
   template:
     spec:
       containers:
