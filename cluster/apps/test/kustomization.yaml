@@ -4,3 +4,5 @@ namespace: media
 nameSuffix: -asdf
 components:
 - ../../components/test
+# patchesStrategicMerge:
+# - patch.yaml
