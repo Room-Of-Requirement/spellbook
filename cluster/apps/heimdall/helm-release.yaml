@@ -20,7 +20,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: ghcr.io/linuxserver/heimdall
-      tag: version-2.2.2@sha256:9684cc4ec39b7ff6115c7f602055054d8be296ebca1ca43934e4bf4c4ce7c2fd
+      tag: version-2.2.2@sha256:eff537e96ab781a76b2abe954104ca32f82bd54343c8addaaddf20eaabdf8f14
     persistence:
       config:
         enabled: true
