@@ -1,6 +1,28 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
 metadata:
-  name: busybox1
+  name: transmission
 spec:
-  replicas: 2
+  values:
+    env:
+      TRANSMISSION_PEER_PORT: 55555
+    persistence:
+      downloads:
+        existingClaim: downloads-pvc-test
+
+---
+
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flood
+spec:
+  values:
+    env:
+      FLOOD_OPTION_BASEURI: /flood/test
+    ingress:
+      main:
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/flood/test"
