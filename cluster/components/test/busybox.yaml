@@ -10,6 +10,9 @@ spec:
     matchLabels:
       app: busybox1
   template:
+    metadata:
+      labels:
+        app: busybox1
     spec:
       containers:
       - image: busybox
