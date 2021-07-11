@@ -56,3 +56,14 @@ spec:
     #       http:
     #         port: 80
     #         targetPort: 9117
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1Gi"
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
