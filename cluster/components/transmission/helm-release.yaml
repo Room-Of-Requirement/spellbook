@@ -34,7 +34,8 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 100Mi
+        type: pvc
+        size: 500Mi
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
         skipuninstall: true
