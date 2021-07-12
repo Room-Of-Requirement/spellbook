@@ -7,3 +7,5 @@ resources:
 - rclone
 components:
 - ../../../components/transmission
+patchesStrategicMerge:
+- patch.yaml
