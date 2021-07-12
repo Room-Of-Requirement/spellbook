@@ -13,7 +13,7 @@
     "fileMatch": ["cluster/.+\\.yaml$"]
   },
   "helm-values": {
-    "fileMatch": ["cluster/.+helm-release\\.yaml$"]
+    "fileMatch": ["cluster/.+\\.yaml$"]
   },
   "regexManagers": [
     // regexManager to read and process HelmReleases and CRDs
