@@ -8,7 +8,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: transmission
-      version: 6.2.0
+      version: 7.1.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -42,11 +42,13 @@ spec:
         enabled: true
         existingClaim: downloads-pvc
     ingress:
-      enabled: false
+      main:
+        enabled: false
     service:
-      port:
-        port: 80
-        targetPort: 9091
+      main:
+        port:
+          port: 80
+          targetPort: 9091
     addons:
       vpn:
         enabled: true
