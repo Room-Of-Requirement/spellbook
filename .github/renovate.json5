@@ -29,6 +29,15 @@
       ],
       "datasourceTemplate": "helm"
     },
+    {
+      "fileMatch": [
+        "cluster/crds/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "helm"
+    }
   ],
   "packageRules": [
     // setup datasources
