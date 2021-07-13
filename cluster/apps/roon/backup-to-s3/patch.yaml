@@ -1,0 +1,11 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+spec:
+  values:
+    to: "ceph:roon-backups"
+    volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: roon-backups
