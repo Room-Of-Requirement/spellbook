@@ -2,7 +2,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: rclone
-  namespace: roon
 spec:
   interval: 1m
   chart:
@@ -22,13 +21,9 @@ spec:
     - key: "RaspberryPi"
       operator: "Exists"
       effect: "NoSchedule"
-    volumes:
-    - name: music
-      persistentVolumeClaim:
-        claimName: roon-music
     volumeMounts:
-    - mountPath: /music
-      name: music
+    - mountPath: /data
+      name: data
     config: |
       [ceph]
       type = s3
@@ -59,5 +54,4 @@ spec:
     - "5M"
     - "--exclude"
     - "*.part"
-    - "/music"
-    - "ceph:music"
+    from: "/data"
