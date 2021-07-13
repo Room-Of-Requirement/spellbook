@@ -1,4 +1,4 @@
-- name: Fix RaspberryPi cmdline 
+- name: Fix RaspberryPi cmdline
   hosts: rpi
   become: true
   tasks:
@@ -60,7 +60,7 @@
       enabled: yes
       state: started
   - name: Add user to docker group
-    ansible.builtin.user: 
+    ansible.builtin.user:
       name: "{{ ansible_user }}"
       groups: docker
       append: yes
