@@ -5,4 +5,4 @@ resources:
 - helm-release.yaml
 - music-sync
 - backup-to-s3
-# - backup-to-b2
+- backup-to-b2
