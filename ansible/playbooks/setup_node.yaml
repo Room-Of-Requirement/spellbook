@@ -45,26 +45,6 @@
     command: swapoff -a
     when: ansible_swaptotal_mb > 0
 
-- name: Install/Upgrade and configure Docker
-  hosts: all
-  become: true
-  tasks:
-  - name: Install/Upgrade Docker
-    ansible.builtin.apt:
-      name: docker.io
-      update_cache: yes
-      state: latest
-  - name: Start Docker service
-    ansible.builtin.systemd:
-      name: docker
-      enabled: yes
-      state: started
-  - name: Add user to docker group
-    ansible.builtin.user:
-      name: "{{ ansible_user }}"
-      groups: docker
-      append: yes
-
 - name: Install other packages
   hosts: all
   become: true
