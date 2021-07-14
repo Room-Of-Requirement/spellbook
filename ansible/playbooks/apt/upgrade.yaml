@@ -6,17 +6,17 @@
     ansible.builtin.apt:
       name: docker.io
       update_cache: yes
-      state: latest
-  - name: Start Docker service
-    ansible.builtin.systemd:
-      name: docker
-      enabled: yes
-      state: started
-  - name: Add user to docker group
-    ansible.builtin.user:
-      name: "{{ ansible_user }}"
-      groups: docker
-      append: yes
+      state: absent
+  # - name: Start Docker service
+  #   ansible.builtin.systemd:
+  #     name: docker
+  #     enabled: yes
+  #     state: started
+  # - name: Add user to docker group
+  #   ansible.builtin.user:
+  #     name: "{{ ansible_user }}"
+  #     groups: docker
+  #     append: yes
 
 - name: Install other packages
   hosts: all
