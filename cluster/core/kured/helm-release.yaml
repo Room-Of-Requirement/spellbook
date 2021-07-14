@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      repository: docker.io/raspbernetes/kured
+      tag: 1.7.0@sha256:be4fd0c4dfc69d61c50e13e505da9352f349aff758d098bdcdb143a3881d0cf8
     tolerations:
     - key: "RaspberryPi"
       operator: "Exists"
