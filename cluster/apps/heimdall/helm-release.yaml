@@ -21,6 +21,10 @@ spec:
     image:
       repository: ghcr.io/linuxserver/heimdall
       tag: version-2.2.2@sha256:eff537e96ab781a76b2abe954104ca32f82bd54343c8addaaddf20eaabdf8f14
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
     persistence:
       config:
         enabled: true
