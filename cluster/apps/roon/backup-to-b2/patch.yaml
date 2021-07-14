@@ -7,3 +7,6 @@ spec:
     schedule: "0 0/12 * * *"
     from: "ceph:roon-backups"
     to: "b2:roon-backups"
+    volumes:
+    - name: data
+      emptyDir: {}
