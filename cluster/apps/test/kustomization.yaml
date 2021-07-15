@@ -1,8 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: media
-nameSuffix: -test
-components:
-- ../../components/transmission
-patchesStrategicMerge:
-- patch.yaml
