@@ -72,12 +72,6 @@
     },
     {
       matchDatasources: ["docker"],
-      matchPackageNames: ["ghcr.io/linuxserver/jackett"],
-      matchUpdateTypes: ["minor", "patch"],
-      automerge: true
-    },
-    {
-      matchDatasources: ["docker"],
       matchPackagePatterns: ["^ghcr.io/fluxcd/"],
       groupName: "fluxcd-suite",
       additionalBranchPrefix: ""
