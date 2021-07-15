@@ -25,6 +25,8 @@ spec:
       operator: "Exists"
       effect: "NoSchedule"
     configuration:
+      forceReboot: true
+      drainTimeout: 20m
       # rebootDays: sun
       # startTime: 4:00am
       # endTime: 5:30am
