@@ -17,7 +17,3 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    reloader:
-      image:
-        name: stakater/reloader
-        tag: v0.0.90@sha256:9c4ee3132a4388f884b1c3b12a1f85285ad028972fa6dde9bbc06690eb4dc3aa
