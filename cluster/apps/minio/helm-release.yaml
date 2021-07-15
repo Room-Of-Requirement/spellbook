@@ -60,6 +60,5 @@ spec:
         cpu: 150m
         memory: 150Mi
     podDisruptionBudget:
-      enabled: true
-      maxUnavailable: 1
-      minAvaliable: 2
+      enabled: false
+      minAvaliable: 1
