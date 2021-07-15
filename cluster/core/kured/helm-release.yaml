@@ -29,8 +29,8 @@ spec:
       drainTimeout: 20m
       rebootCommand: /usr/sbin/reboot
       rebootDays: ["sun"]
-      startTime: 4:00am
-      endTime: 5:30am
+      startTime: "4:00"
+      endTime: "5:30"
       timeZone: "America/Chicago"
       lockReleaseDelay: 5m
       period: 10m
