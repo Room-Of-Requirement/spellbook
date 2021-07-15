@@ -28,8 +28,8 @@ spec:
       forceReboot: true
       drainTimeout: 20m
       rebootCommand: /usr/sbin/reboot
-      # rebootDays: sun
-      # startTime: 4:00am
-      # endTime: 5:30am
-      # lockReleaseDelay: 5m
+      rebootDays: sun
+      startTime: 4:00am
+      endTime: 5:30am
+      lockReleaseDelay: 5m
       period: 10m
