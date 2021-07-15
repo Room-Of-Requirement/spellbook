@@ -24,3 +24,9 @@ spec:
     - key: "RaspberryPi"
       operator: "Exists"
       effect: "NoSchedule"
+    configuration:
+      # rebootDays: sun
+      # startTime: 4:00am
+      # endTime: 5:30am
+      # lockReleaseDelay: 5m
+      period: 10m
