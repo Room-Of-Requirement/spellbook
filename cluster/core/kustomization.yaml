@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - intel-gpu-plugin
 - kured
-- monitoring
+# - monitoring
 - namespaces
 - network
 - node-feature-discovery
