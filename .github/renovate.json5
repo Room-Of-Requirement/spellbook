@@ -12,7 +12,7 @@
   kubernetes: {
     fileMatch: ["cluster/.+\\.yaml$"]
   },
-  helm-values: {
+  "helm-values": {
     fileMatch: ["cluster/.+\\.yaml$"]
   },
   regexManagers: [
