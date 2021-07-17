@@ -9,60 +9,60 @@
   prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
   requiredStatusChecks: null,
-  "kubernetes": {
-    "fileMatch": ["cluster/.+\\.yaml$"]
+  kubernetes: {
+    fileMatch: ["cluster/.+\\.yaml$"]
   },
-  "helm-values": {
-    "fileMatch": ["cluster/.+\\.yaml$"]
+  helm-values: {
+    fileMatch: ["cluster/.+\\.yaml$"]
   },
-  "regexManagers": [
+  regexManagers: [
     // regexManager to read and process HelmReleases and CRDs
     {
-      "fileMatch": [
+      fileMatch: [
         "cluster/.+\\.yaml$"
       ],
-      "matchStrings": [
+      matchStrings: [
         // helm releases
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
         // cert-manager crd
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
       ],
-      "datasourceTemplate": "helm"
+      datasourceTemplate: "helm"
     },
     {
-      "fileMatch": [
+      fileMatch: [
         "cluster/crds/.+\\.yaml$"
       ],
-      "matchStrings": [
+      matchStrings: [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
       ],
-      "datasourceTemplate": "helm"
+      datasourceTemplate: "helm"
     }
   ],
-  "packageRules": [
+  packageRules: [
     // setup datasources
     {
-      "matchDatasources": ["helm"],
+      matchDatasources: ["helm"],
     },
     // global docker datasource settings
     {
-      "matchDatasources": ["docker"],
-      "enabled": true,
-      "commitMessageTopic": "container image {{depName}}",
-      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      "matchUpdateTypes": ["major", "minor", "patch"],
+      matchDatasources: ["docker"],
+      enabled: true,
+      commitMessageTopic: "container image {{depName}}",
+      commitMessageExtra: "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      matchUpdateTypes: ["major", "minor", "patch"],
     },
     {
-      "matchUpdateTypes": ["major"],
-      "labels": ["dep/major"],
+      matchUpdateTypes: ["major"],
+      labels: ["dep/major"],
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "labels": ["dep/minor"],
+      matchUpdateTypes: ["minor"],
+      labels: ["dep/minor"],
     },
     {
       matchDatasources: ["docker"],
-      matchUpdateTypes: ["digest", "patch"],
+      matchUpdateTypes: ["digest", "patch", "minor"],
       automerge: true
     },
     {
