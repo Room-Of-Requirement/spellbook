@@ -35,3 +35,10 @@ spec:
       lockReleaseDelay: 5m
       period: 1m
       notifyUrl: discord://${KURED_DISCORD_WEBHOOK_TOKEN}@${KURED_DISCORD_WEBHOOK_ID}
+    resources:
+      requests:
+        cpu: 15m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi

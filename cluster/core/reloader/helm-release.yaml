@@ -17,3 +17,10 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    resources:
+      requests:
+        cpu: 15m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi
