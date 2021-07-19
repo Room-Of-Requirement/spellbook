@@ -45,6 +45,10 @@ spec:
       - secretName: secure-cert
         hosts:
         - secure.roomofrequirement.xyz
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
     resources:
       requests:
         cpu: 50m
