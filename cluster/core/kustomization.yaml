@@ -4,7 +4,7 @@ resources:
 - intel-gpu-plugin
 - kube-vip
 - kured
-# - monitoring
+- monitoring
 - namespaces
 - network
 - node-feature-discovery
