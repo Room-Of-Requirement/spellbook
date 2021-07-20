@@ -2,9 +2,8 @@ name: Renovate Helm Releases
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
-  push:
-    branches:
-    - deploy
+  schedule:
+  - cron: '0 * * * *'
   
 jobs:
   renovate-helm-releases:
