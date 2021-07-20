@@ -9,14 +9,23 @@ jobs:
   push:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[no-deploy]')"
-    
+
     steps:
     - uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 0
-    
+
+    - uses: jmmaloney4/gomplate-action
+      with:
+        args: '--file ./cluster/repos/template.tmpl --out ./cluster/repos/repos.yaml --context repos=./cluster/repos/context.yaml'
+
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Deploy commit ${{ github.sha }}" -a
+
     - uses: ad-m/github-push-action@master
       with:
         branch: deploy
         force: true
-        
