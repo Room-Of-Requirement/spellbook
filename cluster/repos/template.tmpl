@@ -1,0 +1,11 @@
+{{- range $name, $url := .repos }}
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: {{ $name }}
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: {{ $url }}
+{{- end}}
