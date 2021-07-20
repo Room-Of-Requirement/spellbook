@@ -13,6 +13,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 1
+        ref: 'deploy'
 
     - name: Renovate Helm Releases
       uses: k8s-at-home/renovate-helm-releases@v1.4.4
