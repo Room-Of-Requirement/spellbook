@@ -27,6 +27,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: renovate-annotations
+        base: main
         delete-branch: true
         title: "chore(deps): update renovate annotations"
         committer: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
