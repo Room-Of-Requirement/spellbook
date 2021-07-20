@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
-metadata:
-  name: jmmaloney4
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  url: https://charts.jmmaloney4.xyz/
