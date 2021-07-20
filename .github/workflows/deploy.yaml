@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - uses: jmmaloney4/gomplate-action
+    - uses: jmmaloney4/gomplate-action@main
       with:
         args: '--file ./cluster/repos/template.tmpl --out ./cluster/repos/repos.yaml --context repos=./cluster/repos/context.yaml'
 
