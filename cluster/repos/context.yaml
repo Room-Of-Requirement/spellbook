@@ -1,4 +1,5 @@
 bitnami: 'https://charts.bitnami.com/bitnami'
+infracloudio: 'https://infracloudio.github.io/charts'
 jetstack: 'https://charts.jetstack.io'
 jmmaloney4: 'https://charts.jmmaloney4.xyz/'
 k8s-at-home: 'https://k8s-at-home.com/charts/'
