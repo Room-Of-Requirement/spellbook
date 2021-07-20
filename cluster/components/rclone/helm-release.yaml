@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: rclone
+      version: 2.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    schedule: 0/1 * * * *
+    startingDeadlineSeconds: 5000
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
+    volumeMounts:
+    - mountPath: /data
+      name: data
+    config: |
+      [ceph]
+      type = s3
+      env_auth = false
+      access_key_id = ${MINIO_ACCESS_KEY}
+      secret_access_key = ${MINIO_SECRET_KEY}
+      endpoint = http://minio.minio.svc.cluster.local
+
+      [b2]
+      type = s3
+      env_auth = false
+      access_key_id = ${B2_ACCESS_KEY}
+      secret_access_key = ${B2_SECERT_KEY}
+      endpoint = s3.us-west-002.backblazeb2.com
+    args:
+    - "-vvv"
+    - "--no-gzip-encoding"
+    - "--check-first"
+    - "--size-only"
+    - "--low-level-retries"
+    - "20"
+    - "--use-mmap"
+    - "--s3-chunk-size"
+    - "50M"
+    - "--transfers"
+    - "12"
+    - "--bwlimit"
+    - "5M"
+    - "--exclude"
+    - "*.part"
+    from: "/data"

@@ -1,0 +1,12 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+spec:
+  values:
+    schedule: "0 0/12 * * *"
+    from: "ceph:roon-backups"
+    to: "b2:roon-backups"
+    volumes:
+    - name: data
+      emptyDir: {}

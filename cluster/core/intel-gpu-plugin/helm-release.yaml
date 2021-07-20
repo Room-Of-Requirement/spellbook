@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: intel-gpu-plugin
+  namespace: intel
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: intel-gpu-plugin
+      version: 3.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/intel/intel-gpu-plugin
+      tag: 0.21.0@sha256:be4fd0c4dfc69d61c50e13e505da9352f349aff758d098bdcdb143a3881d0cf8
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: feature.node.kubernetes.io/pci-0300_8086.present
+                  operator: In
+                  values:
+                    - "true"

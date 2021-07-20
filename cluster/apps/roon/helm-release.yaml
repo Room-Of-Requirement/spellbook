@@ -1,0 +1,46 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: roon
+  namespace: roon
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: roon
+      version: 3.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: America/Chicago
+    persistence:
+      music:
+        enabled: true
+        size: 300Gi
+        skipuninstall: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"
+      config:
+        enabled: true
+        size: 10Gi
+        skipuninstall: true
+        accessMode: ReadWriteOnce
+        storageClass: "ceph-rbd-ssd"
+      backups:
+        enabled: true
+        size: 50Gi
+        skipuninstall: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"
+    resources:
+      requests:
+        cpu: 2
+        memory: "2Gi"
+      limits:
+        cpu: 2
+        memory: "3Gi"

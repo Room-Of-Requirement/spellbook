@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: kured
+      version: 2.7.0
+      sourceRef:
+        kind: HelmRepository
+        name: kured
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/raspbernetes/kured
+      tag: 1.7.0@sha256:4cc6924c0edb76e1347a9c39cac8ec71da934530f811501ad0838294e3f1940e
+    updateStrategy: RollingUpdate
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"
+    configuration:
+      forceReboot: true
+      drainTimeout: 20m
+      rebootCommand: /usr/sbin/reboot
+      # rebootDays: ["sun"]
+      # startTime: "4:00"
+      # endTime: "5:30"
+      timeZone: "America/Chicago"
+      lockReleaseDelay: 5m
+      period: 1m
+      notifyUrl: discord://${KURED_DISCORD_WEBHOOK_TOKEN}@${KURED_DISCORD_WEBHOOK_ID}
+    resources:
+      requests:
+        cpu: 15m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi

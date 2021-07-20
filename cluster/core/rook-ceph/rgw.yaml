@@ -1,0 +1,79 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStore
+metadata:
+  name: object-store
+  namespace: rook-ceph # namespace:cluster
+spec:
+  # The pool spec used to create the metadata pools. Must use replication.
+  metadataPool:
+    failureDomain: osd
+    deviceClass: ssd
+    replicated:
+      size: 2
+      requireSafeReplicaSize: true
+    parameters:
+      # Inline compression mode for the data pool
+      # Further reference: https://docs.ceph.com/docs/nautilus/rados/configuration/bluestore-config-ref/#inline-compression
+      compression_mode: none
+      # gives a hint (%) to Ceph in terms of expected consumption of the total cluster capacity of a given pool
+      # for more info: https://docs.ceph.com/docs/master/rados/operations/placement-groups/#specifying-expected-pool-size
+      #target_size_ratio: ".5"
+  # The pool spec used to create the data pool. Can use replication or erasure coding.
+  dataPool:
+    failureDomain: osd
+    deviceClass: hdd
+    erasureCoded:
+      dataChunks: 2
+      codingChunks: 1
+    parameters:
+      # Inline compression mode for the data pool
+      # Further reference: https://docs.ceph.com/docs/nautilus/rados/configuration/bluestore-config-ref/#inline-compression
+      compression_mode: none
+      # gives a hint (%) to Ceph in terms of expected consumption of the total cluster capacity of a given pool
+      # for more info: https://docs.ceph.com/docs/master/rados/operations/placement-groups/#specifying-expected-pool-size
+      #target_size_ratio: ".5"
+  # Whether to preserve metadata and data pools on object store deletion
+  preservePoolsOnDelete: false
+  # The gateway service configuration
+  gateway:
+    type: s3
+    # A reference to the secret in the rook namespace where the ssl certificate is stored
+    sslCertificateRef:
+    # The port that RGW pods will listen on (http)
+    port: 80
+    # The port that RGW pods will listen on (https). An ssl certificate is required.
+    # securePort: 443
+    # The number of pods in the rgw deployment
+    instances: 2
+    # The affinity rules to apply to the rgw deployment or daemonset.
+    placement:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          app: rook-ceph-rgw
+          rook_cluster: rook-ceph
+    annotations:
+    #  key: value
+    # A key/value list of labels
+    labels:
+    #  key: value
+    resources:
+      limits:
+        cpu: "1000m"
+        memory: "2048Mi"
+      requests:
+        cpu: "500m"
+        memory: "1024Mi"
+    # priorityClassName: my-priority-class
+  #zone:
+    #name: zone-a
+  # service endpoint healthcheck
+  healthCheck:
+    bucket:
+      disabled: false
+      interval: 60s
+    # Configure the pod liveness probe for the rgw daemon
+    livenessProbe:
+      disabled: false

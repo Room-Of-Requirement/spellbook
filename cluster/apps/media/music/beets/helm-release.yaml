@@ -1,0 +1,56 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: beets
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: beets
+      version:
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: America/Chicago
+    persistence:
+      data:
+        enabled: true
+        existingClaim: music-library-pvc
+      music:
+        enabled: true
+        accessMode: ReadWriteMany
+        storageClass: cephfs
+        skipuninstall: true
+        size: 300Gi
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            port: 8337
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/beets"

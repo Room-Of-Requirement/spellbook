@@ -1,0 +1,85 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ipfs
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: ipfs
+      version: 0.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: "America/Chicago"
+      IPFS_PATH: "/data"
+    persistence:
+      data:
+        enabled: true
+        size: 20Gi
+        accessMode: ReadWriteMany
+        storageClass: cephfs
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-staging
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+        hosts:
+        - host: ipfs.roomofrequirement.xyz
+          paths:
+          - path: "/"
+            pathType: Prefix
+        tls:
+        - secretName: ipfs-cert
+          hosts:
+          - ipfs.roomofrequirement.xyz
+      webui:
+        enabled: true
+        annotations:
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/webui"
+            service:
+              name: ipfs-api
+              port: 5001
+    service:
+      swarm:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.241
+        ports:
+          swarm:
+            enabled: true
+            primary: true
+            port: 4001
+            protocol: TCP
+      api:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.251
+        ports:
+          api:
+            enabled: true
+            primary: true
+            port: 5001
+            protocol: HTTP

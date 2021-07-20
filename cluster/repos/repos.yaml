@@ -1,0 +1,127 @@
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: bitnami
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://charts.bitnami.com/bitnami
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: infracloudio
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://infracloudio.github.io/charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jetstack
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://charts.jetstack.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jmmaloney4
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://charts.jmmaloney4.xyz/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: k8s-at-home
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://k8s-at-home.com/charts/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kured
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://weaveworks.github.io/kured
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: metallb
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://metallb.github.io/metallb
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: minio
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://helm.min.io/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: node-feature-discovery
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: rancher
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://releases.rancher.com/server-charts/stable
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: rook-ceph
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://charts.rook.io/release
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: stakater
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://stakater.github.io/stakater-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: uptimerobot-operator
+  namespace: flux-system
+spec:
+  interval: ${REPO_INTERVAL}
+  url: https://brennerm.github.io/uptimerobot-operator/helm

@@ -1,0 +1,56 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: sonarr
+      version: 12.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: ghcr.io/linuxserver/sonarr
+      tag: 3.0.6.1196-ls106@sha256:93c7e5cd727cd5316b0b7b17a17a0c878a1c6aacfae9fa3c3742be2ecbf2dce2
+    env:
+      TZ: America/Chicago
+    persistence:
+      config:
+        enabled: true
+        size: 100Mi
+        storageClass: ceph-rbd-ssd
+        accessMode: ReadWriteOnce
+        skipuninstall: true
+      media:
+        enabled: true
+        existingClaim: tv-pvc
+      downloads:
+        enabled: true
+        existingClaim: tv-downloads-pvc
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/sonarr"

@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: jellyfin
+      version: 8.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: America/Chicago
+    image:
+      repository: ghcr.io/linuxserver/jellyfin
+      tag: 10.7.6-1-ls119@sha256:a02200060479c1587956fbda3f2ffbbf0d40a535c794cd145f34e42e33a70123
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+        hosts:
+        - host: jf.roomofrequirement.xyz
+          paths:
+          - path: "/"
+        tls:
+        - secretName: jellyfin-cert
+          hosts:
+          - jf.roomofrequirement.xyz
+    persistence:
+      config:
+        enabled: true
+        size: 10Gi
+        storageClass: "ceph-rbd-ssd"
+        accessMode: ReadWriteOnce
+      cache:
+        enabled: false
+      movies:
+        enabled: true
+        existingClaim: movies-pvc
+        mountPath: /media/movies
+        readOnly: true
+      tv:
+        enabled: true
+        existingClaim: tv-pvc
+        mountPath: /media/tv
+        readOnly: true
+      transcodes:
+        enabled: true
+        type: emptyDir
+    resources:
+      requests:
+        cpu: 7000m
+        memory: 12Gi
+      limits:
+        cpu: 10000m
+        memory: 15Gi

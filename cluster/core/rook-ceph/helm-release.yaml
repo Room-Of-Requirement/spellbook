@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.rook.io/release
+      chart: rook-ceph
+      version: v1.6.7
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/rook/ceph
+      tag: v1.6.7@sha256:b8e203156dc993e8d64c3731ab94c239aa1c133ee0d7f758468d955793bddeb9
+    crds:
+      enabled: false
+    currentNamespaceOnly: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1000m
+        memory: 512Mi
+    discover:
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+    csi:
+      provisionerTolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+      pluginTolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+      cephcsi:
+        image: quay.io/cephcsi/cephcsi:v3.3.1@sha256:21ee2b825b2b238330bc3a7877b6798a700dfcdb559245e992637e19dbd35b5b
+      registrar:
+        image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0@sha256:2dee3fe5fe861bb66c3a4ac51114f3447a4cd35870e0f2e2b558c7a400d89589
+      provisioner:
+        image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2@sha256:04c55b93a032ad8075cae540d60fc740a72c31006590dbdb61ad4ab9813959d0
+      snapshotter:
+        image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.1.1@sha256:ed98431376c9e944e19a465fe8ea944806714dd95416a0821096c78d66b579bd
+      attacher:
+        image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1@sha256:60ab9b3e6a030d3038c87c0d6bca2930f58d1d72823e6a4af09767dc83b696a2
+      resizer:
+        image: k8s.gcr.io/sig-storage/csi-resizer:v1.2.0@sha256:36c31f7e1f433c9634d24f876353e8646246d81a03c4e351202c2644daff1620

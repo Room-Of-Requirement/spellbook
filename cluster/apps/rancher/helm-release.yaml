@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rancher
+  namespace: cattle-system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://releases.rancher.com/server-charts/stable
+      chart: rancher
+      version: 2.5.9
+      sourceRef:
+        kind: HelmRepository
+        name: rancher
+        namespace: flux-system
+      interval: 1m
+  values:
+    hostname: roomofrequirement.xyz
+    env:
+      TZ: America/Chicago
+    ingress:
+      extraAnnotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        uroperator.brennerm.github.io/monitor.type: HTTPS
+      tls:
+        source: secret
+    replicas: 2
+    resources:
+      requests:
+        cpu: 250m
+        memory: 600Mi
+      limits:
+        cpu: 800m
+        memory: 1Gi

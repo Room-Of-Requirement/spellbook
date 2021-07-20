@@ -1,0 +1,75 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: prometheus
+      version: 14.4.1
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 1m
+  values:
+    alertmanager:
+      image:
+        repository: quay.io/prometheus/alertmanager
+        tag: v0.22.2
+      podAnnotations:
+        reloader.stakater.com/auto: "true"
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
+    configmapReload:
+      enabled: false
+    kubeStateMetrics:
+      prometheusScrape: true
+      image:
+        repository: k8s.gcr.io/kube-state-metrics/kube-state-metrics
+        tag: v2.1.0
+      autosharding:
+        enabled: false
+    nodeExporter:
+      image:
+        repository: quay.io/prometheus/node-exporter
+        tag: v1.2.0
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+    server:
+      image:
+        repository: quay.io/prometheus/prometheus
+        tag: v2.28.1
+      podAnnotations:
+        reloader.stakater.com/auto: "true"
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
+      global:
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        evaluation_interval: 1m
+    pushgateway:
+      image:
+        repository: docker.io/prom/pushgateway
+        tag: v1.4.1
+      persistentVolume:
+        storageClass: "ceph-rbd-hdd-ec"
+    serverFiles:
+      prometheus.yml:
+        rule_files:
+        - /etc/config/recording_rules.yml
+        - /etc/config/alerting_rules.yml
+      ## Below two files are DEPRECATED will be removed from this default values file
+        - /etc/config/rules
+        - /etc/config/alerts
+      scrape_configs:
+      - job_name: prometheus
+        scrape_interval: 5s
+        static_configs:
+        - targets:
+          - localhost:9090

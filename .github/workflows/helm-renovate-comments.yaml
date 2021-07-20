@@ -1,0 +1,37 @@
+name: Renovate Helm Releases
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+  schedule:
+  - cron: '0 * * * *'
+  
+jobs:
+  renovate-helm-releases:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 1
+
+    - name: Renovate Helm Releases
+      uses: k8s-at-home/renovate-helm-releases@v1.4.4
+      with:
+        cluster-path: "./cluster"
+        dry-run: 'no'
+        debug: 'yes'
+        tolerate-yaml-errors: 'yes'
+
+    - name: Create pull request for renovatebot helm-release annotations
+      uses: peter-evans/create-pull-request@v3.10.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: renovate-annotations
+        delete-branch: true
+        title: "chore(deps): update renovate annotations"
+        committer: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+        author: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+        assignees: "jmmaloney4"
+        commit-message: "chore(deps): update renovate annotations"
+        body: |
+          Update HelmReleases inorder for Renovate to pick up new versions of Helm charts

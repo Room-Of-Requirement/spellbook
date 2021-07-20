@@ -1,0 +1,35 @@
+#
+# This example is for Kubernetes running an ngnix-ingress
+# and an ACME (e.g. Let's Encrypt) certificate service
+#
+# The nginx-ingress annotations support the dashboard
+# running using HTTPS with a self-signed certificate
+#
+# GET PASSWORD VIA:
+# kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode | pbcopy
+#
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rook-ceph-dashboard
+  namespace: rook-ceph
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    uroperator.brennerm.github.io/monitor.type: HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      proxy_ssl_verify off;
+spec:
+  tls:
+  - hosts:
+    - ceph.roomofrequirement.xyz
+    secretName: ceph-dashboard-cert
+  rules:
+  - host: ceph.roomofrequirement.xyz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rook-ceph-mgr-dashboard
+          servicePort: https-dashboard
