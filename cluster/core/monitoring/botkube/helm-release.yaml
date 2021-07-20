@@ -26,7 +26,7 @@ spec:
         enabled: true
         botid: ${BOTKUBE_DISCORD_CLIENT_ID}
         token: ${BOTKUBE_DISCORD_TOKEN}
-        channel: ${DISCORD_NOTIFICATIONS_CHANNEL_ID}
+        channel: notifications
     resources:
       requests:
         cpu: 50m
