@@ -22,7 +22,7 @@ spec:
     persistence:
       data:
         enabled: true
-        size: 20Gi
+        size: 100Gi
         accessMode: ReadWriteMany
         storageClass: cephfs
     ingress:
