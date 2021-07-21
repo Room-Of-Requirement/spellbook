@@ -66,7 +66,7 @@ spec:
       swarm:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: 192.168.1.241
+        loadBalancerIP: 192.168.1.204
         ports:
           swarm:
             enabled: true
@@ -76,7 +76,7 @@ spec:
       api:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: 192.168.1.251
+        loadBalancerIP: 192.168.1.205
         ports:
           api:
             enabled: true
