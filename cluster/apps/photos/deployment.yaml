@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: icloudpd
-          image: ghcr.io/jmmaloney4/icloudpd:main@sha256:ab53a13e9339f4cbf003744818ce68e781490501d2cc967a9707b62097f295cb
+          image: ghcr.io/jmmaloney4/icloudpd:main@sha256:96948b16395928f19acf86062b3d620163ea1a08b68e12db71de5d91b32ebbee
           command: ["/usr/bin/sleep", "365d"]
           volumeMounts:
             - mountPath: /data
