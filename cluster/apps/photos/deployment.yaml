@@ -17,7 +17,7 @@ spec:
       containers:
         - name: icloudpd
           image: ghcr.io/jmmaloney4/icloudpd:main@sha256:3104a379a75c1c5f11b78a9f76f5d224290d50601bcae03a238ff179ba0bba0f
-          entrypoint: /bin/bash -c 'sleep 3600000;'
+          command: ["/usr/bin/sleep", "365d"]
           volumeMounts:
             - mountPath: /data
               name: data
