@@ -21,6 +21,11 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data
+        env:
+        - name: ICLOUD_EMAIL
+          value: ${ICLOUD_EMAIL}
+        - name: ICLOUD_PASSWORD
+          value: ${ICLOUD_PASSWORD}
       volumes:
       - name: data
         persistentVolumeClaim:
