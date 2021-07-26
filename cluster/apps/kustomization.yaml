@@ -7,5 +7,6 @@ resources:
 - ipfs
 - media
 - minio
+- photos
 - rancher
 - roon
