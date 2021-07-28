@@ -18,6 +18,7 @@ spec:
         - name: icloudpd
           image: ghcr.io/jmmaloney4/icloudpd:main
 #           image: ghcr.io/jmmaloney4/icloudpd:main@sha256:715b555b7da2356713bf386ca066774ffd3ea85bf0e6db9ad475e3fd93d95ce5
+          imagePullPolicy: Always
           command: ["/usr/bin/sleep", "365d"]
           volumeMounts:
             - mountPath: /data
