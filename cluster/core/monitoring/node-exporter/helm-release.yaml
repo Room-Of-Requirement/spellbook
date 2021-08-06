@@ -18,4 +18,4 @@ spec:
   values:
     image:
       repository: quay.io/prometheus/node-exporter
-      tag: v1.2.1
+      tag: v1.2.2
