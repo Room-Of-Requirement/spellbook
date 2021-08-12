@@ -49,7 +49,7 @@ spec:
       registrar:
         image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0@sha256:f9bcee63734b7b01555ee8fc8fb01ac2922478b2c8934bf8d468dd2916edc405
       provisioner:
-        image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2@sha256:04c55b93a032ad8075cae540d60fc740a72c31006590dbdb61ad4ab9813959d0
+        image: k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0@sha256:6477988532358148d2e98f7c747db4e9250bbc7ad2664bf666348abf9ee1f5aa
       snapshotter:
         image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.2.1@sha256:818f35653f2e214db81d655063e81995de9073328a3430498624c140881026a3
       attacher:
