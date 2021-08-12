@@ -47,7 +47,7 @@ spec:
       cephcsi:
         image: quay.io/cephcsi/cephcsi:v3.4.0@sha256:1a6b395ffed6e51b7b73a87694690283d91b782b56cfaafee447f263c68a55d9
       registrar:
-        image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.2.0@sha256:2dee3fe5fe861bb66c3a4ac51114f3447a4cd35870e0f2e2b558c7a400d89589
+        image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0@sha256:f9bcee63734b7b01555ee8fc8fb01ac2922478b2c8934bf8d468dd2916edc405
       provisioner:
         image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2@sha256:04c55b93a032ad8075cae540d60fc740a72c31006590dbdb61ad4ab9813959d0
       snapshotter:
