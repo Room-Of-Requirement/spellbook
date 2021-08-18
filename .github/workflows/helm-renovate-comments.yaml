@@ -19,7 +19,7 @@ jobs:
         ref: 'deploy'
 
     - name: Renovate Helm Releases
-      uses: k8s-at-home/renovate-helm-releases@v1.4.4
+      uses: k8s-at-home/renovate-helm-releases@v1.4.5
       with:
         cluster-path: "./cluster"
         dry-run: 'no'
