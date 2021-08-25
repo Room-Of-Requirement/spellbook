@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/k8s-at-home/transmission
-      tag: v3.00@sha256:6674531cd26f2fc98f3f0894cd13bfeba089aab09faee8a3336be9c2a813ff60
+      tag: v3.00@sha256:355f4036c53c782df1957de0e16c63f4298f5b596ae5e621fea8f9ef02dd09e6
     # To view more enviornment variables see here:
     # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
     env:
