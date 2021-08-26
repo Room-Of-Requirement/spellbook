@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: docker.io/raspbernetes/node-feature-discovery
-      tag: v0.9.0@sha256:8edea52cb050d49d6351e06cdef0242241154a302f8739edcb712de8087d3081
+      tag: v0.9.0@sha256:b9fff76d496d4d1a35cf871bc7d111a22f94ba1b38704ccf97ca2824d99e9428
     master:
       extraLabelNs:
       - nvidia.com
