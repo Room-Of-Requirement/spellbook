@@ -15,7 +15,10 @@ spec:
         name: jmmaloney4
         namespace: flux-system
       interval: 1m
-  values:
+  values:    
+    image:
+      repository: ghcr.io/jmmaloney4/roon
+      tag: 1.8-806@sha256:29927df8ac0e5582de9f65da4ba302a2ddaa2918dc57f433e8983ff22cf6511f
     env:
       TZ: America/Chicago
     persistence:
