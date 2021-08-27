@@ -20,7 +20,7 @@ spec:
     secretKey: "${MINIO_SECRET_KEY}"
     image:
       repository: docker.io/minio/minio
-      tag: latest@sha256:511169da60ba7486e739a8f1f2ec723c5b09cc0e1dd94b615d070a38382f2345
+      tag: latest@sha256:be5164a58fe987323f6b70201b25f35510d2144402968845a13e93c73ff238ac
     env:
       TZ: America/Chicago
     ingress:
