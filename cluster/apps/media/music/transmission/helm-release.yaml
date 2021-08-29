@@ -33,7 +33,7 @@ spec:
         enabled: true
         size: 500Mi
         storageClass: ceph-rbd-ssd
-        skipuninstall: true
+        retain: true
       downloads:
         enabled: true
         existingClaim: music-downloads-pvc

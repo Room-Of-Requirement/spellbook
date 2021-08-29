@@ -38,7 +38,7 @@ spec:
         size: 500Mi
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
-        skipuninstall: true
+        retain: true
       downloads:
         enabled: true
         existingClaim: downloads-pvc

@@ -27,7 +27,7 @@ spec:
         size: 500Mi
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
-        skipuninstall: true
+        retain: true
       torrentblackhole:
         enabled: false
     ingress:

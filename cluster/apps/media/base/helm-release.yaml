@@ -37,7 +37,7 @@ spec:
         size: 100Mi
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
-        skipuninstall: true
+        retain: true
       downloads:
         enabled: true
         existingClaim: movies-downloads-pvc

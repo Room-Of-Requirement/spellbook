@@ -27,7 +27,7 @@ spec:
         size: 100Mi
         storageClass: ceph-rbd-ssd
         accessMode: ReadWriteOnce
-        skipuninstall: true
+        retain: true
       media:
         enabled: true
         existingClaim: tv-pvc
