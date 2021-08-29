@@ -15,7 +15,7 @@ spec:
         name: jmmaloney4
         namespace: flux-system
       interval: 1m
-  values:    
+  values:
     image:
       repository: ghcr.io/jmmaloney4/roon
       tag: 1.8.816@sha256:609142f86b4d90b9b10868cc11bf0a7137b83f66590c05ce7aa07f2047208328
@@ -25,19 +25,19 @@ spec:
       music:
         enabled: true
         size: 300Gi
-        skipuninstall: true
+        retain: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
       config:
         enabled: true
         size: 10Gi
-        skipuninstall: true
+        retain: true
         accessMode: ReadWriteOnce
         storageClass: "ceph-rbd-ssd"
       backups:
         enabled: true
         size: 50Gi
-        skipuninstall: true
+        retain: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
     resources:
