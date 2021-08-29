@@ -31,6 +31,7 @@ spec:
       ingress:
         enabled: true
         annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: "/$2"
           cert-manager.io/cluster-issuer: letsencrypt-prod
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
@@ -47,7 +48,7 @@ spec:
         hosts:
         - host: "secure.roomofrequirement.xyz"
           paths:
-          - path: "/forecastle"
+          - path: "/forecastle/(/|$)(.*)"
             pathType: Prefix
         tls:
         - secretName: secure-cert
