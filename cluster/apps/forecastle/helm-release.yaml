@@ -48,9 +48,8 @@ spec:
         hosts:
         - host: "secure.roomofrequirement.xyz"
           paths:
-          - path: "/forecastle/(/|$)(.*)"
-            pathType: Prefix
+          - "/forecastle/(/|$)(.*)"
         tls:
         - secretName: secure-cert
           hosts:
-          - secure.roomofrequirement.xyz`
+          - secure.roomofrequirement.xyz
