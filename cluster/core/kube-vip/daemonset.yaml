@@ -44,7 +44,7 @@ spec:
           value: "1"
         - name: address
           value: ${KUBE_VIP_IP}
-        image: docker.io/plndr/kube-vip:v0.3.7@sha256:d533c2869d9d9a8634c1a952df5b8aced49b252a948a74106d1dd189d0089350
+        image: docker.io/plndr/kube-vip:v0.3.8@sha256:af89a0c39ad187e33bfe197f55bf5d6d414f202ad08924f3fb951fc011322b05
         imagePullPolicy: Always
         name: kube-vip
         resources:
