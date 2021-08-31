@@ -20,7 +20,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: ghcr.io/linuxserver/heimdall
-      tag: version-2.2.2@sha256:a5a703ba80c8395be6964412d8bdfc24b6212de65c73eff622812393a2efb770
+      tag: version-2.2.2@sha256:71371b52efb72ea184ce471a74e682ae77656af57d8512afc4d9f8f954e762c9
     tolerations:
     - key: "RaspberryPi"
       operator: "Exists"
