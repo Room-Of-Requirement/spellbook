@@ -43,7 +43,8 @@ spec:
         enabled: true
         existingClaim: movies-downloads-pvc
     ingress:
-      enabled: false
+      main:
+        enabled: false
     service:
       port:
         port: 80
