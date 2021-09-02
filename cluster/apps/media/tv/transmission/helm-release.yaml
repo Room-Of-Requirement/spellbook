@@ -32,6 +32,8 @@ spec:
       TRANSMISSION_DHT_ENABLED: false
       TRANSMISSION_LPD_ENABLED: false
       TRANSMISSION_UTP_ENABLED: false
+      TRANSMISSION_SPEED_LIMIT_DOWN_ENABLED: true
+      TRANSMISSION_SPEED_LIMIT_DOWN: 500
     persistence:
       config:
         enabled: true
