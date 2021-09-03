@@ -38,11 +38,13 @@ spec:
         enabled: true
         existingClaim: music-downloads-pvc
     ingress:
-      enabled: false
+      main:
+        enabled: false
     service:
-      port:
-        port: 80
-        targetPort: 9091
+      main:
+        port:
+          port: 80
+          targetPort: 9091
     addons:
       vpn:
         enabled: true
