@@ -90,8 +90,8 @@ spec:
           Endpoint = 68.235.43.90:51820
     resources:
       requests:
-        cpu: "1500m"
-        memory: "3500Mi"
-      # limits:
-      #   cpu: "2000m"
-      #   memory: "00Mi"
+        cpu: "500m"
+        memory: "800Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1200Mi"
