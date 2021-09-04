@@ -18,6 +18,9 @@ spec:
   values:
     accessKey: "${MINIO_ACCESS_KEY}"
     secretKey: "${MINIO_SECRET_KEY}"
+    extraArgs:
+    - "--console-address"
+    - ":8080"
     image:
       repository: docker.io/minio/minio
       tag: RELEASE.2021-08-31T05-46-54Z.fips@sha256:d2efc88acde822dfbc7aa388655c02bc0e1b1380b406446bbb72c5b80d3e742e
@@ -51,6 +54,7 @@ spec:
       secretKey: ${MINIO_RGW_SECRET_KEY}
     service:
       port: 80
+      targetPort: 8080
       type: LoadBalancer
       loadBalancerIP: 192.168.1.200
     resources:
