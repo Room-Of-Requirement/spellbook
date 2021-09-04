@@ -9,6 +9,7 @@ spec:
       TRANSMISSION_SPEED_LIMIT_UP: 400
     persistence:
       downloads:
+        enabled: true
         existingClaim: tv-downloads-pvc
     addons:
       vpn:
