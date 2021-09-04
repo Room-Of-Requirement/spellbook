@@ -11,7 +11,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Ti
+      storage: 3Ti
 
 ---
 
@@ -28,4 +28,4 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Ti
+      storage: 3Ti
