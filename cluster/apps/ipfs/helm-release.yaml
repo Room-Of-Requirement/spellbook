@@ -30,7 +30,7 @@ spec:
       main:
         enabled: true
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-staging
+          cert-manager.io/cluster-issuer: letsencrypt-prod
           uroperator.brennerm.github.io/monitor.type: HTTPS
         hosts:
         - host: ipfs.roomofrequirement.xyz
