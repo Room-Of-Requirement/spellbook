@@ -43,8 +43,6 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
         retain: true
-      downloads:
-        existingClaim: downloads-pvc
     ingress:
       main:
         enabled: false
@@ -75,6 +73,18 @@ spec:
           # Enable a killswitch that kills all trafic when the VPN is not connected
           KILLSWITCH: "true"
           TZ: America/Chicago
+        configFile: |
+          [Interface]
+          PrivateKey = ${MULLVAD_WIREGUARD_PRIVATE_KEY}
+          Address = 10.65.71.69/32,fc00:bbbb:bbbb:bb01::2:4744/128
+          DNS = 193.138.218.74
+          PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+          PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+
+          [Peer]
+          PublicKey = ${MULLVAD_WIREGUARD_PUBLIC_KEY}
+          AllowedIPs = 0.0.0.0/0,::0/0
+          Endpoint = 68.235.43.130:51820
     resources:
       requests:
         cpu: "500m"
@@ -108,9 +118,9 @@ spec:
     env:
       TZ: America/Chicago
       FLOOD_OPTION_RUNDIR: /data
-      FLOOD_OPTION_BASEURI: /flood/unknown
+      FLOOD_OPTION_BASEURI: /flood/movies
       FLOOD_OPTION_AUTH: none
-      FLOOD_OPTION_TRURL: http://transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:

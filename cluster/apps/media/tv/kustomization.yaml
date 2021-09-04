@@ -5,7 +5,6 @@ namePrefix: tv-
 resources:
 - sonarr
 - pvc.yaml
-- vpn.yaml
 components:
 - ../../../components/transmission
 patchesStrategicMerge:
