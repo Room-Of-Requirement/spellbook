@@ -5,7 +5,30 @@ namePrefix: movies-
 resources:
 - radarr
 - pvc.yaml
+- vpn.yaml
 components:
 - ../../../components/transmission
 patchesStrategicMerge:
 - patch.yaml
+patchesJson6902:
+- target:
+    version: helm.toolkit.fluxcd.io/v2beta1
+    kind: HelmRelease
+    name: transmission
+  patch: |-
+    - op: add
+      path: spec/values/addons/vpn/vpnConfig
+      value: |
+        [Interface]
+        PrivateKey = ${MULLVAD_PRIVATE_KEY}
+        Address = 10.68.151.190/32,fc00:bbbb:bbbb:bb01::5:97bd/128
+        DNS = 193.138.218.74
+        PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+        PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+        [Peer]
+        PublicKey = ${MULLVAD_CHI4_PUBLIC_KEY}
+        AllowedIPs = 0.0.0.0/0,::0/0
+        Endpoint = ${MULLVAD_CHI4_IP}:51820
+    - op: replace
+      path: spec/values/persistence/downloads/existingClaim
+      value: movies-downloads-pvc
