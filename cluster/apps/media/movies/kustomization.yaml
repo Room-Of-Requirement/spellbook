@@ -3,9 +3,7 @@ kind: Kustomization
 namespace: media
 namePrefix: movies-
 resources:
-# - flood
 - radarr
-# - transmission
 - pvc.yaml
 components:
 - ../../../components/transmission

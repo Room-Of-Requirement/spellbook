@@ -43,9 +43,6 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
         retain: true
-      downloads:
-        enabled: true
-        existingClaim: downloads-pvc
     ingress:
       main:
         enabled: false
