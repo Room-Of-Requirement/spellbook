@@ -28,6 +28,9 @@ spec:
         storageClass: ceph-rbd-ssd
         accessMode: ReadWriteOnce
         retain: true
+      configold:
+        enabled: true
+        existingClaim: radarr-config
       media:
         enabled: true
         existingClaim: movies-pvc

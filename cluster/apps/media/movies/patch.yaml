@@ -5,30 +5,26 @@ metadata:
 spec:
   values:
     env:
-      TRANSMISSION_PEER_PORT: ${MULLVAD_MUSIC_PEER_PORT}
+      TRANSMISSION_PEER_PORT: ${MULLVAD_MOVIES_PEER_PORT}
       TRANSMISSION_SPEED_LIMIT_DOWN: 500
       TRANSMISSION_SPEED_LIMIT_UP: 20
-      TRANSMISSION_PEX_ENABLED: true
-      TRANSMISSION_DHT_ENABLED: true
-      TRANSMISSION_LPD_ENABLED: true
-      TRANSMISSION_UTP_ENABLED: true
     persistence:
       downloads:
-        existingClaim: music-downloads-pvc
+        existingClaim: movies-downloads-pvc
     addons:
       vpn:
         configFile: |
           [Interface]
-          PrivateKey = ${MULLVAD_MUSIC_WIREGUARD_PRIVATE_KEY}
-          Address = 10.65.71.69/32,fc00:bbbb:bbbb:bb01::2:4744/128
+          PrivateKey = ${MULLVAD_MOVIES_WIREGUARD_PRIVATE_KEY}
+          Address = 10.68.151.190/32,fc00:bbbb:bbbb:bb01::5:97bd/128
           DNS = 193.138.218.74
           PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
           PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
 
           [Peer]
-          PublicKey = ${MULLVAD_MUSIC_WIREGUARD_PUBLIC_KEY}
+          PublicKey = ${MULLVAD_MOVIES_WIREGUARD_PUBLIC_KEY}
           AllowedIPs = 0.0.0.0/0,::0/0
-          Endpoint = 68.235.43.130:51820
+          Endpoint = 68.235.43.82:51820
 
 ---
 
@@ -39,11 +35,11 @@ metadata:
 spec:
   values:
     env:
-      FLOOD_OPTION_BASEURI: /flood/music
-      FLOOD_OPTION_TRURL: http://music-transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_BASEURI: /flood/movies
+      FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
     ingress:
       main:
         hosts:
         - host: secure.roomofrequirement.xyz
           paths:
-          - path: "/flood/music"
+          - path: "/flood/movies"
