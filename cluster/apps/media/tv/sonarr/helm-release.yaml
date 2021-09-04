@@ -27,6 +27,9 @@ spec:
         storageClass: ceph-rbd-ssd
         accessMode: ReadWriteOnce
         retain: true
+      configold:
+        enabled: true
+        existingClaim: sonarr-config
       media:
         enabled: true
         existingClaim: tv-pvc
