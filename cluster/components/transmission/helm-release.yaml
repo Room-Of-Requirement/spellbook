@@ -71,7 +71,7 @@ spec:
           runAsGroup: 568
         env:
           # Enable a killswitch that kills all trafic when the VPN is not connected
-          KILLSWITCH: "true"
+          KILLSWITCH: "false"
           TZ: America/Chicago
     resources:
       requests:
