@@ -18,8 +18,6 @@ spec:
           PrivateKey = ${MULLVAD_PRIVATE_KEY}
           Address = 10.68.151.190/32,fc00:bbbb:bbbb:bb01::5:97bd/128
           DNS = 193.138.218.74
-          PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
-          PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
 
           [Peer]
           PublicKey = ${MULLVAD_CHI4_PUBLIC_KEY}
