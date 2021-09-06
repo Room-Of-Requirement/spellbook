@@ -34,6 +34,7 @@ spec:
       main:
         enabled: true
         annotations:
+          forecastle.stakater.com/expose: "true"
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
           nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri

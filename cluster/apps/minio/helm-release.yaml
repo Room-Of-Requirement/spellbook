@@ -29,7 +29,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/expose: "false"
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
         uroperator.brennerm.github.io/monitor.type: HTTPS
