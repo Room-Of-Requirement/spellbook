@@ -16,7 +16,7 @@ spec:
         configFile: |
           [Interface]
           PrivateKey = ${MULLVAD_PRIVATE_KEY}
-          Address = 10.68.151.190/32,fc00:bbbb:bbbb:bb01::5:97bd/128
+          Address = 10.65.71.69/32,fc00:bbbb:bbbb:bb01::2:4744/128
           DNS = 193.138.218.74
 
           [Peer]
