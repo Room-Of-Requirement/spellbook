@@ -106,9 +106,9 @@ spec:
     env:
       TZ: America/Chicago
       FLOOD_OPTION_RUNDIR: /data
-      FLOOD_OPTION_BASEURI: /flood/movies
+      FLOOD_OPTION_BASEURI: /flood/unknown
       FLOOD_OPTION_AUTH: none
-      FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_TRURL: http://unknown-transmission.media.svc.cluster.local/transmission/rpc
       FLOOD_OPTION_TRUSER: transmission
       FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
     persistence:
@@ -135,7 +135,7 @@ spec:
         hosts:
         - host: secure.roomofrequirement.xyz
           paths:
-          - path: "/flood/movies"
+          - path: "/flood/unknown"
     service:
       main:
         port:
