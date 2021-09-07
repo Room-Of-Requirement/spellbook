@@ -35,6 +35,7 @@ spec:
         enabled: true
         annotations:
           forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jacket-icon.png"
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
           nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
