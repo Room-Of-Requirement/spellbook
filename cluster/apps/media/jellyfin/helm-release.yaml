@@ -41,7 +41,7 @@ spec:
     persistence:
       config:
         enabled: true
-        size: 10Gi
+        size: 50Gi
         storageClass: "ceph-rbd-ssd"
         accessMode: ReadWriteOnce
       cache:
