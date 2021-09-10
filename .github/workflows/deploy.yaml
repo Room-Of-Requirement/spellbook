@@ -17,9 +17,9 @@ jobs:
 
     - uses: jmmaloney4/gomplate-action@main
       with:
-        file: './cluster/repos/template.tmpl'
-        out: './cluster/repos/repos.yaml'
-        context: 'repos=./cluster/repos/context.yaml'
+        file: './cluster/gen/template.tmpl'
+        out: './cluster/gen/gen.yaml'
+        context: 'context=./cluster/gen/context.yaml'
 
     - name: Commit files
       run: |

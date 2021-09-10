@@ -1,4 +1,4 @@
-{{- range $name, $url := .repos }}
+{{- range $name, $url := .context.repos }}
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
@@ -8,4 +8,13 @@ metadata:
 spec:
   interval: ${REPO_INTERVAL}
   url: {{ $url }}
-{{- end}}
+{{- end }}
+
+---
+
+{{- range $name := .context.namespaces }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $name }}
+{{- end }}
