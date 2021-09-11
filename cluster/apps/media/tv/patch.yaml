@@ -5,8 +5,8 @@ metadata:
 spec:
   values:
     env:
-      TRANSMISSION_SPEED_LIMIT_DOWN: 1000
-      TRANSMISSION_SPEED_LIMIT_UP: 400
+      TRANSMISSION_SPEED_LIMIT_DOWN: 600
+      TRANSMISSION_SPEED_LIMIT_UP: 200
     persistence:
       downloads:
         enabled: true
