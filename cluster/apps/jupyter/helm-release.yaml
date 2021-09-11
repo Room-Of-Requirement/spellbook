@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      # renovate: registryUrl=https://jupyterhub.github.io/helm-chart/
       chart: jupyterhub
       version: 0.4.0
       sourceRef:
