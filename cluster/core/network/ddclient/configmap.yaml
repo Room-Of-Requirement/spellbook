@@ -4,7 +4,7 @@ metadata:
   name: ddclient-config
 data:
   ddclient.conf: |
-    daemon=0
+    daemon=600
     syslog=yes
     ssl=yes
     use=web
