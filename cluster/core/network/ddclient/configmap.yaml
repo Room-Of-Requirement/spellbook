@@ -15,7 +15,3 @@ data:
     login=roomofrequirement.xyz
     password=${DDCLIENT_ROOMOFREQUIREMENT_XYZ_PASSWORD}
     @, *
-
-    login=jmmaloney4.xyz
-    password=${DDCLIENT_JMMALONEY4_XYZ_PASSWORD}
-    @, *
