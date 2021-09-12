@@ -5,7 +5,7 @@ metadata:
   namespace: network
 data:
   ddclient.conf: |
-    daemon=600
+    daemon=0
     syslog=yes
     ssl=yes
     use=web

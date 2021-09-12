@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ddclient
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: ddclient
+            image: ghcr.io/linuxserver/ddclient:v3.9.1-ls59@sha256:e6981f51edf9b1aee1f25571f2389a4873f27aeed4280d78c9a9e7b45fbc7fb2
+            resources:
+              requests:
+                cpu: 15m
+                memory: 50Mi
+              limits:
+                cpu: 100m
+                memory: 100Mi
+            env:
+            - name: TZ
+              value: America/Chicago
+            volumeMounts:
+            - name: config
+              mountPath: /config
+          tolerations:
+          - key: "RaspberryPi"
+            operator: "Exists"
+            effect: "NoSchedule"
+          volumes:
+          - name: config
+            configMap:
+              name: ddclient-config
