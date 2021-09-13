@@ -5,6 +5,7 @@ resources:
 - forecastle
 # - heimdall
 - ipfs
+- jupyter
 - media
 - minio
 - photos

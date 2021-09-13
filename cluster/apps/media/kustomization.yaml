@@ -4,7 +4,6 @@ resources:
 # - gateway
 - jackett
 - jellyfin
-- jupyter
 - movies
 - music
 - tv
