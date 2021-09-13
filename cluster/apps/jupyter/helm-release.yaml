@@ -58,10 +58,10 @@ spec:
       service:
         type: ClusterIP
         annotations: {}
-        port: {}
+        # port: {}
       baseUrl: /
       cookieSecret:
-      publicURL:
+      # publicURL:
       initContainers: []
       fsGid: 1000
       nodeSelector: {}
