@@ -94,8 +94,8 @@ spec:
       annotations: {}
       command: []
       args: []
-      extraConfig: {}
-      extraConfigMap: {}
+      # extraConfig: {}
+      # extraConfigMap: {}
       extraEnv: {}
       extraContainers: []
       extraVolumes: []
