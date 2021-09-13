@@ -2,7 +2,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: jupyter
-  namespace: default
 spec:
   interval: 1m
   chart:
@@ -203,7 +202,7 @@ spec:
           http:
           https:
         extraPorts: []
-        loadBalancerIP: "{{ .Values.network.subnet.base }}.{{ .Values.network.ip.jupyter }}"
+        # loadBalancerIP: ""
         loadBalancerSourceRanges: []
       # chp relates to the proxy pod, which is responsible for routing traffic based
       # on dynamic configuration sent from JupyterHub to CHP's REST API.
