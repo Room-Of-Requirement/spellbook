@@ -133,7 +133,7 @@ spec:
       - display_name: "Minimal environment"
         description: "To avoid too much bells and whistles: Python."
         kubespawner_override:
-          image: docker.io/jupyter/minimal-notebook:2021-09-13@sha256:ab3cb9a3926dc66cca2a60531f693382dd8a3d85b5e4789b48a24060f8abc134
+          image: docker.io/jupyter/minimal-notebook:2021-09-13@sha256:91d10e2586fb3552fe4b5258cd959c1c9a30e951aeb5e949066789ec9b3a211c
           cmd: jupyterhub-singleuser
       - display_name: "Datascience notebook"
         description: "All the things."
