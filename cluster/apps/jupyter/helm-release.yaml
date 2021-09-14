@@ -173,12 +173,16 @@ spec:
           pullSecrets: []
 
     ingress:
-      enabled: false
-      annotations: {}
-      hosts: []
-      pathSuffix:
-      pathType: Prefix
-      tls: []
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+        uroperator.brennerm.github.io/monitor.type: HTTPS
+      hosts: ["lab.roomofrequirement.xyz"]
+      pathSuffix: ''
+      tls:
+      - secretName: jupyter-cert
+        hosts:
+        - lab.roomofrequirement.xyz
 
     # cull relates to the jupyterhub-idle-culler service, responsible for evicting
     # inactive singleuser pods.
