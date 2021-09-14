@@ -129,7 +129,17 @@ spec:
       cmd: jupyterhub-singleuser
       defaultUrl:
       extraPodConfig: {}
-      profileList: []
+      profileList:
+      - display_name: "Minimal environment"
+        description: "To avoid too much bells and whistles: Python."
+        kubespawner_override:
+          image: docker.io/jupyter/minimal-notebook:2021-09-13@sha256:ab3cb9a3926dc66cca2a60531f693382dd8a3d85b5e4789b48a24060f8abc134
+          cmd: jupyterhub-singleuser
+      - display_name: "Datascience notebook"
+        description: "All the things."
+        kubespawner_override:
+          image: docker.io/jupyter/datascience-notebook:2021-09-13@sha256:56ba034967563e7ef190718bea193a18e1969fe82709274d485b7ff91bf8ca85
+          cmd: jupyterhub-singleuser
 
     # scheduling relates to the user-scheduler pods and user-placeholder pods.
     scheduling:
