@@ -101,7 +101,6 @@ spec:
     # singleuser relates to the configuration of KubeSpawner which runs in the hub
     # pod, and its spawning of user pods such as jupyter-myusername.
     singleuser:
-      networkTools:
       storage:
         type: dynamic
         extraLabels: {}
