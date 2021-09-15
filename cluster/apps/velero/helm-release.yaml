@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/velero/velero
-      tag: v1.6.3@sha256:d238835e151cec91c6a811fe3a89a66d3231d9f64d09e5f3c49552672d271f38
+      tag: v1.6.3@sha256:a99d463670667fbef3363785181317e1dd87c44af808a775fc09046b80c3643f
     metrics:
       enabled: false
     kubectl:
