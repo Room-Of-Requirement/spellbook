@@ -6,6 +6,7 @@ module.exports = {
   repositories: [
     "Room-Of-Requirement/spellbook"
   ],
+  logLevel: 'debug',
   enabled: true,
   timezone: "America/Chicago",
   extends: ["config:base"],
