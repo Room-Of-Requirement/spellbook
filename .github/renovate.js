@@ -1,4 +1,11 @@
 module.exports = {
+  username: "renovate-release",
+  gitAuthor: "Renovate Bot <bot@renovateapp.com>",
+  onboarding: false,
+  platform: "github",
+  repositories: [
+    "Room-Of-Requirement/spellbook"
+  ],
   enabled: true,
   timezone: "America/Chicago",
   extends: ["config:base"],
