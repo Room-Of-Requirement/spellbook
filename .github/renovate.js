@@ -10,7 +10,7 @@ module.exports = {
   timezone: "America/Chicago",
   extends: ["config:base"],
   rebaseWhen: "conflicted",
-  dependencyDashboard: true,
+  dependencyDashboard: false,
   dependencyDashboardTitle: "Renovate Dashboard",
   prConcurrentLimit: 0,
   prHourlyLimit: 0,
