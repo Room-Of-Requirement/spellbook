@@ -1,4 +1,4 @@
-{
+module.exports = {
   enabled: true,
   timezone: "America/Chicago",
   extends: ["config:base"],
