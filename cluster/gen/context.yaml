@@ -14,6 +14,7 @@ repos:
   rook-ceph: 'https://charts.rook.io/release'
   stakater: 'https://stakater.github.io/stakater-charts'
   uptimerobot-operator: 'https://brennerm.github.io/uptimerobot-operator/helm'
+  vmware-tanzu: 'https://vmware-tanzu.github.io/helm-charts'
 
 namespaces:
 - airflow
@@ -31,4 +32,5 @@ namespaces:
 - rook-ceph
 - roon
 - system
+- velero
 - vpn
