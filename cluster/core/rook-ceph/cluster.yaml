@@ -57,7 +57,7 @@ spec:
     #daysToRetain: 30
   # enable log collector, daemons will log on files and rotate
   logCollector:
-    enabled: true
+    enabled: false
     periodicity: 3d # SUFFIX may be 'h' for hours or 'd' for days.
   # automate [data cleanup process](https://github.com/rook/rook/blob/master/Documentation/ceph-teardown.md#delete-the-data-on-hosts) in cluster destruction.
   cleanupPolicy:
