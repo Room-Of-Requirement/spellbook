@@ -185,6 +185,8 @@ spec:
     ingress:
       enabled: true
       annotations:
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/icon: "https://jupyter.org/assets/main-logo.svg"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         uroperator.brennerm.github.io/monitor.type: HTTPS
       hosts: ["lab.roomofrequirement.xyz"]
