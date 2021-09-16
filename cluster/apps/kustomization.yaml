@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 # - airflow
 - forecastle
-# - heimdall
 - ipfs
 - jupyter
 - media
