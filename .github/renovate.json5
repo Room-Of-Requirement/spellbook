@@ -102,6 +102,7 @@
     },
     {
       matchPackageNames: ["renovatebot/github-action"],
+      matchDatasources: ["github-tags", "github-releases"],
       automerge: true
     }
   ]
