@@ -18,7 +18,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: rook-ceph-tools
-          image: docker.io/rook/ceph:v1.7.3@sha256:15c6aecccbbacba1f04a80d0076380cf6e0207de68c30d17cc58e15161544f5c
+          image: docker.io/rook/ceph:v1.7.4@sha256:56e4197c34aae7bf79d01a4131e8bf49a9d3b2eaf264b63034ccd54cd256f8fa
           command: ["/tini"]
           args: ["-g", "--", "/usr/local/bin/toolbox.sh"]
           imagePullPolicy: IfNotPresent
