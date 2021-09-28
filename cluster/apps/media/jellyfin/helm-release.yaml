@@ -53,6 +53,7 @@ spec:
         size: 50Gi
         storageClass: "ceph-rbd-ssd"
         accessMode: ReadWriteOnce
+        retain: true
       cache:
         enabled: false
       movies:
