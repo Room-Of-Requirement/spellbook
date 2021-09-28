@@ -21,6 +21,14 @@ spec:
     image:
       repository: ghcr.io/linuxserver/jellyfin
       tag: 10.7.6-1-ls119@sha256:a02200060479c1587956fbda3f2ffbbf0d40a535c794cd145f34e42e33a70123
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.201
+        ports:
+          http:
+            port: 80
     ingress:
       main:
         enabled: true
