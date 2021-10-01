@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/intel/intel-gpu-plugin
-      tag: 0.21.0@sha256:be4fd0c4dfc69d61c50e13e505da9352f349aff758d098bdcdb143a3881d0cf8
+      tag: 0.22.0@sha256:f6078eaac715b471a3dd484a3f823ed5e6efef4ff16346bd10f32f667b05ed3d
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
