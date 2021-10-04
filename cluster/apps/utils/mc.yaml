@@ -31,8 +31,8 @@ metadata:
 data:
   config.json: |
     {
-      version: "10",
-      aliases: {
+      "version": "10",
+      "aliases": {
         "ceph": {
           "url": "http://rook-ceph-rgw-object-store.rook-ceph.svc.cluster.local",
           "accessKey": "${MINIO_ACCESS_KEY}",
