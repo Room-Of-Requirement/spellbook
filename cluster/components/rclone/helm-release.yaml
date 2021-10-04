@@ -28,9 +28,9 @@ spec:
       [ceph]
       type = s3
       env_auth = false
-      access_key_id = ${MINIO_ACCESS_KEY}
-      secret_access_key = ${MINIO_SECRET_KEY}
-      endpoint = http://minio.minio.svc.cluster.local
+      access_key_id = ${MINIO_RGW_ACCESS_KEY}
+      secret_access_key = ${MINIO_RGW_SECRET_KEY}
+      endpoint = http://rook-ceph-rgw-object-store.rook-ceph.svc.cluster.local
 
       [b2]
       type = s3
