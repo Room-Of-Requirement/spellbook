@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mc
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   containers:
   - name: mc
