@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mc
+  template:
+    metadata:
+      labels:
+        app: mc
+    spec:
+      containers:
+      - name: mc
+        image: minio/mc:RELEASE.2021-09-23T05-44-03Z@sha256:7a5a6fea7a4861b99fdba08e87024ad9bd5867bd3e9064fcc7b452a48fb14537
+        command: ["/usr/bin/sleep", "30d"]
+        resources:
+          limits:
+            cpu: 250m
+            memory: 500Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
