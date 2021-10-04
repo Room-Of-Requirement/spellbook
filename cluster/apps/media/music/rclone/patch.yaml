@@ -1,0 +1,12 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+spec:
+  values:
+    from: "ceph:music"
+    to: "/data"
+    volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: beets-music
