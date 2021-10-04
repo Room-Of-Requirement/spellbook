@@ -18,7 +18,8 @@ spec:
         memory: 50Mi
     volumeMounts:
     - name: config
-      mountPath: "/root/.mc/"
+      mountPath: "/root/.mc/config.json"
+      subPath: config.json
   volumes:
   - name: config
     configMap:
