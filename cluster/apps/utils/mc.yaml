@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mc
-        image: minio/mc:RELEASE.2021-09-23T05-44-03Z@sha256:7a5a6fea7a4861b99fdba08e87024ad9bd5867bd3e9064fcc7b452a48fb14537
+        image: minio/mc:RELEASE.2021-09-23T05-44-03Z@sha256:43620ad5c25f2a4e3b0e449ca1d65ab6759e3a0ff3b07d757112a59be432812c
         command: ["/usr/bin/sleep", "30d"]
         resources:
           limits:
