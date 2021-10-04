@@ -6,7 +6,6 @@ resources:
 - ipfs
 - jupyter
 - media
-- minio
 - photos
 - rancher
 - roon
