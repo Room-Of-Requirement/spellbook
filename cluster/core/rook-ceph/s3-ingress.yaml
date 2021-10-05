@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rook-ceph-s3
+  namespace: rook-ceph
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    uroperator.brennerm.github.io/monitor.type: HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  tls:
+  - hosts:
+    - s3.roomofrequirement.xyz
+    secretName: ceph-s3-cert
+  rules:
+  - host: s3.roomofrequirement.xyz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rook-ceph-rgw-object-store
+          servicePort: http

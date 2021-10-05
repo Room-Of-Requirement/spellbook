@@ -10,3 +10,4 @@ resources:
 - cephfs.yaml
 - rgw.yaml
 - minio-rgw-user.yaml
+- s3-ingress.yaml
