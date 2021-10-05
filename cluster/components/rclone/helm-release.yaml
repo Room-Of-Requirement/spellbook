@@ -36,7 +36,7 @@ spec:
       type = s3
       env_auth = false
       access_key_id = ${B2_ACCESS_KEY}
-      secret_access_key = ${B2_SECERT_KEY}
+      secret_access_key = ${B2_SECRET_KEY}
       endpoint = s3.us-west-002.backblazeb2.com
     args:
     - "-vvv"
