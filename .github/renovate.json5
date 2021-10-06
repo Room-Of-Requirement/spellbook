@@ -40,10 +40,6 @@
     }
   ],
   packageRules: [
-    // setup datasources
-    {
-      matchDatasources: ["helm"],
-    },
     // global docker datasource settings
     {
       matchDatasources: ["docker"],
