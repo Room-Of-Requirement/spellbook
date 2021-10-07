@@ -18,7 +18,7 @@ spec:
     controller:
       image:
         repository: quay.io/metallb/controller
-        tag: v0.10.2@sha256:21164241c045443595439f2821a193ef823dbbd1ccc8959e1c363c44cc6d1e18
+        tag: v0.10.3@sha256:eb21a440f191934b702e900b33b5c4ed1a66fbb49d72f8e8914baa443ce9ae44
       resources:
         requests:
           cpu: 100m
