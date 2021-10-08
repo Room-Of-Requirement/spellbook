@@ -4,7 +4,8 @@ metadata:
   name: rclone
 spec:
   values:
-    to: "ceph:music"
+    from: "ceph:music"
+    to: "/data"
     volumes:
     - name: data
       persistentVolumeClaim:
