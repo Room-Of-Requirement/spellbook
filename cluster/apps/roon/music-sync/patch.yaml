@@ -4,6 +4,7 @@ metadata:
   name: rclone
 spec:
   values:
+    subCommand: "sync"
     from: "ceph:music"
     to: "/data"
     volumes:
