@@ -70,7 +70,8 @@
       matchDatasources: ["docker"],
       matchPackagePatterns: ["^ghcr.io/fluxcd/"],
       groupName: "fluxcd-suite",
-      additionalBranchPrefix: ""
+      additionalBranchPrefix: "",
+      enabled: false
     },
     {
       matchDatasources: ["docker"],
