@@ -9,4 +9,4 @@ spec:
     volumes:
     - name: data
       persistentVolumeClaim:
-        claimName: beets-music
+        claimName: music-library-pvc

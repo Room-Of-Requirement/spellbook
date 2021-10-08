@@ -5,6 +5,7 @@ namePrefix: music-
 resources:
 - beets
 - rclone
+- pvc.yaml
 components:
 - ../../../components/transmission
 patchesStrategicMerge:

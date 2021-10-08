@@ -22,12 +22,9 @@ spec:
       data:
         enabled: true
         existingClaim: music-library-pvc
-      music:
+      dowloads:
         enabled: true
-        accessMode: ReadWriteMany
-        storageClass: cephfs
-        retain: true
-        size: 300Gi
+        existingClaim: music-downloads-pvc
     service:
       main:
         enabled: true
