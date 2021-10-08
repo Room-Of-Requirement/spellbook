@@ -19,10 +19,10 @@ spec:
     env:
       TZ: America/Chicago
     persistence:
-      data:
+      music:
         enabled: true
         existingClaim: music-library-pvc
-      dowloads:
+      downloads:
         enabled: true
         existingClaim: music-downloads-pvc
     service:
