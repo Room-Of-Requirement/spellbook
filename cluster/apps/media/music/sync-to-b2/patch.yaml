@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+spec:
+  values:
+    schedule: "0 0 1/3 * *"
+    to: "b2:jmmaloney4-music"
+    from: "ceph:music"
