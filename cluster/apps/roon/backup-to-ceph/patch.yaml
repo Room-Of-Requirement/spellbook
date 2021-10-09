@@ -4,6 +4,7 @@ metadata:
   name: rclone
 spec:
   values:
+    schedule: "0 * * * *"
     to: "ceph:roon-backups"
     volumes:
     - name: data

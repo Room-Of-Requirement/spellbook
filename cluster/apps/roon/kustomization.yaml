@@ -4,5 +4,5 @@ namespace: roon
 resources:
 - helm-release.yaml
 - music-sync
-- backup-to-s3
+- backup-to-ceph
 - backup-to-b2
