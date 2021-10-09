@@ -7,3 +7,6 @@ spec:
     schedule: "0 0 1/3 * *"
     to: "b2:jmmaloney4-music"
     from: "ceph:music"
+    volumes:
+    - name: data
+      emptyDir: {}
