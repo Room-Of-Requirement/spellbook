@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gollum
+  namespace: gollum
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
+      chart: gollum
+      version: 3.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/gollumorg/gollum
+      tag: 5.1.1@sha256:762d741ee8c3e0c72aec7cddc68b6e701cee54ad54da6217be1734490d0d332e
+    gollum:
+      gitUrl: https://jmmaloney4:${GOLLUM_GH_TOKEN}@github.com/jmmaloney4/Wiki.git
+      gitBranch: main
