@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homebridge
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
+      chart: homebridge
+      version: 4.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: "America/Chicago"
+    image:
+      repository: ghcr.io/oznu/homebridge
+      tag: latest@sha256:4703dca68510307587361f4312e6bad0e765e85f8986a7517e0f393d8d0e2410
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://avatars.githubusercontent.com/u/38217527"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/homebridge"
