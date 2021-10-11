@@ -21,9 +21,9 @@ spec:
     gollum:
       additionalArgs: ["--h1-title", "--base-path", "/wiki", "--mathjax"]
       # gitUrl: https://jmmaloney4:${GOLLUM_GH_TOKEN}@github.com/jmmaloney4/Wiki.git
-      # gitBranch: main
+      gitBranch: master
       gitUrl: "https://github.com/gollum/gollum.wiki.git"
-      syncCommand: "git fetch && git reset --hard origin/main"
+      syncCommand: "git pull"
     ingress:
       main:
         enabled: true
