@@ -43,3 +43,6 @@ spec:
         volumeSpec:
           configMap:
             name: hass-config
+        subPath:
+        - path: configuration.yaml
+          mountPath: /config/configuration.yaml
