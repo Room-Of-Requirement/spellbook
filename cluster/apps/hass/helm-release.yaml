@@ -27,18 +27,12 @@ spec:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/768px-Home_Assistant_Logo.svg.png"
           uroperator.brennerm.github.io/monitor.type: HTTPS
-          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
-          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
-
-            access_by_lua_block {
-              if ngx.var.name_upstream_1 ~= "" then
-                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
-              end
-            }
+          cert-manager.io/cluster-issuer: letsencrypt-staging
         hosts:
-        - host: secure.roomofrequirement.xyz
+        - host: hass.roomofrequirement.xyz
           paths:
-          - path: "/hass"
+          - path: "/"
+        tls:
+        - secretName: secure-cert
+          hosts:
+          - secure.roomofrequirement.xyz
