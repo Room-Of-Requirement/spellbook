@@ -19,6 +19,7 @@ repos:
 namespaces:
 - airflow
 - cattle-system
+- grocy
 - hass
 - homebridge
 - intel
