@@ -41,6 +41,12 @@ spec:
     persistence:
       config:
         enabled: true
+        size: 10Gi
+        accessMode: ReadWriteMany
+        storageClass: cephfs
+        retain: true
+      config-map:
+        enabled: true
         type: custom
         volumeSpec:
           configMap:
