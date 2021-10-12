@@ -8,7 +8,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: oauth2-proxy
       version: 5.0.7
       sourceRef:

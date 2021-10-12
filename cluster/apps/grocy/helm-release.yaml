@@ -6,7 +6,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: grocy
       version: 8.0.1
       sourceRef:
