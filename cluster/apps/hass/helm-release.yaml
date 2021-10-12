@@ -36,3 +36,10 @@ spec:
         - secretName: secure-cert
           hosts:
           - secure.roomofrequirement.xyz
+    persistence:
+      config:
+        enabled: true
+        type: custom
+        volumeSpec:
+          configMap:
+            name: hass-config

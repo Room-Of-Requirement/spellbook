@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: hass
 resources:
 - helm-release.yaml
+- config.yaml
