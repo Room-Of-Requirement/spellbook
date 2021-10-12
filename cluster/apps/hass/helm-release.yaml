@@ -33,9 +33,9 @@ spec:
           paths:
           - path: "/"
         tls:
-        - secretName: secure-cert
+        - secretName: hass-cert
           hosts:
-          - secure.roomofrequirement.xyz
+          - hass.roomofrequirement.xyz
     persistence:
       config:
         enabled: true
