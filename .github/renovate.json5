@@ -40,7 +40,9 @@
     }
   ],
   packageRules: [
-    // global docker datasource settings
+    {
+      matchDatasources: ["helm"]
+    },
     {
       matchDatasources: ["docker"],
       enabled: true,
@@ -91,11 +93,6 @@
       matchPackagePatterns: ["^k8s.gcr.io/sig-storage/csi-"],
       groupName: "csi",
       additionalBranchPrefix: ""
-    },
-    {
-      matchDatasources: ["docker"],
-      matchPackageNames: ["docker.io/minio/minio"],
-      versioning: "regex:^RELEASE\.(?<major>[0-9][0-9][0-9][0-9])-(?<minor>[0-9][0-9])-(?<patch>[0-9][0-9])T.*Z$"
     },
     {
       matchPackageNames: ["renovatebot/github-action"],
