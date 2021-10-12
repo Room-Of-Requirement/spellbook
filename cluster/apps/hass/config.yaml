@@ -4,6 +4,13 @@ metadata:
   name: hass-config
 data:
   configuration.yaml: |
+    homeassistant:
+      name: Home
+      time_zone: America/Chicago
+      unit_system: metric
+      currency: USD
+      external_url: https://hass.roomofrequirement.xyz/
+      internal_url: https://hass.roomofrequirement.xyz/
     http:
       use_x_forwarded_for: true
       trusted_proxies:
