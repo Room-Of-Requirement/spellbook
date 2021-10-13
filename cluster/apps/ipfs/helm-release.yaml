@@ -50,7 +50,7 @@ spec:
             pathType: Prefix
           - path: "/ipns"
             pathType: Prefix
-          - path: "/api"
+          - path: "/ipfs-api/api"
             pathType: Prefix
             service:
               name: ipfs-api
