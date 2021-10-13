@@ -44,7 +44,7 @@ spec:
               end
             }
         hosts:
-        - host: ipfs.secure.roomofrequirement.xyz
+        - host: ipfs.roomofrequirement.xyz
           paths:
           - path: "/"
             pathType: Prefix
@@ -56,7 +56,7 @@ spec:
         tls:
         - secretName: ipfs-cert
           hosts:
-          - ipfs.secure.roomofrequirement.xyz
+          - ipfs.roomofrequirement.xyz
       webui:
         enabled: true
         annotations:
@@ -75,7 +75,7 @@ spec:
               end
             }
         hosts:
-        - host: ipfs.secure.roomofrequirement.xyz
+        - host: ipfs.roomofrequirement.xyz
           paths:
           - path: "/webui"
             service:
