@@ -18,7 +18,6 @@ spec:
     forecastle:
       env:
         TZ: "America/Chicago"
-        ASDF: "HI"
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"

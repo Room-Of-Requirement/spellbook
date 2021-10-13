@@ -30,7 +30,7 @@ spec:
       main:
         enabled: true
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
+          cert-manager.io/cluster-issuer: letsencrypt-staging
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
           nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
@@ -44,17 +44,19 @@ spec:
               end
             }
         hosts:
-        - host: secure.roomofrequirement.xyz
+        - host: ipfs.secure.roomofrequirement.xyz
           paths:
-          - path: "/ipfs"
+          - path: "/"
             pathType: Prefix
-          - path: "/ipns"
-            pathType: Prefix
-          - path: "/ipfs-api/api"
+          - path: "/api"
             pathType: Prefix
             service:
               name: ipfs-api
               port: 5001
+        tls:
+        - secretName: ipfs-cert
+          hosts:
+          - ipfs.secure.roomofrequirement.xyz
       webui:
         enabled: true
         annotations:
@@ -62,8 +64,8 @@ spec:
           forecastle.stakater.com/icon: "https://ipfs.io/ipfs/QmemM3Rf2aru1eQpFSVUGbwqfRkt8rxnJtw56pGLZwSaHG"
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
-          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://secure.roomofrequirement.xyz/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://secure.roomofrequirement.xyz/oauth2/auth
           nginx.ingress.kubernetes.io/configuration-snippet: |
             auth_request_set $name_upstream_1 $upstream_cookie_name_1;
 
@@ -73,7 +75,7 @@ spec:
               end
             }
         hosts:
-        - host: secure.roomofrequirement.xyz
+        - host: ipfs.secure.roomofrequirement.xyz
           paths:
           - path: "/webui"
             service:
