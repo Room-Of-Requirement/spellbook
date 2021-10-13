@@ -50,6 +50,11 @@ spec:
             pathType: Prefix
           - path: "/ipns"
             pathType: Prefix
+          - path: "/api"
+            pathType: Prefix
+            service:
+              name: ipfs-api
+              port: 5001
       webui:
         enabled: true
         annotations:
