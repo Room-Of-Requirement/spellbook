@@ -58,6 +58,8 @@ spec:
       webui:
         enabled: true
         annotations:
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://ipfs.io/ipfs/QmemM3Rf2aru1eQpFSVUGbwqfRkt8rxnJtw56pGLZwSaHG"
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
           nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
