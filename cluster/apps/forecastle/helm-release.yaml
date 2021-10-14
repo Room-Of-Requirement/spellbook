@@ -16,6 +16,7 @@ spec:
       interval: 1m
   values:
     forecastle:
+      title: "The Room of Requirement"
       env:
         TZ: "America/Chicago"
       tolerations:
