@@ -16,9 +16,10 @@ spec:
       interval: 1m
   values:
     forecastle:
-      title: "The Room of Requirement"
-      headerBackground: "#009293"
-      headerForeground: "#FFF18B"
+      config:
+        title: "The Room of Requirement"
+        headerBackground: "#009293"
+        headerForeground: "#FFF18B"
       env:
         TZ: "America/Chicago"
       tolerations:
