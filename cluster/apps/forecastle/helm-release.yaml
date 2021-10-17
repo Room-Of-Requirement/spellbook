@@ -34,10 +34,11 @@ spec:
       ingress:
         enabled: true
         annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
           uroperator.brennerm.github.io/monitor.type: HTTPS
           nginx.ingress.kubernetes.io/auth-response-headers: Authorization
-          nginx.ingress.kubernetes.io/auth-signin: https://roomofrequirement.xyz/oauth2/start?rd=$escaped_request_uri
-          nginx.ingress.kubernetes.io/auth-url: https://roomofrequirement.xyz/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
           nginx.ingress.kubernetes.io/configuration-snippet: |
             auth_request_set $name_upstream_1 $upstream_cookie_name_1;
 
@@ -47,6 +48,10 @@ spec:
               end
             }
         hosts:
-        - host: "start.roomofrequirement.xyz"
+        - host: "secure.roomofrequirement.xyz"
           paths:
           - "/"
+        tls:
+        - secretName: secure-cert
+          hosts:
+          - secure.roomofrequirement.xyz

@@ -30,16 +30,21 @@ spec:
         cookie_httponly = false
         cookie_secure = true
         pass_access_token = true
-        cookie_name = "oauth2-proxy-roomofrequirement"
+        cookie_name = "secure-roomofrequirement"
         github_org = "Room-Of-Requirement"
         email_domains = ["*"]
     ingress:
       enabled: true
       path: "/oauth2"
       hosts:
-      - roomofrequirement.xyz
+      - secure.roomofrequirement.xyz
       annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
         uroperator.brennerm.github.io/monitor.type: HTTPS
+      tls:
+      - secretName: secure-cert
+        hosts:
+        - secure.roomofrequirement.xyz
     resources:
       requests:
         cpu: 50m
