@@ -40,11 +40,11 @@ metadata:
 spec:
   values:
     env:
-      FLOOD_OPTION_BASEURI: /flood/music
+      FLOOD_OPTION_BASEURI: /music
       FLOOD_OPTION_TRURL: http://music-transmission.media.svc.cluster.local/transmission/rpc
     ingress:
       main:
         hosts:
-        - host: secure.roomofrequirement.xyz
+        - host: flood.roomofrequirement.xyz
           paths:
-          - path: "/flood/music"
+          - path: "/music"

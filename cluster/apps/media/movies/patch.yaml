@@ -35,11 +35,11 @@ metadata:
 spec:
   values:
     env:
-      FLOOD_OPTION_BASEURI: /flood/movies
+      FLOOD_OPTION_BASEURI: /movies
       FLOOD_OPTION_TRURL: http://movies-transmission.media.svc.cluster.local/transmission/rpc
     ingress:
       main:
         hosts:
-        - host: secure.roomofrequirement.xyz
+        - host: flood.roomofrequirement.xyz
           paths:
-          - path: "/flood/movies"
+          - path: "/movies"
