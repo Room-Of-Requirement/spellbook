@@ -21,7 +21,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: docker.io/homeassistant/home-assistant
-      tag: 2021.10.5@sha256:7c1f00643d062ef77692854cd545d83e68142b2c1bb8008e026501e310854b7d
+      tag: 2021.10.6@sha256:76f5fd9056b2866d902a533603694ccdc574a73ca17ee01ce910334f3fe861fb
     ingress:
       main:
         enabled: true
