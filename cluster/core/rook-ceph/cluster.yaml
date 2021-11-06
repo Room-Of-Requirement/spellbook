@@ -214,4 +214,4 @@ spec:
       mgr:
         disabled: false
       osd:
-        disabled: false
+        disabled: true
