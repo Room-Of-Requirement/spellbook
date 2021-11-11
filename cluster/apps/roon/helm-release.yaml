@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jmmaloney4/roon
-      tag: 1.8.846@sha256:dd36f92dbdc5ac9ed9bff5e870901baad406e36a3e924b92be5681db800c7509
+      tag: 1.8.850@sha256:911e142abcd5b33b185b83ed29443f62d5d65d7afb134b77fc30a6f84f28e9be
     env:
       TZ: America/Chicago
     persistence:
