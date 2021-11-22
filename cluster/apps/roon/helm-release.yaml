@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: roon
-      version: 4.1.1
+      version: 4.2.1
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
