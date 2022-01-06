@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.rook.io/release
       chart: rook-ceph
-      version: v1.8.1
+      version: v1.8.2
       sourceRef:
         kind: HelmRepository
         name: rook-ceph
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: docker.io/rook/ceph
-      tag: v1.8.1@sha256:7140e9c863be26db618bd5a24bd81837efeddc206ee91685b5ba983ebf7990e8
+      tag: v1.8.2@sha256:e2bdd4fd66f1df394e83f206f73611537ef5c62ab03b70d7ccee714d289a30d8
     crds:
       enabled: false
     currentNamespaceOnly: true
