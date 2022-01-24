@@ -55,4 +55,4 @@ spec:
       attacher:
         image: k8s.gcr.io/sig-storage/csi-attacher:v3.4.0@sha256:8b9c313c05f54fb04f8d430896f5f5904b6cb157df261501b29adc04d2b2dc7b
       resizer:
-        image: k8s.gcr.io/sig-storage/csi-resizer:v1.3.0@sha256:6e0546563b18872b0aa0cad7255a26bb9a87cb879b7fc3e2383c867ef4f706fb
+        image: k8s.gcr.io/sig-storage/csi-resizer:v1.4.0@sha256:9ebbf9f023e7b41ccee3d52afe39a89e3ddacdbb69269d583abfc25847cfd9e4
