@@ -8,7 +8,7 @@
 # GET PASSWORD VIA:
 # kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode | pbcopy
 #
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: rook-ceph-dashboard
@@ -16,13 +16,13 @@ metadata:
   annotations:
     forecastle.stakater.com/expose: "true"
     forecastle.stakater.com/icon: "https://symbols.getvecta.com/stencil_76/42_ceph-icon.16d15b1eea.svg"
-    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     uroperator.brennerm.github.io/monitor.type: HTTPS
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/server-snippet: |
       proxy_ssl_verify off;
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
     - ceph.roomofrequirement.xyz
@@ -31,7 +31,10 @@ spec:
   - host: ceph.roomofrequirement.xyz
     http:
       paths:
-      - path: /
+      - pathType: Prefix
+        path: /
         backend:
-          serviceName: rook-ceph-mgr-dashboard
-          servicePort: https-dashboard
+          service:
+            name: rook-ceph-mgr-dashboard
+            port:
+              name: https-dashboard
