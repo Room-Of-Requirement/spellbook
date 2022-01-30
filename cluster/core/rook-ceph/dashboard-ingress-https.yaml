@@ -18,9 +18,9 @@ metadata:
     forecastle.stakater.com/icon: "https://symbols.getvecta.com/stencil_76/42_ceph-icon.16d15b1eea.svg"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     uroperator.brennerm.github.io/monitor.type: HTTPS
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/server-snippet: |
-      proxy_ssl_verify off;
+#     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+#     nginx.ingress.kubernetes.io/server-snippet: |
+#       proxy_ssl_verify off;
 spec:
   ingressClassName: nginx
   tls:
