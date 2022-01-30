@@ -55,7 +55,7 @@ spec:
         wireguard:
           image:
             repository: ghcr.io/k8s-at-home/wireguard
-            tag: v1.0.20210914@sha256:cef27635ce9527fb31f5ebb63814f8a038a60719cbdb32e7c9d34575e7bc71d9
+            tag: v1.0.20210914@sha256:b5b98b4384ad5d6593940e8a5e7370a11e1cab9c705404126db5bf612e52c756
         # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
         # This is required for it to be able to read certain configuration files.
         securityContext:
