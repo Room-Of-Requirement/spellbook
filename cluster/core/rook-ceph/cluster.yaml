@@ -32,7 +32,7 @@ spec:
     - name: pg_autoscaler
       enabled: true
   dashboard:
-    enabled: true
+    enabled: false
     # serve the dashboard under a subpath (useful when you are accessing the dashboard via a reverse proxy)
     # urlPrefix: /ceph-dashboard
     # serve the dashboard at the given port.
