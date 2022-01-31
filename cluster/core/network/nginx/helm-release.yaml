@@ -22,6 +22,10 @@ spec:
     # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
     config:
       hsts: "false"
+    ingressClassResource:
+      name: nginx
+      enabled: true
+      default: true
     service:
       enabled: true
       type: LoadBalancer
