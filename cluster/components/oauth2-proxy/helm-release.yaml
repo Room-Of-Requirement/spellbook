@@ -41,6 +41,7 @@ spec:
         email_domains = ["*"]
     ingress:
       enabled: true
+      ingressClassName: nginx
       path: "/oauth2"
       # hosts:
       # - secure.roomofrequirement.xyz
