@@ -26,11 +26,11 @@ spec:
     currentNamespaceOnly: true
     resources:
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 200m
+        memory: 512Mi
       limits:
         cpu: 1000m
-        memory: 512Mi
+        memory: 1024Mi
     discover:
       tolerations:
       - key: "RaspberryPi"
