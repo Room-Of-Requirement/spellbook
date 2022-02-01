@@ -15,7 +15,7 @@ metadata:
   namespace: rook-ceph # namespace:cluster
 spec:
   cephVersion:
-    image: quay.io/ceph/ceph:v16.2.7@sha256:6c8aaca06de19ae859bdd543bba6451065fbd4fd3f5f992f30546ad49d767a07
+    image: quay.io/ceph/ceph:v16.2.7@sha256:ac9f32e9a27ded104c2ed64ddbe112d67a461edafb6a7a53525e72fc69df759e
     allowUnsupported: false
   dataDirHostPath: /var/lib/rook
   # To understand Rook's upgrade process of Ceph, read https://rook.io/docs/rook/master/ceph-upgrade.html#ceph-version-upgrades
