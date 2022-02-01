@@ -9,6 +9,9 @@
   prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
   requiredStatusChecks: null,
+  flux: {
+    fileMatch: ["cluster/.+\\.yaml$"]
+  },
   kubernetes: {
     fileMatch: ["cluster/.+\\.yaml$"]
   },
