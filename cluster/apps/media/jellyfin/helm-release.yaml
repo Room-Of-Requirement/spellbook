@@ -68,11 +68,7 @@ spec:
         readOnly: true
       transcodes:
         enabled: true
-        # type: emptyDir
-        size: 100Gi
-        storageClass: "ceph-rbd-ssd"
-        accessMode: ReadWriteOnce
-        retain: true
+        type: emptyDir
     resources:
       requests:
         cpu: 7000m
