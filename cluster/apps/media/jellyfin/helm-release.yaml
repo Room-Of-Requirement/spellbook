@@ -71,10 +71,10 @@ spec:
         type: emptyDir
     resources:
       requests:
-        cpu: 7000m
-        memory: 12Gi
-      limits:
-        cpu: 10000m
-        memory: 15Gi
+        cpu: 7250m
+        memory: 8Gi
+      # limits:
+      #   cpu: 10000m
+      #   memory: 15Gi
     nodeSelector:
       kubernetes.io/hostname: "bellatrix"
