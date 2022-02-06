@@ -39,3 +39,6 @@ namespaces:
 - velero
 - vpn
 - wiki
+
+priorityClasses:
+  high-priority: 10

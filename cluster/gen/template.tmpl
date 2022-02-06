@@ -19,3 +19,13 @@ kind: Namespace
 metadata:
   name: {{ $name }}
 {{- end }}
+
+{{- range $name, $value := .context.priorityClasses }}
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: {{ $name }}
+value: {{ $value }}
+globalDefault: false
+{{- end }}
