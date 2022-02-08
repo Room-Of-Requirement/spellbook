@@ -25,6 +25,7 @@ namespaces:
 - homebridge
 - intel
 - jupyter
+- lfs
 - media
 - minio
 - monitoring
