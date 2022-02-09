@@ -19,7 +19,6 @@ spec:
       TZ: "America/Chicago"
       LFS_ADMINUSER: admin
       LFS_ADMINPASS: ${LFS_ADMIN_PASSWORD}
-      LFS_SCHEME: https
       LFS_HOST: lfs.roomofrequirement.xyz
     image:
       repository: ghcr.io/jmmaloney4/git-lfs
