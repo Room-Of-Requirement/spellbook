@@ -44,6 +44,7 @@ spec:
           paths:
           - path: "/"
         annotations:
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
           cert-manager.io/cluster-issuer: "letsencrypt-prod"
         tls:
         - secretName: lfs-cert
