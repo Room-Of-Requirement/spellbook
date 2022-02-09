@@ -38,3 +38,9 @@ spec:
         - host: lfs.roomofrequirement.xyz
           paths:
           - path: "/"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        tls:
+        - secretName: lfs-cert
+          hosts:
+          - lfs.roomofrequirement.xyz
