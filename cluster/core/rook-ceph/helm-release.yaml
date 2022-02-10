@@ -20,7 +20,7 @@ spec:
     logLevel: DEBUG
     image:
       repository: docker.io/rook/ceph
-      tag: v1.8.4@sha256:fd6ad418b8049988e9228d0ff58b4b82432060e04bc65b8c072fb13783b4da6f
+      tag: v1.8.5@sha256:17a5ef59dbb24f9845e95016709269ee7cb467f6d8e406fab69eb748275531cf
     crds:
       enabled: false
     currentNamespaceOnly: true
