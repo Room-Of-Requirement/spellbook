@@ -44,7 +44,7 @@ spec:
     server:
       image:
         repository: quay.io/prometheus/prometheus
-        tag: v2.33.2
+        tag: v2.33.3
       podAnnotations:
         reloader.stakater.com/auto: "true"
       persistentVolume:
