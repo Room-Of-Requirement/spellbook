@@ -51,10 +51,3 @@ spec:
         - host: secure.roomofrequirement.xyz
           paths:
           - path: "/beets"
-    additionalContainers:
-      wavpack:
-        name: wavpack
-        image: ghcr.io/jmmaloney4/wavpack:main
-        volumeMounts:
-        - mountPath: /downloads
-          name: downloads
