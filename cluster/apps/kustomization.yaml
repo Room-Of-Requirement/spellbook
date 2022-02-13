@@ -2,16 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 # - airflow
-- forecastle
-- hass
-- homebridge
-- ipfs
-- jupyter
+# - forecastle
+# - hass
+# - homebridge
+# - ipfs
+# - jupyter
 - lfs
 - media
-- photos
+# - photos
 - rancher
 - roon
-- utils
+# - utils
 # - velero
-- wiki
+# - wiki
