@@ -130,7 +130,7 @@ spec:
     osd:
       requests:
         cpu: "500m"
-        memory: "2048Mi"
+        memory: "4096Mi"
       limits:
         cpu: "1000m"
         memory: "6144Mi"
@@ -214,4 +214,4 @@ spec:
       mgr:
         disabled: false
       osd:
-        disabled: true
+        disabled: false
