@@ -27,10 +27,10 @@ spec:
     resources:
       requests:
         cpu: 200m
-        memory: 512Mi
+        memory: 1024Mi
       limits:
         cpu: 1000m
-        memory: 1024Mi
+        memory: 2048Mi
     discover:
       tolerations:
       - key: "RaspberryPi"
