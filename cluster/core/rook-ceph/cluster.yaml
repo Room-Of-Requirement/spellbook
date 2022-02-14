@@ -221,7 +221,7 @@ spec:
       mgr:
         disabled: false
       osd:
-        disabled: false
+        disabled: true
         probe:
           failureThreshold: 30
           periodSeconds: 12
