@@ -215,3 +215,13 @@ spec:
         disabled: false
       osd:
         disabled: false
+    startupProbe:
+      mon:
+        disabled: false
+      mgr:
+        disabled: false
+      osd:
+        disabled: false
+        probe:
+          failureThreshold: 30
+          periodSeconds: 12
