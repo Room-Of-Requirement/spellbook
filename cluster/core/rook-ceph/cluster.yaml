@@ -223,5 +223,5 @@ spec:
       osd:
         disabled: true
         probe:
-          failureThreshold: 30
+          failureThreshold: 75
           periodSeconds: 12
