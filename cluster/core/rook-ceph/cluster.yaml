@@ -214,7 +214,7 @@ spec:
       mgr:
         disabled: false
       osd:
-        disabled: false
+        disabled: true
     startupProbe:
       mon:
         disabled: false
