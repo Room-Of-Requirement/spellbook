@@ -54,7 +54,17 @@ spec:
     additionalContainers:
       wavpack:
         name: wavpack
-        image: ghcr.io/jmmaloney4/wavpack:main
+        image: ghcr.io/jmmaloney4/wavpack:main@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
+        command:
+        - sh
+        - -c
+        - while true; do sleep 3600; done
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+      sacd:
+        name: sacd
+        image: ghcr.io/jmmaloney4/sacd:main@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
         command:
         - sh
         - -c
