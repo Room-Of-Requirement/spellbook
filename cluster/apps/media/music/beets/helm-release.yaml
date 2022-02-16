@@ -64,7 +64,7 @@ spec:
           name: downloads
       sacd:
         name: sacd
-        image: ghcr.io/jmmaloney4/sacd:main@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
+        image: ghcr.io/jmmaloney4/sacd:main@sha256:b51b9ce1f5c1c5c3908b05f67d8d12b0789d24e2db7bf67637b92ed2a5c0c9ec
         command:
         - sh
         - -c
