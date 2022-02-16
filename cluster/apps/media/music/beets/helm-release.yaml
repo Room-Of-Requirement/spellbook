@@ -54,7 +54,7 @@ spec:
     additionalContainers:
       wavpack:
         name: wavpack
-        image: ghcr.io/jmmaloney4/wavpack:main@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
+        image: ghcr.io/jmmaloney4/wavpack:main@sha256:a5c31ec7404b3c462da2baabad3c12550aba59c510c8193e603b769bda7eaf76
         command:
         - sh
         - -c
