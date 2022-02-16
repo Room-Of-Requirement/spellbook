@@ -55,6 +55,10 @@ spec:
       wavpack:
         name: wavpack
         image: ghcr.io/jmmaloney4/wavpack:main
+        command:
+        - sh
+        - -c
+        - while true; do sleep 3600; done
         volumeMounts:
         - mountPath: /downloads
           name: downloads
