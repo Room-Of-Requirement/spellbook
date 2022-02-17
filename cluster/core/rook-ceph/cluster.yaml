@@ -214,14 +214,14 @@ spec:
       mgr:
         disabled: false
       osd:
-        disabled: true
+        disabled: false
     startupProbe:
       mon:
         disabled: false
       mgr:
         disabled: false
       osd:
-        disabled: true
+        disabled: false
         probe:
           failureThreshold: 75
           periodSeconds: 12
