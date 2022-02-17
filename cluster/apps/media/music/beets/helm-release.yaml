@@ -25,6 +25,12 @@ spec:
       downloads:
         enabled: true
         existingClaim: music-downloads-pvc
+      repo:
+        enabled: true
+        size: 500Gi
+        retain: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"
     service:
       main:
         enabled: true
@@ -72,3 +78,15 @@ spec:
         volumeMounts:
         - mountPath: /downloads
           name: downloads
+      git:
+        name: git
+        image: docker.io/ubuntu:jammy@sha256:b51b9ce1f5c1c5c3908b05f67d8d12b0789d24e2db7bf67637b92ed2a5c0c9ec
+        command:
+        - sh
+        - -c
+        - while true; do sleep 3600; done
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /repo
+          name: repo
