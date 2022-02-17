@@ -80,7 +80,7 @@ spec:
           name: downloads
       git:
         name: git
-        image: docker.io/alpine/git:v2.32.0@sha256:a02c32cf0c2a7e8743c74deef66637aa70e063c9bd40e9e1f8c0b3ea0750b0ba
+        image: docker.io/alpine/git:v2.32.0@sha256:192d7b402bfd313757d5316920fea98606761e96202d850e5bdeab407b9a72ae
         command:
         - sh
         - -c
