@@ -18,6 +18,9 @@ spec:
   values:
     env:
       TZ: America/Chicago
+    secret:
+      id_rsa.pub: ${SRHT_SSH_PUBLIC_KEY}
+      id_rsa: ${SRHT_SSH_PRIVATE_KEY}
     persistence:
       music:
         enabled: true
@@ -31,6 +34,10 @@ spec:
         retain: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
+      ssh:
+        enabled: true
+        type: secret
+        name: music-beets
     service:
       main:
         enabled: true
@@ -90,3 +97,5 @@ spec:
           name: downloads
         - mountPath: /repo
           name: repo
+        - mountPath: /root/.ssh/
+          name: ssh
