@@ -38,6 +38,7 @@ spec:
         enabled: true
         type: secret
         name: music-beets
+        defaultMode: 0400
     service:
       main:
         enabled: true
