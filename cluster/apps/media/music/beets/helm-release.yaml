@@ -18,11 +18,6 @@ spec:
   values:
     env:
       TZ: America/Chicago
-    secret:
-      id_rsa.pub: |
-        ${SRHT_SSH_PUBLIC_KEY}
-      id_rsa: |
-        ${SRHT_SSH_PRIVATE_KEY}
     persistence:
       music:
         enabled: true
@@ -39,7 +34,7 @@ spec:
       ssh:
         enabled: true
         type: secret
-        name: music-beets
+        name: music-srht-ssh-key
         defaultMode: 0400
     service:
       main:
