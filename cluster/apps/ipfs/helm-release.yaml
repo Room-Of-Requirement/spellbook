@@ -9,7 +9,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: ipfs
-      version: 0.7.1
+      version: 0.7.2
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
