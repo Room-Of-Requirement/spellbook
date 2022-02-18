@@ -19,8 +19,10 @@ spec:
     env:
       TZ: America/Chicago
     secret:
-      id_rsa.pub: ${SRHT_SSH_PUBLIC_KEY}
-      id_rsa: ${SRHT_SSH_PRIVATE_KEY}
+      id_rsa.pub: |
+        ${SRHT_SSH_PUBLIC_KEY}
+      id_rsa: |
+        ${SRHT_SSH_PRIVATE_KEY}
     persistence:
       music:
         enabled: true
