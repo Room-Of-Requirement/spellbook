@@ -40,6 +40,11 @@ spec:
         retain: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
+      ssh:
+        enabled: true
+        type: secret
+        name: srht-ssh-key
+        defaultMode: 0400
     resources:
       requests:
         cpu: 2
@@ -47,3 +52,18 @@ spec:
       limits:
         cpu: 2
         memory: "3Gi"
+    additionalContainers:
+      git:
+        name: git
+        image: ghcr.io/jmmaloney4/lfs:main@sha256:6019dfa8b181566c4cf5f6a49325d1db2cd4f3035ba2a78264d70bf0eafcb84b
+        command:
+        - sh
+        - -c
+        - while true; do sleep 3600; done
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /repo
+          name: repo
+        - mountPath: /root/.ssh/
+          name: ssh

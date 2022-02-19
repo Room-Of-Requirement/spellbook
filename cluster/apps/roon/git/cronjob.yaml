@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: git-music-sync
+spec:
+  schedule: 0/1 * * * *
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: git
+            image: ghcr.io/jmmaloney4/lfs:main@sha256:6019dfa8b181566c4cf5f6a49325d1db2cd4f3035ba2a78264d70bf0eafcb84b
+            imagePullPolicy: IfNotPresent
+            command:
+            - sh
+            - -c
+            - 'git -C /repo/ fetch && git -C /repo/ reset --hard origin/main'
+            volumeMounts:
+            - mountPath: /repo
+              name: repo
+          volumes:
+          - name: repo
+            persistentVolumeClaim:
+              claimName: roon-music

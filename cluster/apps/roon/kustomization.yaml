@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: roon
 resources:
 - helm-release.yaml
-- music-sync
+# - music-sync
 - backup-to-ceph
 - backup-to-b2
+- git
