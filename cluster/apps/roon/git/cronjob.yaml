@@ -16,11 +16,11 @@ spec:
             command:
             - sh
             - -c
-            - 'git -C /repo/ fetch && git -C /repo/ reset --hard origin/main'
+            - 'git -C /music/ fetch && git -C /music/ reset --hard origin/main'
             volumeMounts:
-            - mountPath: /repo
-              name: repo
+            - mountPath: /music
+              name: music
           volumes:
-          - name: repo
+          - name: music
             persistentVolumeClaim:
               claimName: roon-music

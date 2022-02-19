@@ -61,9 +61,7 @@ spec:
         - -c
         - while true; do sleep 3600; done
         volumeMounts:
-        - mountPath: /downloads
-          name: downloads
-        - mountPath: /repo
-          name: repo
+        - mountPath: /music
+          name: music
         - mountPath: /root/.ssh/
           name: ssh
