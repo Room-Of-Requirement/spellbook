@@ -20,7 +20,7 @@ spec:
       TZ: America/Chicago
     image:
       repository: ghcr.io/linuxserver/jellyfin
-      tag: 10.7.7@sha256:d64bda04e201ed8bcc89ba3e87bdb8b14174f39196a6f5e9ca6524b27f768227
+      tag: 10.7.7@sha256:1c51efe1e5f9a33b23fabe5edf4e6f443547b852b6c601d1330bd5aeabbfde81
     service:
       main:
         enabled: true
