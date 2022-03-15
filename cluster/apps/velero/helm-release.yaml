@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: docker.io/velero/velero
-      tag: v1.8.0@sha256:6be50b0730c97c7ae651e64aa21a0a844e997f11a07716aa3d6a4b005f0e51f7
+      tag: v1.8.1@sha256:8d784580931c77892458be8a3b4046ca0c751039c11ea1218d522e9d03cb92cb
     metrics:
       enabled: false
     installCRDs: true
