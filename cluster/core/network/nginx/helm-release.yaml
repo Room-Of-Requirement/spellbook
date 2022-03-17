@@ -18,7 +18,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/nginx-ingress-controller
-      tag: 1.1.2@sha256:6c9ea01540c0ab5b7b69ff389e4c263531b034332f1c550de1f49d377d75e9eb
+      tag: 1.1.2@sha256:d200f3ffefe9fb6f47a86022fcc8a4b7a8fab1efeddd36aab4f3869f467037d4
     # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
     config:
       hsts: "false"
