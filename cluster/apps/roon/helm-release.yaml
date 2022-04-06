@@ -55,7 +55,7 @@ spec:
     additionalContainers:
       git:
         name: git
-        image: ghcr.io/jmmaloney4/lfs:main@sha256:80452f867754b595e00d00b2d1c03451d505d90396a3bad2989c81c3a4e8251e
+        image: ghcr.io/jmmaloney4/lfs:main@sha256:ca63f58f4f59f1c7be39c42c9726e774f41db15072cbc2e054d4271484a1a2f9
         command:
         - sh
         - -c
