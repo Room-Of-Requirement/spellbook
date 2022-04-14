@@ -11,7 +11,7 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: git
-            image: ghcr.io/jmmaloney4/lfs:main@sha256:ca63f58f4f59f1c7be39c42c9726e774f41db15072cbc2e054d4271484a1a2f9
+            image: ghcr.io/jmmaloney4/lfs:main@sha256:8e4ea359ea12429f70722d5a58fae489567990b5b94cf55ca8a32645f7ec92bd
             imagePullPolicy: IfNotPresent
             command:
             - sh
