@@ -46,7 +46,7 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"
       cephcsi:
-        image: quay.io/cephcsi/cephcsi:v3.6.0@sha256:4f84858466d0513a19bdb9cb56851e16af380cde0465e445d5d9a862d94aed20
+        image: quay.io/cephcsi/cephcsi:v3.6.1@sha256:6dae8527e43965d13714cf7b3e51d52b9d970a9ac01f10f00dd324d326ec6aea
       registrar:
         image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.0@sha256:4fd21f36075b44d1a423dfb262ad79202ce54e95f5cbc4622a6c1c38ab287ad6
       provisioner:
