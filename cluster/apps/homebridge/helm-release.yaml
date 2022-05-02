@@ -19,7 +19,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: latest@sha256:4de9ff95327de165b469042be23f037c967480bb095968db8d6d4a7fe20ed754
+      tag: latest@sha256:7da5fb0f70c2bb7094f430660ac286d0d4112ea7f1147d07fcc5326ec45cb4e9
     ingress:
       main:
         enabled: true
