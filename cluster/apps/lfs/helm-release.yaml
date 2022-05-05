@@ -22,7 +22,7 @@ spec:
       LFS_HOST: lfs.roomofrequirement.xyz
     image:
       repository: ghcr.io/jmmaloney4/lfs-server
-      tag: main@sha256:6bf94245e02a49267a7e4a739fb8ec9c8f2f3c65e05f97ffabadd952a6ac11bd
+      tag: main@sha256:570489c19ad94b1ae1d193c4c67f5c65b75a74e82099bcf6f5d1cfac1b4fd65a
     persistence:
       data:
         enabled: true
