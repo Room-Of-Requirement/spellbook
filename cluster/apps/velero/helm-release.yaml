@@ -24,7 +24,7 @@ spec:
     kubectl:
       image:
         repository: docker.io/bitnami/kubectl
-        tag: 1.23.6@sha256:19aa73a2b85823ba9445125611c9e102d3b4c0b1a57597814ed45d3b12b816af
+        tag: 1.23.6@sha256:64d88e554ace8d0f65ef81f2fd3a5a0472b7bbba491552a8a7239f9481312901
     configuration:
       provider: aws
       backupStorageLocation:
