@@ -52,7 +52,7 @@ spec:
       provisioner:
         image: k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
       snapshotter:
-        image: k8s.gcr.io/sig-storage/csi-snapshotter:v5.0.1@sha256:89e900a160a986a1a7a4eba7f5259e510398fa87ca9b8a729e7dec59e04c7709
+        image: k8s.gcr.io/sig-storage/csi-snapshotter:v6.0.1@sha256:ad16874e2140256a809cada2b4ac3d931d5b73b0bee23ed0f8d60bdd778cfec2
       attacher:
         image: k8s.gcr.io/sig-storage/csi-attacher:v3.4.0@sha256:8b9c313c05f54fb04f8d430896f5f5904b6cb157df261501b29adc04d2b2dc7b
       resizer:
