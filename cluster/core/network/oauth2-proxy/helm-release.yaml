@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: oauth2-proxy
-      version: 6.0.3
+      version: 6.0.4
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
