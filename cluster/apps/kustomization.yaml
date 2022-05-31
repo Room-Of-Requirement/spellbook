@@ -10,7 +10,7 @@ resources:
 # - lfs
 # - media
 # # - photos
-# - rancher
+- rancher
 # - roon
 # # - utils
 # # - velero
