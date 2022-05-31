@@ -5,7 +5,7 @@ resources:
 # - kube-vip
 # - kured
 # # - monitoring
-# - network
+- network
 # - node-feature-discovery
 # - reloader
 # - rook-ceph
