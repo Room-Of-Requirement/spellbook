@@ -26,3 +26,7 @@ wvunpack --dsf *.wv
 ```
 /root/bin/sacd_extract -2szi <file>
 ```
+
+# Ubuntu 22.04 SSH issue
+
+https://github.com/alexellis/k3sup/issues/377#issuecomment-1113966436
