@@ -27,6 +27,10 @@ wvunpack --dsf *.wv
 /root/bin/sacd_extract -2szi <file>
 ```
 
+# Renaming network interface name
+
+https://askubuntu.com/questions/1317036/how-to-rename-a-network-interface-in-20-04
+
 # Ubuntu 22.04 SSH issue
 
 https://github.com/alexellis/k3sup/issues/377#issuecomment-1113966436
