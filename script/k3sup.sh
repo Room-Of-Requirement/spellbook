@@ -2,7 +2,7 @@
 
 k3sup install \
   --cluster \
-  --k3s-extra-args='--disable traefik' \
+  --k3s-extra-args='--disable traefik --disable servicelb' \
   --k3s-channel v1.21.0+k3s1 \
   --user k3s --ip 192.168.1.20
 
@@ -28,4 +28,3 @@ k3sup join \
 
 mv ~/.kube/config ~/.kube/config.bup
 mv ./kubeconfig ~/.kube/config
-

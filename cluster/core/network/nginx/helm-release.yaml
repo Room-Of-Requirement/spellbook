@@ -8,7 +8,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: nginx-ingress-controller
-      version: 9.2.5
+      version: 9.2.6
       sourceRef:
         kind: HelmRepository
         name: bitnami
@@ -19,8 +19,8 @@ spec:
       registry: docker.io
       repository: bitnami/nginx-ingress-controller
       tag: 1.2.1@sha256:f2fddd9dc190f3953fde955b08afa525a9a8efb13cf2d77575c28ee75dbf34ae
-    # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
     config:
+      # https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx
       hsts: "false"
     watchIngressWithoutClass: true
     ingressClassResource:

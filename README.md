@@ -37,10 +37,10 @@ Edit `/etc/ssh/sshd_config`, add
 PubkeyAcceptedKeyTypes=+ssh-rsa
 ```
 
-
 # SOPS
 
 ```
 gpg --export-secret-keys --armor 331FF9DE87B750522D8DBCCA98CC713C919CE8D5 > sops.asc
 kubectl create secret generic sops-gpg --namespace=flux-system --from-file=sops.asc
+rm sops.asc
 ```
