@@ -9,7 +9,7 @@ spec:
   ref:
     branch: deploy
   # url: https://github.com/Room-Of-Requirement/spellbook.git
-  url: git@github.com:Room-Of-Requirement/spellbook.git
+  url: ssh://git@github.com:Room-Of-Requirement/spellbook.git
   secretRef:
     name: flux-system
 ---

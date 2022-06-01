@@ -41,6 +41,7 @@ PubkeyAcceptedKeyTypes=+ssh-rsa
 
 ```
 gpg --export-secret-keys --armor 331FF9DE87B750522D8DBCCA98CC713C919CE8D5 > sops.asc
+kubectl create ns flux-system
 kubectl create secret generic sops-gpg --namespace=flux-system --from-file=sops.asc
 rm sops.asc
 ```
