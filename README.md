@@ -31,6 +31,13 @@ wvunpack --dsf *.wv
 
 https://github.com/alexellis/k3sup/issues/377#issuecomment-1113966436
 
+Edit `/etc/ssh/sshd_config`, add
+
+```
+PubkeyAcceptedKeyTypes=+ssh-rsa
+```
+
+
 # SOPS
 
 ```
