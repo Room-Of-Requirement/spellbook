@@ -5,5 +5,5 @@ resources:
 - cert-manager
 - ddclient
 - metallb
-# - nginx
+- nginx
 # - oauth2-proxy
