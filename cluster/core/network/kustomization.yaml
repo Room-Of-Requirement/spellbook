@@ -4,6 +4,6 @@ namespace: network
 resources:
 - cert-manager
 - ddclient
-- metallb
+# - metallb
 - nginx
 # - oauth2-proxy
