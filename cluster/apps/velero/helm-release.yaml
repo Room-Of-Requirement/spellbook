@@ -21,6 +21,7 @@ spec:
     metrics:
       enabled: false
     installCRDs: true
+    upgradeCRDs: true
     kubectl:
       image:
         repository: docker.io/bitnami/kubectl
@@ -28,7 +29,16 @@ spec:
     configuration:
       provider: aws
       backupStorageLocation:
+        bucket: roomofrequirement
         config:
-          s3Url: ""
+          s3Url: "https://s3.us-west-002.backblazeb2.com"
       volumeSnapshotLocation:
     deployRestic: true
+    credentials:
+      useSecret: true
+      name: velero-s3-keys
+      secretContents:
+        cloud: |
+          [default]
+          aws_access_key_id=${B2_VELERO_ACCESS_KEY}
+          aws_secret_access_key=${B2_VELERO_SECRET_KEY}

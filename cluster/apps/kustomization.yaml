@@ -13,5 +13,5 @@ resources:
 - rancher
 # - roon
 # # - utils
-# # - velero
+- velero
 # # - wiki
