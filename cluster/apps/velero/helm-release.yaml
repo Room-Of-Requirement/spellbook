@@ -26,13 +26,17 @@ spec:
       image:
         repository: docker.io/bitnami/kubectl
         tag: 1.24.1@sha256:6107170119b4df74034995fdc4922145b541e47ef6cb642c4c1c823818658e92
+    snapshotsEnabled: false
     configuration:
       provider: aws
       backupStorageLocation:
+        name: default
         bucket: roomofrequirement
         config:
           s3Url: "https://s3.us-west-002.backblazeb2.com"
       volumeSnapshotLocation:
+        name: default
+        provider: velero.io/aws
     deployRestic: true
     credentials:
       useSecret: true
