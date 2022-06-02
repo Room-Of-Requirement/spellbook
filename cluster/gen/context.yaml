@@ -28,7 +28,7 @@ namespaces:
 # - lfs
 # - media
 # - minio
-# - monitoring
+- monitoring
 # - music
 - network
 # - node-feature-discovery
