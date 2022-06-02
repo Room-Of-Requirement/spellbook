@@ -34,7 +34,7 @@ namespaces:
 # - node-feature-discovery
 # - nvidia
 # - oauth2
-# - rook-ceph
+- rook-ceph
 # - roon
 # - system
 - velero

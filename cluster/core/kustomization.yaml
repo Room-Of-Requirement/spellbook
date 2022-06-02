@@ -5,7 +5,8 @@ resources:
 # - kured
 # # - monitoring
 - network
-# - node-feature-discovery
+- node-feature-discovery
+- nvgfd
 # - reloader
-# - rook-ceph
+- rook-ceph
 # - system-upgrade
