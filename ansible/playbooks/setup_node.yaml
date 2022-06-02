@@ -59,3 +59,18 @@
       pkg:
         - smartmontools
         - ubuntu-drivers-common
+
+- name: Setup Network Interface as eth0
+  hosts: all
+  become: true
+  tasks:
+  - name: Get MAC address
+    ansible.builtin.shell: lshw -C network | grep serial | awk '{print $2}'
+    register: mac_address
+  - name: Create netplan config
+    ansible.builtin.template:
+      src: network-conf.j2
+      dest: /etc/netplan/50-cloud-init.yaml
+      force: no
+  - name: Apply netplan
+    ansible.builtin.shell: netplan apply
