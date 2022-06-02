@@ -1,39 +1,41 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: kube-vip
+  labels:
+    app.kubernetes.io/name: kube-vip-ds
+    app.kubernetes.io/version: v0.4.4
+  name: kube-vip-ds
   namespace: kube-system
 spec:
   selector:
     matchLabels:
-      name: kube-vip
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
+      app.kubernetes.io/name: kube-vip-ds
   template:
     metadata:
       labels:
-        name: kube-vip
+        app.kubernetes.io/name: kube-vip-ds
+        app.kubernetes.io/version: v0.4.4
     spec:
-      hostNetwork: true
-      serviceAccountName: kube-vip
       containers:
       - args:
         - manager
         env:
         - name: vip_arp
           value: "true"
-        - name: vip_interface
-          value: eth0
         - name: port
           value: "6443"
+        - name: vip_interface
+          value: eth0
         - name: vip_cidr
-          value: "32"
+          value: 192.168.1.224/28
         - name: cp_enable
           value: "true"
         - name: cp_namespace
           value: kube-system
+        - name: vip_ddns
+          value: "false"
+        - name: svc_enable
+          value: "true"
         - name: vip_leaderelection
           value: "true"
         - name: vip_leaseduration
@@ -42,24 +44,28 @@ spec:
           value: "3"
         - name: vip_retryperiod
           value: "1"
+        - name: lb_enable
+          value: "true"
+        - name: lb_port
+          value: "6443"
+        - name: lb_fwdmethod
+          value: local
         - name: address
-          value: ${KUBE_VIP_IP}
-        image: docker.io/plndr/kube-vip:v0.4.4@sha256:f59745f64f8e02158bc5aa70fb24e123e3f3891ca9bb86f8c259076e41a81924
+          value: 192.168.1.250
+        image: ghcr.io/kube-vip/kube-vip:v0.4.4
         imagePullPolicy: Always
         name: kube-vip
-        resources:
-          requests:
-            cpu: 150m
-            memory: 150Mi
+        resources: {}
         securityContext:
           capabilities:
             add:
             - NET_ADMIN
             - NET_RAW
-            - SYS_TIME
-      nodeSelector:
-        node-role.kubernetes.io/master: "true"
-      tolerations:
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
-        operator: Exists
+      hostNetwork: true
+      serviceAccountName: kube-vip
+  updateStrategy: {}
+status:
+  currentNumberScheduled: 0
+  desiredNumberScheduled: 0
+  numberMisscheduled: 0
+  numberReady: 0
