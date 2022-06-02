@@ -15,18 +15,14 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    image:
-      repository: docker.io/velero/velero
-      tag: v1.8.1@sha256:8d784580931c77892458be8a3b4046ca0c751039c11ea1218d522e9d03cb92cb
-    metrics:
-      enabled: false
     installCRDs: true
     upgradeCRDs: true
-    kubectl:
-      image:
-        repository: docker.io/bitnami/kubectl
-        tag: 1.24.1@sha256:6107170119b4df74034995fdc4922145b541e47ef6cb642c4c1c823818658e92
-    snapshotsEnabled: false
+    snapshotsEnabled: false``
+    deployRestic: true
+    serviceAccount:
+      server:
+        create: true
+        name: velero
     configuration:
       provider: aws
       backupStorageLocation:
@@ -37,7 +33,30 @@ spec:
       volumeSnapshotLocation:
         name: default
         provider: aws
-    deployRestic: true
+    image:
+      repository: docker.io/velero/velero
+      tag: v1.8.1@sha256:8d784580931c77892458be8a3b4046ca0c751039c11ea1218d522e9d03cb92cb
+    metrics:
+      enabled: false
+    kubectl:
+      image:
+        repository: docker.io/bitnami/kubectl
+        tag: 1.24.1@sha256:6107170119b4df74034995fdc4922145b541e47ef6cb642c4c1c823818658e92
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 100m
+          memory: 128Mi
+    restic:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 100m
+          memory: 128Mi
     credentials:
       useSecret: true
       name: velero-s3-keys
