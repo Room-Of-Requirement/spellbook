@@ -41,11 +41,39 @@ Edit `/etc/ssh/sshd_config`, add
 PubkeyAcceptedKeyTypes=+ssh-rsa
 ```
 
-# SOPS
+# Install w/ kube-vip
 
+First install on one node, setup flux and kube-vip, and then install on the other nodes, using vip as api address.
+
+```
+k3sup install --user k3s --ip 192.168.1.20 --cluster --tls-san 192.168.1.250 --k3s-extra-args '--disable traefik --disable servicelb'
+mv ./kubeconfig ~/.kube/config
+```
+
+### SOPS
 ```
 gpg --export-secret-keys --armor 331FF9DE87B750522D8DBCCA98CC713C919CE8D5 > sops.asc
 kubectl create ns flux-system
 kubectl create secret generic sops-gpg --namespace=flux-system --from-file=sops.asc
 rm sops.asc
+```
+
+### Flux
+
+```
+flux bootstrap github --owner=Room-Of-Requirement --repository=spellbook --branch deploy --path=cluster/base
+```
+
+PAT needs `repo` permissions.
+
+```
+kubectl get pods --all-namespaces --watch
+```
+
+Once kube-vip is running, replace IP in `~/.kube/config`.
+
+### Join other nodes
+
+```
+k3sup join --user k3s --ip 192.168.1.21 --server-user k3s --server-ip 192.168.1.250 --server --k3s-extra-args '--disable traefik --disable servicelb'
 ```
