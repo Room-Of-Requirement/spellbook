@@ -5,11 +5,14 @@ metadata:
     app.kubernetes.io/name: kube-vip-ds
     app.kubernetes.io/version: v0.4.4
   name: kube-vip-ds
-  namespace: kube-system
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: kube-vip-ds
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -17,7 +20,10 @@ spec:
         app.kubernetes.io/version: v0.4.4
     spec:
       containers:
-      - args:
+      - name: kube-vip
+        image: ghcr.io/kube-vip/kube-vip:v0.4.4@sha256:f59745f64f8e02158bc5aa70fb24e123e3f3891ca9bb86f8c259076e41a81924
+        imagePullPolicy: Always
+        args:
         - manager
         env:
         - name: vip_arp
@@ -27,11 +33,11 @@ spec:
         - name: vip_interface
           value: eth0
         - name: vip_cidr
-          value: 192.168.1.224/28
+          value: ${KUBE_VIP_CIDR}
         - name: cp_enable
           value: "true"
         - name: cp_namespace
-          value: kube-system
+          value: network
         - name: vip_ddns
           value: "false"
         - name: svc_enable
@@ -51,11 +57,11 @@ spec:
         - name: lb_fwdmethod
           value: local
         - name: address
-          value: 192.168.1.250
-        image: ghcr.io/kube-vip/kube-vip:v0.4.4
-        imagePullPolicy: Always
-        name: kube-vip
-        resources: {}
+          value: ${KUBE_VIP}
+        resources:
+          requests:
+            cpu: 150m
+            memory: 150Mi
         securityContext:
           capabilities:
             add:
@@ -63,7 +69,6 @@ spec:
             - NET_RAW
       hostNetwork: true
       serviceAccountName: kube-vip
-  updateStrategy: {}
 status:
   currentNumberScheduled: 0
   desiredNumberScheduled: 0

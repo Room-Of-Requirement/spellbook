@@ -4,6 +4,7 @@ namespace: network
 resources:
 - cert-manager
 - ddclient
+- kube-vip
 # - metallb
 - nginx
 # - oauth2-proxy
