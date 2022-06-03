@@ -35,7 +35,7 @@ namespaces:
 - nvidia
 # - oauth2
 - rook-ceph
-# - roon
+- roon
 # - system
 - velero
 # - vpn

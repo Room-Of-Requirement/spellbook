@@ -11,7 +11,7 @@ resources:
 # - media
 # # - photos
 - rancher
-# - roon
+- roon
 # # - utils
 - velero
 # # - wiki
