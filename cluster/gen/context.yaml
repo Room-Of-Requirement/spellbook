@@ -31,8 +31,8 @@ namespaces:
 - monitoring
 # - music
 - network
-# - node-feature-discovery
-# - nvidia
+- node-feature-discovery
+- nvidia
 # - oauth2
 - rook-ceph
 # - roon
