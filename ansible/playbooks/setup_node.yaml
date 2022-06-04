@@ -22,7 +22,7 @@
   become: true
   tasks:
   - name: Update sudoers file
-    lineinfile:
+    ansible.builtin.lineinfile:
       dest: /etc/sudoers
       state: present
       regexp: '^%{{ ansible_user }}'
@@ -34,7 +34,7 @@
   become: true
   tasks:
   - name: Remove swap from /etc/fstab
-    mount:
+    ansible.posix.mount:
       name: "{{ item }}"
       fstype: swap
       state: absent
@@ -65,12 +65,23 @@
   become: true
   tasks:
   - name: Get MAC address
-    ansible.builtin.shell: lshw -C network | grep serial | awk '{print $2}'
+    ansible.builtin.shell: lshw -C network | grep serial | awk '{print $2}' | head -n 1
     register: mac_address
   - name: Create netplan config
     ansible.builtin.template:
       src: network-conf.j2
       dest: /etc/netplan/50-cloud-init.yaml
-      force: no
+      force: n
   - name: Apply netplan
     ansible.builtin.shell: netplan apply
+
+- name: Add RSA-SHA1 as ssh algo
+  hosts: all
+  become: true
+  tasks:
+  - name: Update /etc/ssh/sshd_config
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      state: present
+      line: 'PubkeyAcceptedKeyTypes=+ssh-rsa'
+      create: yes
