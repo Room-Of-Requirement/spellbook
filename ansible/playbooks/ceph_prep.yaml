@@ -2,14 +2,14 @@
   hosts: all
   become: true
   tasks:
-  - name: "wipe {{ item }}"
+  - name: Wipe disk
     ansible.builtin.shell: |
       sgdisk --zap-all --clear --mbrtogpt "/dev/{{ item }}"
       sgdisk --zap-all "/dev/{{ item }}"
       dd if=/dev/zero of="/dev/{{ item }}" bs=1M count=100 oflag=direct,dsync
     when: disks is defined
     loop: "{{ disks }}"
-  - name: find
+  - name: find mappers, etc
     ansible.builtin.find:
       paths: /dev/
       pattern: "ceph-*"

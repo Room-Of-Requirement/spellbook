@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 
 # Phase 1
+- crds
 - gen
 - system
 - rancher
