@@ -8,7 +8,7 @@ resources:
 - system
 - rancher
 
-# # Phase 2
-# - rook-ceph
-# - velero
-# - apps
+# Phase 2
+- rook-ceph
+- velero
+- apps

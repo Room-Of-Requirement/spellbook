@@ -12,7 +12,10 @@
   - name: find mappers, etc
     ansible.builtin.find:
       paths: /dev/
-      pattern: "ceph-*"
+      patterns:
+      - "ceph-*"
+      - "dm-*"
+      - "/mapper/ceph-*"
       recurse: no
     register: find
   - name: delete mappers, etc
