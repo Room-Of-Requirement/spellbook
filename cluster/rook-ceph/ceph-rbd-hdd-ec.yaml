@@ -2,7 +2,6 @@ apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
   name: ceph-rbd-hdd-ec-metadata
-  namespace: rook-ceph # namespace:cluster
 spec:
   failureDomain: osd
   replicated:
@@ -13,7 +12,6 @@ apiVersion: ceph.rook.io/v1
 kind: CephBlockPool
 metadata:
   name: ceph-rbd-hdd-ec-data
-  namespace: rook-ceph # namespace:cluster
 spec:
   failureDomain: osd
   erasureCoded:
