@@ -1,4 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- roon
+
+# Phase 1
+- gen
+- system
+- rancher
+
+# Phase 2
+- rook-ceph
+- velero
+- apps

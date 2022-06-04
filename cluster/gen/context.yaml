@@ -18,28 +18,14 @@ repos:
   vmware-tanzu: 'https://vmware-tanzu.github.io/helm-charts'
 
 namespaces:
-# - airflow
 - cattle-system
-# - grocy
-# - hass
-# - homebridge
-# - intel
-# - jupyter
-# - lfs
-# - media
-# - minio
 - monitoring
-# - music
 - network
 - node-feature-discovery
 - nvidia
-# - oauth2
 - rook-ceph
 - roon
-# - system
 - velero
-# - vpn
-# - wiki
 
 priorityClasses:
   high-priority: 10
