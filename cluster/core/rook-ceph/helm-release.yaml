@@ -54,6 +54,6 @@ spec:
       snapshotter:
         image: k8s.gcr.io/sig-storage/csi-snapshotter:v6.0.1@sha256:ad16874e2140256a809cada2b4ac3d931d5b73b0bee23ed0f8d60bdd778cfec2
       attacher:
-        image: k8s.gcr.io/sig-storage/csi-attacher:v3.4.0@sha256:8b9c313c05f54fb04f8d430896f5f5904b6cb157df261501b29adc04d2b2dc7b
+        image: k8s.gcr.io/sig-storage/csi-attacher:v3.5.0@sha256:dd245051317e957423bc3e2aecddf56c745bd6714920f0dc108e505f5afb3472
       resizer:
         image: k8s.gcr.io/sig-storage/csi-resizer:v1.4.0@sha256:9ebbf9f023e7b41ccee3d52afe39a89e3ddacdbb69269d583abfc25847cfd9e4
