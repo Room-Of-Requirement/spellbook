@@ -12,4 +12,4 @@ resources:
 # Phase 2
 - rook-ceph
 # - velero
-# - apps
+- apps
