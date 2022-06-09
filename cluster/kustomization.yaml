@@ -10,6 +10,6 @@ resources:
 - notifications.yaml
 
 # Phase 2
-# - rook-ceph
+- rook-ceph
 # - velero
 # - apps
