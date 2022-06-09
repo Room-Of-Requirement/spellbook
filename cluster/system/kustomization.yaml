@@ -5,7 +5,7 @@ resources:
 - cert-manager
 - ddclient
 - kube-vip
-- kured
+# - kured
 - nginx
-- node-feature-discovery
-- system-upgrade
+# - node-feature-discovery
+# - system-upgrade
