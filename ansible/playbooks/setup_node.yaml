@@ -75,13 +75,13 @@
   - name: Apply netplan
     ansible.builtin.shell: netplan apply
 
-- name: Add RSA-SHA1 as ssh algo
-  hosts: all
-  become: true
-  tasks:
-  - name: Update /etc/ssh/sshd_config
-    lineinfile:
-      dest: /etc/ssh/sshd_config
-      state: present
-      line: 'PubkeyAcceptedKeyTypes=+ssh-rsa'
-      create: yes
+# - name: Add RSA-SHA1 as ssh algo
+#   hosts: all
+#   become: true
+#   tasks:
+#   - name: Update /etc/ssh/sshd_config
+#     lineinfile:
+#       dest: /etc/ssh/sshd_config
+#       state: present
+#       line: 'PubkeyAcceptedKeyTypes=+ssh-rsa'
+#       create: yes
