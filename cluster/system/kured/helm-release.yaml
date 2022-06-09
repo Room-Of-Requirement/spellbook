@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: docker.io/raspbernetes/kured
-      tag: 1.9.2@sha256:82311454f1704fdfe5aa81c8022852ebddd9f33d8c47d41fe7eed9dc2c25e6a6
+      tag: 1.10.0@sha256:d3779bd37e3c80ca08b7f3055f21665c6c41d99de78f6e517e50742f9fbc3158
     updateStrategy: RollingUpdate
     tolerations:
     - key: "RaspberryPi"
