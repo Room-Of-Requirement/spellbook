@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
 # - intel-gpu-plugin
 # - kured
-- monitoring
+# - monitoring
 - network
-- node-feature-discovery
-- nvgfd
+# - node-feature-discovery
+# - nvgfd
 # - reloader
-- rook-ceph
+# - rook-ceph
 # - system-upgrade
