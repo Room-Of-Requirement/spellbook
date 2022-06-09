@@ -6,6 +6,7 @@ resources:
 - ddclient
 - kube-vip
 # - kured
+- metallb
 - nginx
 # - node-feature-discovery
 # - system-upgrade
