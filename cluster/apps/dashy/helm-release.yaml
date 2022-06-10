@@ -62,3 +62,7 @@ spec:
         config:
           enabled: true
           data:
+            PageInfo:
+              title: The Room of Requirement
+              description: "\"It is a room that a person can only enter when they have real need of it.\""
+              footerText: ""
