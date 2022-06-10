@@ -11,5 +11,5 @@ resources:
 
 # Phase 2
 - rook-ceph
-# - velero
+- velero
 - apps
