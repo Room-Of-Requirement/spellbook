@@ -70,4 +70,8 @@ spec:
                 footerText: ""
               appConfig:
                 theme: vapoware
+                disableConfiguration: true
+                startingView: minimal
+                defaultOpeningMethod: newtab
+
               
