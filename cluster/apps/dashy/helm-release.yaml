@@ -66,9 +66,8 @@ spec:
           data:
             conf.yml: |
               pageInfo:
-                title: The Room of Requirement
+                title: "The Room of Requirement"
                 description: "\"It is a room that a person can only enter when they have real need of it.\""
-                footerText: "<a href="mailto:jack@jmmaloney4.xyz">jack@jmmaloney4.xyz"<\a>
               appConfig:
                 theme: Vaporware
                 disableConfiguration: true
