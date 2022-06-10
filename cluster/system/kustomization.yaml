@@ -8,6 +8,7 @@ resources:
 # - kured
 - metallb
 - nginx
-- oauth2-proxy
 # - node-feature-discovery
+- oauth2-proxy
+- reloader
 # - system-upgrade
