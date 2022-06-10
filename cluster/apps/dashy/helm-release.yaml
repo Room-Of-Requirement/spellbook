@@ -70,7 +70,7 @@ spec:
                 description: "\"It is a room that a person can only enter when they have real need of it.\""
                 footerText: ""
               appConfig:
-                theme: vaporware
+                theme: Vaporware
                 disableConfiguration: true
                 startingView: minimal
                 defaultOpeningMethod: newtab
