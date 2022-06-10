@@ -72,7 +72,17 @@ spec:
               appConfig:
                 theme: Vaporware
                 disableConfiguration: true
-                startingView: minimal
+                startingView: default
                 defaultOpeningMethod: newtab
+                webSearch:
+                  searchEngine: duckduckgo
+                hideComponents:
+                  hideFooter: true
+              sections:
+              - name: System
+                items:
+                - title: Ceph Dashboard
+                  url: https://ceph.roomofrequirement.xyz/
+                  icon: https://ceph.io/assets/bitmaps/Ceph_Logo_Stacked_RGB_120411_fa.png
 
               
