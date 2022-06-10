@@ -53,6 +53,11 @@ spec:
               enabled: true
               primary: true
               port: 80
+      persistence:
+        config:
+          enabled: true
+          type: configMap
+          mountPath: /public/conf.yml
       configmap:
         config:
           enabled: true
