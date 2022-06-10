@@ -6,6 +6,7 @@ repos:
   jupyterhub: 'https://jupyterhub.github.io/helm-chart/'
   k8s-at-home: 'https://k8s-at-home.com/charts/'
   kured: 'https://weaveworks.github.io/kured'
+  library-charts: 'https://k8s-at-home.com/library-charts/'
   metallb: 'https://metallb.github.io/metallb'
   minio: 'https://helm.min.io/'
   node-feature-discovery: 'https://kubernetes-sigs.github.io/node-feature-discovery/charts'
@@ -19,6 +20,7 @@ repos:
 
 namespaces:
 - cattle-system
+- dashy
 - monitoring
 - network
 - node-feature-discovery
