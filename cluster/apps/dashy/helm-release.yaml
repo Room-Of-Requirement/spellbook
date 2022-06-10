@@ -58,6 +58,7 @@ spec:
           enabled: true
           type: configMap
           mountPath: /public/conf.yml
+          name: dashy-basic-config
       configmap:
         config:
           enabled: true
