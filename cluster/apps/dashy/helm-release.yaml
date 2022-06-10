@@ -37,7 +37,10 @@ spec:
           hosts:
           - host: "secure.roomofrequirement.xyz"
             paths:
-            - "/"
+            - path: "/"
+              service:
+                name: dashy
+                port: 80
           tls:
           - secretName: secure-cert
             hosts:
