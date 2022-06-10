@@ -39,7 +39,7 @@ spec:
             paths:
             - path: "/"
               service:
-                name: dashy
+                name: dashy-basic
                 port: 80
           tls:
           - secretName: secure-cert
