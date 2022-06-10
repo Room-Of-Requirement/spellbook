@@ -41,6 +41,14 @@ spec:
       - secretName: secure-cert
         hosts:
         - secure.roomofrequirement.xyz
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            enabled: true
+            primary: true
+            port: 80
     configmap:
       config:
         enabled: true
