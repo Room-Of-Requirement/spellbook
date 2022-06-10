@@ -64,7 +64,10 @@ spec:
           enabled: true
           data:
             conf.yml: |
-              PageInfo:
+              pageInfo:
                 title: The Room of Requirement
                 description: "\"It is a room that a person can only enter when they have real need of it.\""
                 footerText: ""
+              appConfig:
+                theme: vapoware
+              
