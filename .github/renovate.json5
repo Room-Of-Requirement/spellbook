@@ -94,6 +94,11 @@
       automerge: false
     },
     {
+      matchDatasources: ["helm"],
+      matchPackagePatterns: ["oauth2-proxy"],
+      automerge: false
+    },
+    {
       matchDatasources: ["docker"],
       matchPackagePatterns: ["^k8s.gcr.io/sig-storage/csi-"],
       groupName: "csi",
