@@ -22,7 +22,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/room-of-requirement/nimbus2000
-      tag: main@sha256:781a3a22b01b222e1b45818553ec5cd0c249d956b65f405ffdf3cbb71e8009b7
+      tag: main@sha256:528e6d45f56c745423cdb7881d98c5430ef7280340a3b48bf2238ba225a6ece7
     service:
       main:
         enabled: false
