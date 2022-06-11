@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mf
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: basic
+      version: 0.2.5
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/jmmaloney4/dotfiles:master
+      tag: master@sha256:e11042764015f49dedf4d45ab83c7b01c1500b5591d513a4e80594f1939d8687
+    persistence:
+      data:
+        enabled: true
+        size: 1Ti
+        retain: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"
