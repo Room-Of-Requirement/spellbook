@@ -80,3 +80,9 @@ spec:
             ttl: 360d
             includedNamespaces:
             - roon
+        lfs:
+          schedule: "0 * * * *"
+          template:
+            ttl: 21d
+            includedNamespaces:
+            - lfs

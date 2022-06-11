@@ -21,6 +21,7 @@ repos:
 namespaces:
 - cattle-system
 - dashy
+- lfs
 - monitoring
 - network
 - node-feature-discovery
