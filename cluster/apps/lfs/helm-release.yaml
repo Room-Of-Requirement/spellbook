@@ -23,6 +23,9 @@ spec:
     image:
       repository: ghcr.io/jmmaloney4/lfs-server
       tag: main@sha256:447f63fbc906b0554b6ce95b4f59f2e7fc1e0ee360bccf2bb7cff456f92cfffd
+    controller:
+      annotations:
+        backup.velero.io/backup-volumes: lfs-basic-data
     persistence:
       data:
         enabled: true
