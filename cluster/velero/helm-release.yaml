@@ -87,12 +87,12 @@ spec:
       roon:
         schedule: "0 4 * * *"
         template:
-          ttl: 360d
+          ttl: 720h
           includedNamespaces:
           - roon
       lfs:
         schedule: "0 * * * *"
         template:
-          ttl: 21d
+          ttl: 720h
           includedNamespaces:
           - lfs
