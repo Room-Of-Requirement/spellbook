@@ -5,7 +5,8 @@ metadata:
 spec:
   values:
     schedule: "0 * * * *"
-    to: "ceph:roon-backups"
+    from: b2:roon-backups
+    to: /data/
     volumes:
     - name: data
       persistentVolumeClaim:
