@@ -30,10 +30,13 @@ spec:
         bucket: roomofrequirement
         config:
           s3Url: "https://s3.us-west-002.backblazeb2.com"
-          region: region=us-west-002
+          region: us-west-002
       volumeSnapshotLocation:
         name: default
         provider: aws
+        bucket: roomofrequirement
+        config:
+          region: us-west-002
     image:
       repository: docker.io/velero/velero
       tag: v1.8.1@sha256:8d784580931c77892458be8a3b4046ca0c751039c11ea1218d522e9d03cb92cb
