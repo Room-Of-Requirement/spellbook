@@ -21,8 +21,8 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: docker.io/ubuntu
-      tag: 22.04@sha256:e11042764015f49dedf4d45ab83c7b01c1500b5591d513a4e80594f1939d8687
+      repository: ghcr.io/room-of-requirement/nimbus2000
+      tag: main@sha256:781a3a22b01b222e1b45818553ec5cd0c249d956b65f405ffdf3cbb71e8009b7
     service:
       main:
         enabled: false
