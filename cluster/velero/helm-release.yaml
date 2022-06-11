@@ -83,16 +83,16 @@ spec:
           [default]
           aws_access_key_id=${B2_VELERO_ACCESS_KEY}
           aws_secret_access_key=${B2_VELERO_SECRET_KEY}
-      schedules:
-        roon:
-          schedule: "0 4 * * *"
-          template:
-            ttl: 360d
-            includedNamespaces:
-            - roon
-        lfs:
-          schedule: "0 * * * *"
-          template:
-            ttl: 21d
-            includedNamespaces:
-            - lfs
+    schedules:
+      roon:
+        schedule: "0 4 * * *"
+        template:
+          ttl: 360d
+          includedNamespaces:
+          - roon
+      lfs:
+        schedule: "0 * * * *"
+        template:
+          ttl: 21d
+          includedNamespaces:
+          - lfs
