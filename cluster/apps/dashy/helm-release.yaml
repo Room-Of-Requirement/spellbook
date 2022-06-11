@@ -72,7 +72,7 @@ spec:
               title: "The Room of Requirement"
               description: "\"It is a room that a person can only enter when they have real need of it.\""
             appConfig:
-              theme: Vaporware
+              theme: vaporware
               disableConfiguration: true
               startingView: default
               defaultOpeningMethod: newtab
