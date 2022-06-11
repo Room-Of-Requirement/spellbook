@@ -11,8 +11,17 @@ spec:
     deviceClass: ssd # metadata pool still on ssds
   # The list of data pool specs
   dataPools:
+    # Apparently we need a default replicated pool
+    - name: default
+      replicated:
+        size: 3
+      failureDomain: osd
+      deviceClass: hdd
+      parameters:
+        compression_mode: none
     # You need at least three `bluestore` OSDs on different nodes for this config to work
-    - erasureCoded:
+    - name: ec
+      erasureCoded:
         dataChunks: 2
         codingChunks: 1
       failureDomain: osd
@@ -70,7 +79,7 @@ parameters:
 
   # Ceph pool into which the volume shall be created
   # Required for provisionVolume: "true"
-  pool: cephfs-data0
+  pool: cephfs-ec
 
   # The secrets contain Ceph admin credentials. These are generated automatically by the operator
   # in the same namespace as the cluster.
