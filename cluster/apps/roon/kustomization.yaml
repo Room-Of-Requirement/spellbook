@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: roon
 resources:
 - helm-release.yaml
-- backup-restore
+# - backup-restore
