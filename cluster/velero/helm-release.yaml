@@ -52,19 +52,26 @@ spec:
         tag: 1.24.1@sha256:3eb4083be1d064c9db764258eb14517d6806dc2c3d54a5ccd1790cc7026adb99
       resources:
         requests:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 50m
+          memory: 64Mi
         limits:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 200m
+          memory: 256Mi
     restic:
       resources:
         requests:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 500m
+          memory: 512Mi
         limits:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 2000m
+          memory: 2048Mi
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
     credentials:
       useSecret: true
       name: velero-s3-keys
