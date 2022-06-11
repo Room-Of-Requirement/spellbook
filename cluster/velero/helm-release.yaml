@@ -87,12 +87,14 @@ spec:
       roon:
         schedule: "0 4 * * *"
         template:
+          defaultVolumesToRestic: true
           ttl: 720h
           includedNamespaces:
           - roon
       lfs:
         schedule: "0 * * * *"
         template:
+          defaultVolumesToRestic: true
           ttl: 720h
           includedNamespaces:
           - lfs
