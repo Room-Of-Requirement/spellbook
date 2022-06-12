@@ -85,6 +85,9 @@ spec:
               items:
               - title: Ceph Dashboard
                 url: https://ceph.roomofrequirement.xyz/
-                icon: https://ceph.io/assets/bitmaps/Ceph_Logo_Stacked_RGB_120411_fa.png
+            - name: Media
+              items:
+              - title: Music Torrents
+                url: https://secure.roomofrequirement.xyz/flood/music/
 
             
