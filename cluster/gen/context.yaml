@@ -22,6 +22,7 @@ namespaces:
 - cattle-system
 - dashy
 - lfs
+- media
 - monitoring
 - network
 - node-feature-discovery
