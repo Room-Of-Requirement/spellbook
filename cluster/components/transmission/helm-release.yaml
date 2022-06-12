@@ -37,7 +37,7 @@ spec:
       TRANSMISSION_SPEED_LIMIT_UP: 20
     persistence:
       config:
-        enabled: true
+        enabled: false
         type: pvc
         size: 5Gi
         accessMode: ReadWriteOnce
