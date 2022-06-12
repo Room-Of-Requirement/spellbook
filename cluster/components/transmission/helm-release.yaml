@@ -25,7 +25,7 @@ spec:
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
       TRANSMISSION_RPC_USERNAME: transmission
       TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
-      TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: true
+      TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: "false"
       # TRANSMISSION_PEER_PORT: ${MULLVAD_PEER_PORT}
       TRANSMISSION_PEX_ENABLED: false
       TRANSMISSION_DHT_ENABLED: false
@@ -39,7 +39,7 @@ spec:
       config:
         enabled: true
         type: pvc
-        size: 500Mi
+        size: 5Gi
         accessMode: ReadWriteOnce
         storageClass: ceph-rbd-ssd
         retain: true
