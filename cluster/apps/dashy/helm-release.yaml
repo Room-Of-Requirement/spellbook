@@ -87,11 +87,11 @@ spec:
                 url: https://ceph.roomofrequirement.xyz/
             - name: Media
               items:
-              - title: Music Torrents
+              - title: Music
                 url: https://secure.roomofrequirement.xyz/flood/music/
-              - title: Movie Torrents
+              - title: Movies
                 url: https://secure.roomofrequirement.xyz/flood/movies/
-              - title: TV Torrents
+              - title: TV Shows
                 url: https://secure.roomofrequirement.xyz/flood/tv/
               - title: Jackett
                 url: https://secure.roomofrequirement.xyz/jackett/
