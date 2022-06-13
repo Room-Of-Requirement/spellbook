@@ -77,3 +77,23 @@ Once kube-vip is running, replace IP in `~/.kube/config`.
 ```
 k3sup join --user k3s --ip 192.168.1.21 --server-user k3s --server-ip 192.168.1.250 --server --k3s-extra-args '--disable traefik --disable servicelb'
 ```
+
+# Media setup
+
+Need to port forward services locally to setup url base on jackett, radarr, sonarr.
+
+### Radarr
+
+Add indexer in radarr, following instructions in jackett, but using following host/url.
+
+```
+http://jackett.media.svc.cluster.local:9117/api/v2.0/indexers/torrentleech/results/torznab/
+```
+
+Add download client transmission, with host
+
+```
+movies-transmission.media.svc.cluster.local
+```
+
+and port `80`.
