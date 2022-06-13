@@ -98,3 +98,10 @@ spec:
           ttl: 720h
           includedNamespaces:
           - lfs
+      media:
+        schedule: "0 4 * * *"
+        template:
+          defaultVolumesToRestic: true
+          ttl: 720h
+          includedNamespaces:
+          - media
