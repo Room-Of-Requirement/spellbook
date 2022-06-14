@@ -3,12 +3,12 @@ kind: Kustomization
 namespace: rook-ceph
 resources:
 - helm-release.yaml
-# - cluster.yaml
-# - toolbox.yaml
-# - dashboard-ingress-https.yaml
-# - ceph-rbd-ssd.yaml
-# - ceph-rbd-hdd-ec.yaml
-# - cephfs.yaml
-# - rgw.yaml
+- cluster.yaml
+- toolbox.yaml
+- dashboard-ingress-https.yaml
+- ceph-rbd-ssd.yaml
+- ceph-rbd-hdd-ec.yaml
+- cephfs.yaml
+- rgw.yaml
 # - minio-rgw-user.yaml
 # - s3-ingress.yaml
