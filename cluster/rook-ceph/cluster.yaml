@@ -114,14 +114,14 @@ spec:
   resources:
     mon:
       requests:
-        cpu: "500m"
+        cpu: "250m"
         memory: "1024Mi"
       limits:
         cpu: "1000m"
         memory: "2048Mi"
     mgr:
       requests:
-        cpu: "500m"
+        cpu: "250m"
         memory: "512Mi"
       limits:
         cpu: "1000m"
@@ -135,7 +135,7 @@ spec:
         memory: "6144Mi"
     logcollector:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "200Mi"
       limits:
         cpu: "100m"
