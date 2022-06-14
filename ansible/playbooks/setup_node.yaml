@@ -59,6 +59,8 @@
       pkg:
         - smartmontools
         - ubuntu-drivers-common
+        - stress-ng
+        - lm-sensors
 
 - name: Setup Network Interface as eth0
   hosts: all
