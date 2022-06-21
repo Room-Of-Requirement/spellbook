@@ -20,7 +20,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/lissy93/dashy
-      tag: 2.1.0@sha256:d6f39f5ca6104f5e53ba7eba8f51d253e9e09a45c355be5967cdf81a25b27137
+      tag: 2.1.0@sha256:a08dbb87cf47346ab554a37492c9ed6f3524dbd98da1690079f7aed5b5a869eb
     ingress:
       main:
         enabled: true
