@@ -1,0 +1,7 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStoreUser
+metadata:
+  name: minio
+spec:
+  store: object-store
+  displayName: Minio

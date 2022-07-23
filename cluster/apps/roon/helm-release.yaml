@@ -1,0 +1,69 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: roon
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: roon
+      version: 4.4.5
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    controller:
+      annotations:
+        backup.velero.io/backup-volumes: roon-config,roon-backups
+    image:
+      repository: ghcr.io/jmmaloney4/roon
+      tag: 1.8.970@sha256:6dd6c852699debe80353798ab5b9692859f0b3714a2dc5e818c736caa6dca05c
+    env:
+      TZ: America/Chicago
+    persistence:
+      # music:
+      #   enabled: true
+      #   size: 300Gi
+      #   retain: true
+      #   accessMode: ReadWriteMany
+      #   storageClass: "cephfs"
+      config:
+        enabled: true
+        size: 10Gi
+        retain: true
+        accessMode: ReadWriteOnce
+        storageClass: "ceph-rbd-ssd"
+      backups:
+        enabled: true
+        size: 100Gi
+        retain: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"
+      # ssh:
+      #   enabled: true
+      #   type: secret
+      #   name: srht-ssh-key
+      #   defaultMode: 0400
+    resources:
+      requests:
+        cpu: 2
+        memory: "2Gi"
+      limits:
+        cpu: 2
+        memory: "3Gi"
+    # additionalContainers:
+    #   git:
+    #     name: git
+    #     image: ghcr.io/jmmaloney4/lfs:main@sha256:fe4828f16726d6d9909177f50b777276c52271a6aa378b7c379bfb9d52357e5b
+    #     command:
+    #     - sh
+    #     - -c
+    #     - while true; do sleep 3600; done
+    #     volumeMounts:
+    #     - mountPath: /music
+    #       name: music
+    #     - mountPath: /root/.ssh/
+    #       name: ssh

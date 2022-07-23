@@ -1,0 +1,11 @@
+- name: Uninstall k3s
+  hosts: all
+  become: true
+  tasks:
+  - name: Check if k3s is installed
+    stat:
+      path: /usr/local/bin/k3s-uninstall.sh
+    register: check
+  - name: Uninstall k3s
+    ansible.builtin.shell: "/usr/local/bin/k3s-uninstall.sh"
+    when: check.stat.existsd

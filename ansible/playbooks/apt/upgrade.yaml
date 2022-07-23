@@ -1,0 +1,14 @@
+- name: Install other packages
+  hosts: all
+  become: true
+  tasks:
+  - name: Upgrade packages
+    ansible.builtin.apt:
+      update_cache: yes
+      upgrade: "safe"
+  - name: Install packages
+    ansible.builtin.apt:
+      autoremove: yes
+      pkg:
+        - smartmontools
+        - ubuntu-drivers-common
