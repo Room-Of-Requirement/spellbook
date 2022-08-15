@@ -52,7 +52,7 @@ spec:
     kubectl:
       image:
         repository: docker.io/bitnami/kubectl
-        tag: 1.24.3@sha256:d8a9eb105f64f099d7f96a58041b14286461de73c3b17d026c48fdc0960ef020
+        tag: 1.24.3@sha256:a1ec5a659af7a5177ad8a8b9d8a78894f1262f658d8db9b396b50274c3f09ca2
       resources:
         requests:
           cpu: 50m
