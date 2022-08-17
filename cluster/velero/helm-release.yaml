@@ -39,7 +39,7 @@ spec:
           region: us-west-002
     image:
       repository: docker.io/velero/velero
-      tag: v1.9.0@sha256:277fbfaf8dcf5d7bc5e0abc43020c6254e4ad00c9c00ec3473c7f06d85feba45
+      tag: v1.9.1@sha256:f8b9fec77cf2e11c204e7309ee740cae3f694bfb8876bc6a3013fc7ae497e60d
     initContainers:
       - name: velero-plugin-for-aws
         image: velero/velero-plugin-for-aws:v1.5.0@sha256:3d2ea7aab32d40ca70fb399fe7ebd6c99647c9c13af8b70581c1d9aedc22e347
