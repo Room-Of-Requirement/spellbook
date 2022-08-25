@@ -2,12 +2,6 @@ all:
   children:
     servers:
       hosts:
-        192.168.1.20:
-        192.168.1.21:
-          disks:
-          - "sda"
-          - "sdb"
-          - "sdc"
         192.168.1.22:
           disks:
           - "sda" # ssd
@@ -15,11 +9,6 @@ all:
           - "sdd"
           - "sde"
           - "sdf"
-          - "sdg"
-    agents:
-      hosts:
-        192.168.1.23:
-        192.168.1.24:
-    gpus:
-      hosts:
-        192.168.1.[21:22]:
+        192.168.1.20:
+          disks:
+          - "sdb"
