@@ -31,5 +31,5 @@ namespaces:
 - roon
 - velero
 
-# priorityClasses:
-#   high-priority: 10
+priorityClasses:
+  # high-priority: 10
