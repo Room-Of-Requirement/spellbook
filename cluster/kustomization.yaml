@@ -6,10 +6,10 @@ resources:
 - crds
 - gen
 - system
-- rancher
-- notifications.yaml
+# - rancher
+# - notifications.yaml
 
 # Phase 2
-- rook-ceph
-- velero
-- apps
+# - rook-ceph
+# - velero
+# - apps
