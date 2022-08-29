@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: cloudflare-tunnel
-      version: v0.1
+      version: 0.1
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
@@ -19,7 +19,7 @@ spec:
     account:
       secret: 
     image:
-      repository: cloudflare/cloudflared
+      repository: docker.io/cloudflare/cloudflared
       tag: latest@sha256:7d6784021afd1b5eb72aa15a44c35fcc98f0c8754d6ce543a82e85277bdcd120
     resources:
       limits:
