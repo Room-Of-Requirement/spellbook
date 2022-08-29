@@ -33,3 +33,6 @@ spec:
       requests:
         cpu: 100m
         memory: 128Mi
+    ingress:
+    - hostname: roomofrequirement.xyz
+      service: http://rancher.cattle-system.svc.cluster.local:80
