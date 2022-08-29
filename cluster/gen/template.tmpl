@@ -6,7 +6,7 @@ metadata:
   name: {{ $name }}
   namespace: flux-system
 spec:
-  interval: ${REPO_INTERVAL}
+  interval: 1m
   url: {{ $url }}
 {{- end }}
 
