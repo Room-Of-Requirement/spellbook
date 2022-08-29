@@ -12,3 +12,4 @@ resources:
 # - oauth2-proxy
 - reloader
 # - system-upgrade
+- cloudflare-tunnel.yaml
