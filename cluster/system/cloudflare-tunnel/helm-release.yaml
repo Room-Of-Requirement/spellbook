@@ -9,13 +9,14 @@ spec:
   chart:
     spec:
       chart: cloudflare-tunnel
-      version: 0.1.1
+      version: 0.1.2
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
         namespace: flux-system
       interval: 1m
   values:
+    originCertSecret: cloudflare-tunnel-origin-cert
     cloudflare:
       account: "${CLOUDFLARE_TUNNEL_ACCOUNT}"
       tunnelName: roomofrequirement
