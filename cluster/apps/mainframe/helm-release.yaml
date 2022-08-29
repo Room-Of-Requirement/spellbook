@@ -8,7 +8,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: basic
-      version: 0.2.5
+      version: 0.3.5
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
