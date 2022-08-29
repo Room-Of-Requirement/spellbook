@@ -4,3 +4,4 @@ namespace: roon
 resources:
 - helm-release.yaml
 # - backup-restore
+- ssh-key.yaml
