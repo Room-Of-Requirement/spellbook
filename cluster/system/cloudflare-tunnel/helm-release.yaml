@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
     originCertSecret: cloudflare-tunnel-origin-cert
     cloudflare:
       account: "${CLOUDFLARE_TUNNEL_ACCOUNT}"
