@@ -25,6 +25,11 @@ spec:
       tunnelName: roomofrequirement
       tunnelId: "${CLOUDFLARE_TUNNEL_ID}"
       secret: "${CLOUDFLARE_TUNNEL_SECRET}"
+    ingress:
+    - hostname: roomofrequirement.xyz
+      service: http://rancher.cattle-system.svc.cluster.local:80
+    - hostname: hello.roomofrequirement.xyz
+      service: hello_world
     image:
       repository: docker.io/cloudflare/cloudflared
       tag: latest@sha256:7d6784021afd1b5eb72aa15a44c35fcc98f0c8754d6ce543a82e85277bdcd120
@@ -35,8 +40,3 @@ spec:
       requests:
         cpu: 100m
         memory: 128Mi
-    ingress:
-    - hostname: roomofrequirement.xyz
-      service: http://rancher.cattle-system.svc.cluster.local:80
-    - hostname: hello.roomofrequirement.xyz
-      service: hello_world
