@@ -8,6 +8,7 @@ spec:
   interval: 1m
   chart:
     spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
       chart: cloudflare-tunnel
       version: 0.1.2
       sourceRef:
