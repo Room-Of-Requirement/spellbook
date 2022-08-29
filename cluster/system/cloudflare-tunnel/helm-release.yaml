@@ -19,7 +19,7 @@ spec:
     cloudflare:
       account: "${CLOUDFLARE_TUNNEL_ACCOUNT}"
       tunnelName: roomofrequirement
-      tunnelID: "${CLOUDFLARE_TUNNEL_ID}"
+      tunnelId: "${CLOUDFLARE_TUNNEL_ID}"
       secret: "${CLOUDFLARE_TUNNEL_SECRET}"
     image:
       repository: docker.io/cloudflare/cloudflared
