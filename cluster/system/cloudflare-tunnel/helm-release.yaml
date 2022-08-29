@@ -29,7 +29,7 @@ spec:
       - hostname: roomofrequirement.xyz
         service: http://rancher.cattle-system.svc.cluster.local:80
       - hostname: ceph.roomofrequirement.xyz
-        service: http://rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local:80
+        service: http://rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local:8080
       - hostname: hello.roomofrequirement.xyz
         service: hello_world
     image:
