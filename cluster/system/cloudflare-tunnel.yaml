@@ -17,7 +17,8 @@ spec:
       interval: 1m
   values:
     account:
-      secret: 
+      tunnelName: "roomofrequirement-0"
+      secret: "${CLOUDFLARE_TUNNEL_SECRET}"
     image:
       repository: docker.io/cloudflare/cloudflared
       tag: latest@sha256:7d6784021afd1b5eb72aa15a44c35fcc98f0c8754d6ce543a82e85277bdcd120
