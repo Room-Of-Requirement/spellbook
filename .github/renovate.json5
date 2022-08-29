@@ -15,6 +15,9 @@
   "helm-values": {
     fileMatch: ["cluster/.+\\.yaml$"]
   },
+  "flux": {
+    "fileMatch": ["cluster/.+\\.yaml$"]
+  },
   regexManagers: [
     // regexManager to read and process HelmReleases and CRDs
     {
