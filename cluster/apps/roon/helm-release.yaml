@@ -47,6 +47,10 @@ spec:
         type: secret
         name: ssh-key
         defaultMode: 0400
+      gitconfig:
+        enabled: true
+        type: configmap
+        name: gitconfig
     resources:
       requests:
         cpu: 2
@@ -67,3 +71,6 @@ spec:
           name: music
         - mountPath: /root/.ssh/
           name: ssh
+        - mountPath: /root/.gitconfig
+          name: gitconfig
+          subpath: .gitconfig
