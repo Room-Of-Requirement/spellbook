@@ -5,6 +5,7 @@ repos:
   jmmaloney4: 'https://charts.jmmaloney4.xyz/'
   jupyterhub: 'https://jupyterhub.github.io/helm-chart/'
   k8s-at-home: 'https://k8s-at-home.com/charts/'
+  kubitodev: 'https://charts.kubito.dev'
   kured: 'https://weaveworks.github.io/kured'
   library-charts: 'https://k8s-at-home.com/library-charts/'
   metallb: 'https://metallb.github.io/metallb'

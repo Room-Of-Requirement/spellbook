@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: cloudflare-tunnel
-      version: 0.1.0
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
         name: jmmaloney4
@@ -17,8 +17,8 @@ spec:
       interval: 1m
   values:
     cloudflare:
-      tunnelName: roomofrequirement-0
-      tunnelID: 8864d8db-e985-4703-9bab-829011ce4c62
+      account: "${CLOUDFLARE_TUNNEL_ACCOUNT}"
+      tunnelID: "${CLOUDFLARE_TUNNEL_ID}"
       secret: "${CLOUDFLARE_TUNNEL_SECRET}"
     image:
       repository: docker.io/cloudflare/cloudflared
