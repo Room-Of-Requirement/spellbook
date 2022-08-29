@@ -6,7 +6,7 @@ resources:
 - crds
 - gen
 - system
-# - rancher
+- rancher
 - notifications.yaml
 
 # Phase 2
