@@ -22,6 +22,7 @@ repos:
 namespaces:
 - cattle-system
 - dashy
+- hass
 - lfs
 - media
 - monitoring
