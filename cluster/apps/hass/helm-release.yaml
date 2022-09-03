@@ -15,6 +15,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    hostNetwork: true
     controller:
       annotations:
         backup.velero.io/backup-volumes: hass-config
