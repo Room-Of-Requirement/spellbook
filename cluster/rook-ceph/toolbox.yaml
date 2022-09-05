@@ -4,6 +4,7 @@ metadata:
   name: rook-ceph-tools
   labels:
     app: rook-ceph-tools
+    kustomize.toolkit.fluxcd.io/substitute: disabled
 spec:
   replicas: 1
   selector:
