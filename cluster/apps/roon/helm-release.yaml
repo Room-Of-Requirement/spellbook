@@ -73,4 +73,4 @@ spec:
           name: ssh
         - mountPath: /root/.gitconfig
           name: gitconfig
-          subpath: .gitconfig
+          subPath: .gitconfig
