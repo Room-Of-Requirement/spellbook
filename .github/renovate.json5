@@ -74,7 +74,7 @@
     {
       matchDatasources: ["helm"],
       matchUpdateTypes: ["patch", "minor"],
-      automerge: false
+      automerge: true
     },
     {
       matchDatasources: ["docker"],
