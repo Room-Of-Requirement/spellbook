@@ -49,7 +49,7 @@ spec:
         defaultMode: 0400
       gitconfig:
         enabled: true
-        type: configmap
+        type: configMap
         name: gitconfig
     resources:
       requests:
