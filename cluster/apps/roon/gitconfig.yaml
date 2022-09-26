@@ -5,5 +5,5 @@ metadata:
 data:
   .gitconfig: |
     [user]
-        email = git@jmmaloney4.xyz
+        email = jack@maloney.ai
         name = Jack Maloney
