@@ -36,7 +36,7 @@ spec:
         service: hello_world
     image:
       repository: docker.io/cloudflare/cloudflared
-      tag: latest@sha256:ea4770671e4c88860772cc990fef2fdb4df873db4dedab53ac9faf2184253c8c
+      tag: latest@sha256:db58bb38c3cd1c206999c2133d1355d86a0be40510685b9d21d87b0c0a8662e3
     resources:
       limits:
         cpu: 500m
