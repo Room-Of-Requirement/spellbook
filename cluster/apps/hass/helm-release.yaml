@@ -21,7 +21,7 @@ spec:
         backup.velero.io/backup-volumes: hass-config
     image:
       repository: ghcr.io/home-assistant/home-assistant
-      tag: 2022.10.3@sha256:81d59cc2be1053740c07da80bab861350f8018a12896b8c849eb3433426d6879
+      tag: 2022.10.4@sha256:2a1eaff430eb8422307c1f868fed89d434ddcec8827eedd8e22748fae236306e
     env:
       TZ: America/Chicago
     persistence:
