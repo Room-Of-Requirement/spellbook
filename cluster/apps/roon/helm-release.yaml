@@ -20,7 +20,7 @@ spec:
         backup.velero.io/backup-volumes: roon-config,roon-backups
     image:
       repository: ghcr.io/jmmaloney4/roon
-      tag: 2.0.1128@sha256:f3b896f05b530511066fc63fc666e164828e175b57aaa6827dfded60a426d12b
+      tag: 2.0.1133@sha256:5f86799eca03fb970d8367bb3861a2fb33ac50b0c9852622fc53d2a31261eb5f
     env:
       TZ: America/Chicago
     persistence:
