@@ -65,7 +65,7 @@ spec:
         command:
         - sh
         - -c
-        - while true; do sleep 3600; done
+        - sleep infinity
         volumeMounts:
         - mountPath: /music
           name: music
