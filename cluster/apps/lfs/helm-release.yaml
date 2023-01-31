@@ -22,7 +22,7 @@ spec:
       LFS_HOST: lfs.roomofrequirement.xyz
     image:
       repository: ghcr.io/jmmaloney4/lfs-server
-      tag: main@sha256:82df113e1a1d2ca53d555e2408a33e85b356cf163b81f50664735347a7a82fdb
+      tag: main@sha256:18aa55710bb9c3b7a89c5db33ad8d7f29ce3f6dbd424265e346b6d4c8cb2d506
     controller:
       annotations:
         backup.velero.io/backup-volumes: lfs-basic-data
