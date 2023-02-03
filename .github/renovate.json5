@@ -90,7 +90,6 @@
       additionalBranchPrefix: ""
     },
     {
-      matchDatasources: ["docker", "helm"],
       matchPackagePatterns: ["docker.io/rook/ceph", "quay.io/rook/ceph", "rook-ceph", "rook-ceph-source"],
       groupName: "rook-ceph",
       additionalBranchPrefix: "",
