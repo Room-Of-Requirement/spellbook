@@ -53,7 +53,7 @@ spec:
         - name: WIREGUARD_PRIVATE_KEY
           value: "${MULLVAD_PRIVATE_KEY}"
         - name: WIREGUARD_ADDRESSES
-          value: ${}
+          value: ${MULLVAD_NYC80_IP}
         # - name:  WIREGUARD_PRIVATE_KEY
         #   value: set in secret
         # - name:  WIREGUARD_PRESHARED_KEY
