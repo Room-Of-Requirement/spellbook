@@ -55,6 +55,8 @@ spec:
           value: "${MULLVAD_ADDRESSES}"
         # - name:  SERVER_CITIES
         #   value: Chicago IL
+        - name: SERVER_HOSTNAMES
+          value: "us-chi-wg-101"
         
         # envFrom:
         #   - secretRef:
