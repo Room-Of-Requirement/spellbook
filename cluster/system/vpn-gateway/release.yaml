@@ -80,19 +80,19 @@ spec:
           failureThreshold: 3
 
         networkPolicy:
-          enabled: true
+          enabled: false
 
-          egress:
-            - to:
-              - ipBlock:
-                  cidr: 0.0.0.0/0
-              ports:
-              # VPN traffic
-              - port: &vpn_port 1637
-                protocol: UDP
-            - to:
-              - ipBlock:
-                  cidr: 10.0.0.0/8
+          # egress:
+          #   - to:
+          #     - ipBlock:
+          #         cidr: 0.0.0.0/0
+          #     ports:
+          #     # VPN traffic
+          #     - port: &vpn_port 1637
+          #       protocol: UDP
+          #   - to:
+          #     - ipBlock:
+          #         cidr: 10.0.0.0/8
 
     routed_namespaces:
     - vpn
