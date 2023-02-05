@@ -19,7 +19,6 @@ spec:
         namespace: flux-system
   #See https://github.com/angelnu/helm-charts/blob/main/charts/apps/pod-gatewa/values.yaml
   values:
-
     image:
       repository: ghcr.io/angelnu/pod-gateway
       # I am using dev version for testing - others should be using latest
@@ -54,14 +53,8 @@ spec:
           value: "${MULLVAD_PRIVATE_KEY}"
         - name: WIREGUARD_ADDRESSES
           value: "${MULLVAD_ADDRESSES}"
-        # - name:  WIREGUARD_PRIVATE_KEY
-        #   value: set in secret
-        # - name:  WIREGUARD_PRESHARED_KEY
-        #   value: set in secret
-        # - name:  WIREGUARD_ADDRESSES
-        #   value: set in secret
-        - name:  SERVER_CITIES
-          value: Chicago IL
+        # - name:  SERVER_CITIES
+        #   value: Chicago IL
         
         # envFrom:
         #   - secretRef:
