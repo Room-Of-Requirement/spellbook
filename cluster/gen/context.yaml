@@ -1,4 +1,5 @@
 repos:
+  angelnu: 'https://angelnu.github.io/helm-charts'
   bitnami: 'https://charts.bitnami.com/bitnami'
   infracloudio: 'https://infracloudio.github.io/charts'
   jetstack: 'https://charts.jetstack.io'
@@ -32,6 +33,8 @@ namespaces:
 - rook-ceph
 - roon
 - velero
+- vpn
+- vpn-gateway
 
 priorityClasses:
   # high-priority: 10

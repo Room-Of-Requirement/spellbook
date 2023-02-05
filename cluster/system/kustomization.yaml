@@ -13,3 +13,4 @@ resources:
 - reloader
 # - system-upgrade
 - cloudflare-tunnel
+- vpn-gateway
