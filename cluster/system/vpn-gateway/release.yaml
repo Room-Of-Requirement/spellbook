@@ -27,7 +27,7 @@ spec:
     webhook:
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
-        tag: latest@sha256:cd1702b96fb9c4d1d2ba5ef587fa229d11bf9a2cec9a0eca0bb8c3a9f7addf4f
+        tag: latest@sha256:985eb60fd0017f657d5e66707f7e9b3f764f3337a87a379d26cd15e950bd79ad
         # Use dev version
         pullPolicy: Always
     addons:
