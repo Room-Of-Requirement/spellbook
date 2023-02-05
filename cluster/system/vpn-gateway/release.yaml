@@ -40,7 +40,7 @@ spec:
 
         env:
         - name:  VPN_SERVICE_PROVIDER
-          value: mullvad
+          value: custom
         - name:  VPN_TYPE
           value: wireguard
         - name:  VPN_INTERFACE
@@ -52,11 +52,17 @@ spec:
         - name: WIREGUARD_PRIVATE_KEY
           value: "${MULLVAD_PRIVATE_KEY}"
         - name: WIREGUARD_ADDRESSES
-          value: "${MULLVAD_ADDRESSES}"
+          value: "10.67.253.88/32"
+        - name: WIREGUARD_PUBLIC_KEY
+          value: "${MULLVAD_PUBLIC_KEY}"
+        - name: VPN_ENDPOINT_IP
+          value: "66.63.167.114"
+        - name: VPN_ENDPOINT_PORT
+          value: "51820"
         # - name:  SERVER_CITIES
         #   value: Chicago IL
-        - name: SERVER_HOSTNAMES
-          value: "us-chi-wg-101"
+        # - name: SERVER_HOSTNAMES
+        #   value: "us-chi-wg-101"
         
         # envFrom:
         #   - secretRef:
