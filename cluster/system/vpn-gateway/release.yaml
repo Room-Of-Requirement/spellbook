@@ -61,6 +61,8 @@ spec:
           value: "51820"
         - name: BLOCK_MALICIOUS
           value: "off"
+        - name: DNS_ADDRESS
+          value: "1.1.1.1"
         # - name:  SERVER_CITIES
         #   value: Chicago IL
         # - name: SERVER_HOSTNAMES
