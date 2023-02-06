@@ -47,8 +47,8 @@ spec:
           value: wg0
         - name:  FIREWALL
           value: "off"
-        - name:  DOT
-          value: "off"
+        # - name:  DOT
+        #   value: "off"
         - name: WIREGUARD_PRIVATE_KEY
           value: "${MULLVAD_PRIVATE_KEY}"
         - name: WIREGUARD_ADDRESSES
