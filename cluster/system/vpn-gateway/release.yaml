@@ -59,6 +59,8 @@ spec:
           value: "66.63.167.114"
         - name: VPN_ENDPOINT_PORT
           value: "51820"
+        - name: BLOCK_MALICIOUS
+          value: "off"
         # - name:  SERVER_CITIES
         #   value: Chicago IL
         # - name: SERVER_HOSTNAMES
