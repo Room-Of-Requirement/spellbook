@@ -61,7 +61,7 @@ spec:
     additionalContainers:
       git:
         name: git
-        image: ghcr.io/jmmaloney4/git-annex:latest@sha256:bba92829e22e721322f7f4c13e758e5d15d01fb97f39e56d7b576e5b45319377
+        image: ghcr.io/jmmaloney4/git-annex:latest@sha256:7c8fe05e44f7bee0251c2fe05de2d7aaa0e2c95286fbccb1e6baba43d6a31f6f
         command:
         - /bin/bash
         - -c
@@ -69,8 +69,8 @@ spec:
         volumeMounts:
         - mountPath: /music
           name: music
-        - mountPath: /.ssh/
+        - mountPath: /root/.ssh/
           name: ssh
-        - mountPath: /.gitconfig
+        - mountPath: /root/.gitconfig
           name: gitconfig
           subPath: .gitconfig
