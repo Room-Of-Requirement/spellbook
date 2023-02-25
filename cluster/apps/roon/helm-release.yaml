@@ -69,8 +69,8 @@ spec:
         volumeMounts:
         - mountPath: /music
           name: music
-        - mountPath: /root/.ssh/
+        - mountPath: /.ssh/
           name: ssh
-        - mountPath: /root/.gitconfig
+        - mountPath: /.gitconfig
           name: gitconfig
           subPath: .gitconfig
