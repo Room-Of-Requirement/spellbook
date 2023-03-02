@@ -9,6 +9,13 @@
   prHourlyLimit: 0,
   assignees: ["jmmaloney4"],
   requiredStatusChecks: null,
+  nix: {
+    enabled: true,
+  },
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true
+  },
   kubernetes: {
     fileMatch: ["cluster/.+\\.yaml$"]
   },
