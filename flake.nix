@@ -9,9 +9,10 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            ansible
             kubectl
             kubernetes-helm
-            ansible
+            sops
           ];
         };
       });
