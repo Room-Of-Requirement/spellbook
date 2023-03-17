@@ -26,7 +26,7 @@ spec:
     persistence:
       music:
         enabled: true
-        size: 300Gi
+        size: 900Gi
         retain: true
         accessMode: ReadWriteMany
         storageClass: "cephfs"
