@@ -24,6 +24,7 @@ namespaces:
 - cattle-system
 - dashy
 - hass
+- ipfs
 - lfs
 - media
 - monitoring
