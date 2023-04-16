@@ -19,7 +19,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: docker.io/ipfs/kubo
-      tag: v0.19.1@sha256:a102467c6611fc372d8b6f9549081e24b892363842a83653ab1de810d39a1823
+      tag: v0.19.1@sha256:0d1b6fbf4b42ba7323d57ca8a756e3e030c34e288d316f233d14896dc835f8a7
     controller:
       annotations:
         # backup.velero.io/backup-volumes: lfs-basic-data
