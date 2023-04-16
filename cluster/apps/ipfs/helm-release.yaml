@@ -35,6 +35,11 @@ spec:
         enabled: true
         ports:
           http:
+            port: 8080
+      api:
+        enabled: true
+        ports:
+          http:
             port: 5001
     ingress:
       main:
