@@ -27,7 +27,7 @@ spec:
     persistence:
       wg0:
         enabled: true
-        path: config/wg0.conf
+        path: /config/wg0.conf
         type: secret
         name: wg0-conf
         subPath: wg0.conf
