@@ -28,5 +28,5 @@ spec:
       config:
         enabled: true
         type: secret
-        name: wg-conf  
+        name: wg0-conf  
         
