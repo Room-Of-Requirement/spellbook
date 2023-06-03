@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: wg-conf
-type: Opaque
 data:
     stringData:
         wg0.conf: ENC[AES256_GCM,data:mIVgaPx5EfSLwnmJ/mfA8qnHyszxdaPF4zGD0xGmKOCm9X2e4gSvojZ7kxY4H0s/Sl7IBTiBrCAbp0RwL9bjqlNSXCT/0mIq9bNW3rI5lOVVysJVs3YnpQldw4hC75Xy+kTM4JidjDraTR2lumQRxD/8/ujMZz5yYEQDV31fyoDJEzcIIaruCJ6EXZSRqNn8RzMIPKglVXpy5ZGIheIcMgU5eUZGZO0bMSXla2uS8UP3CG3sghYKsjXRwoaovN+EerAIGdXHAPtBbixADrdZe6IcSAtTuxRudQ1dNlPPzghza/osm56007uP2RJXXJ5V8eQpVsEUuXkwvixODxEERobFAJj9z16YiwNZi+z5SflpD4ZlgwJPG8Q+CE6XIWzzj7bFQghEET3n7D/cpMTAPwaadQAFdKp0HUSc2Xl2eaVjx65qR/lobFieUZyghjvmoiH50Ki3Q+UWq7oCSkG6iSNA+A1otSpdKp2MWg2idKn/UArYM/DOKoU9urqtCpUOq6aH+/LjzzfHPxLRUUqJOz5RY4v6Y6CZOctnXaBnY2JNJFfUQ2JF03/cxZYEnO6CWlE5zMyMsCKKfOOROQn7dUNGzjmamF+2XpIgzpH8/+jf/SvdjkCd6nllwVkZAFQmi8pCsQPGDwoR3rkb7M5vBYN1LDorbvbP1DYQFe2dK9eQANvFlnaO2LnCgLiVOkZ+EZmD/kRWyKrKiCHVAzbqV22kN/HepespvthqW3AEl1mQ43C3wzEx0yiJB9p5fuXEXS3VVvILUIhAwqxuoqfCmWEQl9B09sy+VZp17N3m4pfB5UbC+OKmT8WVVXgnkVD9KFTUQ+akazHDq49Kdu9smR78lv1Ltc+9AZpR3sx6kxCE7aSBXG8ULxnnlBnxtORMogNkICW71JJTFenaUQ1xA+jmJF8A5noxNkkKmF/vQ1nfBuLUAEQ3qBsp1rUl,iv:bK2jGSmwd7Mp9jbXl1Z6PpKdI2DHtVgfqw/2SWoWzwY=,tag:M9d7OdGC9IX+Dk04dqffqQ==,type:str]
@@ -13,8 +12,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-06-03T16:23:23Z"
-    mac: ENC[AES256_GCM,data:UeU4eF2BTZzdLaQjIviH5JzGcXzyfCoEi0BM7dL+8V8IVde3pjKNcINrF3ts77Tt+f5qeNF2i5Hp/ZpPx0kVmoXWJBNNgCmyYuV7o0IdrzNjh13l50nclia/T+MxFILbyZQucJAzrcxWzvUko8x7zgTlnohhldsaVslIYoDUurI=,iv:erRpRQW8L0q8nzaFP9IowypJwldyKc/TYY7+PYRVirI=,tag:CvgeGNxqqzPpC0+jpNkIAQ==,type:str]
+    lastmodified: "2023-06-03T16:28:43Z"
+    mac: ENC[AES256_GCM,data:IDwuPRAmHj20Gtlk4zJQ8oMH5gSGzD/8SoW19xGZktAfObK8mI5+atT0AHRwLFopCr6U+vDmqZI5J9TC0XnjzIGzfimgM/xFsA2q3penaye9hNl68DKHqJ7eiGYEdv007HAPvz2491NuzK7wL8dpv9KJ4Do4BtBV6gsfu9kKmek=,iv:PfJUPxR3ApvjTqhXfWN9cCIn+KFVzR54BFYqN6ZBCMg=,tag:3bLE/20RON7mM/TWbiEcjw==,type:str]
     pgp:
         - created_at: "2023-06-03T15:32:53Z"
           enc: |
