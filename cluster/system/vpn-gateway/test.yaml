@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    podSecurityContext:
+    securityContext:
       capabilities:
         add:
         - "NET_ADMIN"
