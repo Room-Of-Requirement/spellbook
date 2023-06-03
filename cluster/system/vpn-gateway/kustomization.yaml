@@ -4,3 +4,4 @@ namespace: vpn-gateway
 resources:
 # - release.yaml
 - test.yaml
+- wg-conf.yaml
