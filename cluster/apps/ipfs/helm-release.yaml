@@ -35,12 +35,15 @@ spec:
         enabled: true
         ports:
           http:
+            primary: true
             port: 80
             targetPort: 8080
       api:
         enabled: true
+        primary: true
         ports:
           api:
+            primary: true
             port: 5001
             targetPort: 5001
     ingress:
