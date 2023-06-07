@@ -32,8 +32,11 @@ spec:
         service: http://rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local:8080
       - hostname: hass.roomofrequirement.xyz
         service: http://hass-home-assistant.hass.svc.cluster.local:8123
+      # - hostname: ipfs.roomofrequirement.xyz
+      #   service: http://ipfs-basic.ipfs.svc.cluster.local:8080
       - hostname: hello.roomofrequirement.xyz
         service: hello_world
+      - service: http_status:404
     image:
       repository: docker.io/cloudflare/cloudflared
       tag: latest@sha256:13fd1a1e0aee302f34ff3b1ad95b91329d9857b3bb3e44dcefa4bc4c25ce6179
