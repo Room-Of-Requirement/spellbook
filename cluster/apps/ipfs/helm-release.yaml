@@ -48,7 +48,7 @@ spec:
             targetPort: 5001
     ingress:
       main:
-        enabled: false
+        # enabled: true
         # hosts:
         # - host: ipfs.roomofrequirement.xyz
         #   paths:
