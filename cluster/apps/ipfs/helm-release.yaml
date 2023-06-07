@@ -48,16 +48,16 @@ spec:
             targetPort: 5001
     ingress:
       main:
-        # enabled: true
-        # hosts:
-        # - host: ipfs.roomofrequirement.xyz
-        #   paths:
-        #   - path: "/"
-        # annotations:
-        #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
-        #   cert-manager.io/cluster-issuer: "letsencrypt-staging"
-        #   nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.10.0.1,192.168.1.0/24"
-        # tls:
-        # - secretName: lfs-cert
-        #   hosts:
-        #   - ipfs.roomofrequirement.xyz
+        enabled: true
+        hosts:
+        - host: ipfs.roomofrequirement.xyz
+          paths:
+          - path: "/"
+        annotations:
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          # nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.10.0.1,192.168.1.0/24"
+        tls:
+        - secretName: lfs-cert
+          hosts:
+          - ipfs.roomofrequirement.xyz
