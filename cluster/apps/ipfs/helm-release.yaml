@@ -36,16 +36,20 @@ spec:
         ports:
           http:
             primary: true
-            port: 80
+            port: 8080
             targetPort: 8080
-      api:
-        enabled: true
-        primary: true
-        ports:
           api:
-            primary: true
             port: 5001
             targetPort: 5001
+          
+      # api:
+      #   enabled: true
+      #   primary: true
+      #   ports:
+      #     api:
+      #       primary: true
+      #       port: 5001
+      #       targetPort: 5001
     ingress:
       main:
         enabled: true
@@ -53,6 +57,9 @@ spec:
         - host: ipfs.roomofrequirement.xyz
           paths:
           - path: "/"
+            service:
+              name: ipfs-basic-api
+              port: 
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
           cert-manager.io/cluster-issuer: "letsencrypt-staging"
