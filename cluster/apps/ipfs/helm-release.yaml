@@ -40,7 +40,7 @@ spec:
       api:
         enabled: true
         ports:
-          api:
+          http:
             port: 5001
             targetPort: 5001
     ingress:
