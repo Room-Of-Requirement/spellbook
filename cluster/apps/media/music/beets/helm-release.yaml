@@ -85,7 +85,7 @@ spec:
           name: downloads
       git:
         name: git
-        image: ghcr.io/jmmaloney4/lfs:main@sha256:aa6252f8a1b08e2b78a820d20af6f416b863ecf1f6b56e97040c1d18f5a16a0d
+        image: ghcr.io/jmmaloney4/lfs:main@sha256:0ead10277bfa169b18bc52a9074906103d3fcba6cffdae65ca0e8e28886d05e2
         command:
         - sh
         - -c
