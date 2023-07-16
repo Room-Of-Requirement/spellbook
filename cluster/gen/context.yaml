@@ -24,6 +24,7 @@ namespaces:
 - cattle-system
 - dashy
 - hass
+- hummingbot
 - ipfs
 - lfs
 - media

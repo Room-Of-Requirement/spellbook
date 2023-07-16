@@ -13,3 +13,4 @@ resources:
 - rook-ceph
 - velero
 - apps
+- hummingbot
