@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: cattle-system
 resources:
 - helm-release.yaml
+- rancher-exec-ingress.yaml
