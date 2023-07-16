@@ -18,7 +18,7 @@ spec:
       TZ: "America/Chicago"
     image:
       repository: docker.io/hummingbot/hummingbot
-      tag: version-1.17.0@sha256:24bcb1ebee7fcc6b0f90569e11f3afd4d316594ff008958c70dec9bf95108471
+      tag: version-1.17.0@sha256:8af9187b92897e8d08f6d3c9768dad03efc47bb0ed9e7d3fb9ce65cacf949c58
     controller:
       annotations:
         # backup.velero.io/backup-volumes: lfs-basic-data
