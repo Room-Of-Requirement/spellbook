@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: hummingbot
 resources:
 - jmm4
-- ccm
+# - ccm
