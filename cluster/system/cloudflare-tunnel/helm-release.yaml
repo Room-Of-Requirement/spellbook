@@ -27,7 +27,7 @@ spec:
       secret: "${CLOUDFLARE_TUNNEL_SECRET}"
       ingress:
       - hostname: roomofrequirement.xyz
-        service: wss://rancher.cattle-system.svc.cluster.local:80
+        service: ws://rancher.cattle-system.svc.cluster.local:80
       - hostname: ceph.roomofrequirement.xyz
         service: http://rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local:8080
       - hostname: hass.roomofrequirement.xyz
