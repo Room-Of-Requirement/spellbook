@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: kube-vip
-        image: ghcr.io/kube-vip/kube-vip:v0.6.2@sha256:d54f230f5e9cba46623eeb2e115c20e200221971e59fd6895601c93dce1fcded
+        image: ghcr.io/kube-vip/kube-vip:v0.6.3@sha256:f3bb1fa45e9d0df590839dabdce7389bc9478cf0883d6b6ce3aa914ce4eaab4b
         imagePullPolicy: Always
         args:
         - manager
