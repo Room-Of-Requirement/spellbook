@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: gcr.io/k8s-staging-nfd/node-feature-discovery
-      tag: v0.14.2@sha256:2a56d172c48b76531eb719780224ef278daa68b9088f592f16df2519bed08de4
+      tag: v0.14.3@sha256:91c10576980b4966952a3ed9500a13adec608c05d65b9ac06a6cc05da7960ec6
     master:
       extraLabelNs:
       - nvidia.com
