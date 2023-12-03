@@ -22,7 +22,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: docker.io/sagemath/sagemath
-      tag: 9.8@sha256:1dca662086a58ea620c54af578ee1d2ee5d0dbad01efed442a58ebf99c09fea9 
+      tag: 10.2@sha256:a7c4f3d0536aa1e93c106ac31ea2ae035299f9afcfdcb4a549c396374fb926a9 
     service:
       main:
         enabled: false
