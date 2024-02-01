@@ -61,7 +61,7 @@ spec:
     additionalContainers:
       git:
         name: git
-        image: ghcr.io/jmmaloney4/git-annex:latest@sha256:4c4c144a11f06bdac049cdd7a65353d5e324ca1e7e3f56e048b6e43d9b21b7f9
+        image: ghcr.io/jmmaloney4/git-annex:latest@sha256:882eb47d360a3fab29dc637e00457c311e4630c52af3c4f0b626d71838fc4fe0
         command:
         - /bin/bash
         - -c
