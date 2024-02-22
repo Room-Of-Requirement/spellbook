@@ -14,7 +14,7 @@ metadata:
   name: rook-ceph
 spec:
   cephVersion:
-    image: quay.io/ceph/ceph:v17.2.7@sha256:12d4db89b240dd43df55bfb54af814d05d541a7ee0f1b026cb7fe420ad4719b2
+    image: quay.io/ceph/ceph:v17.2.7@sha256:d759526e53a54ae72901bf5d4fa07e7f3ba3c4c8378087531e963a7b0cb555c1
     allowUnsupported: false
   dataDirHostPath: /var/lib/rook
   # To understand Rook's upgrade process of Ceph, read https://rook.io/docs/rook/master/ceph-upgrade.html#ceph-version-upgrades
