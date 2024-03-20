@@ -1,0 +1,31 @@
+{{- range $name, $url := .context.repos }}
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: {{ $name }}
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: {{ $url }}
+{{- end }}
+
+---
+
+{{- range $name := .context.namespaces }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $name }}
+{{- end }}
+
+{{- range $name, $value := .context.priorityClasses }}
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: {{ $name }}
+value: {{ $value }}
+globalDefault: false
+{{- end }}
