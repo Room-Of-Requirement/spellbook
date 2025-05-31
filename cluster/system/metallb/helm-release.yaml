@@ -1,0 +1,49 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://metallb.github.io/metallb
+      chart: metallb
+      version: 0.14.9
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+        namespace: flux-system
+      interval: 1m
+  values:
+    controller:
+      image:
+        repository: quay.io/metallb/controller
+        tag: v0.14.9@sha256:86261567e5ff03978893bf03ea865275283ad1e3f0f20dd342ed501b651fdf78
+      resources:
+        requests:
+          cpu: 100m
+          memory: 50Mi
+        limits:
+          cpu: 250m
+          memory: 100Mi
+    speaker:
+      image:
+        repository: quay.io/metallb/speaker
+        tag: v0.14.9@sha256:b09a1dfcf330938950b65115cd58f6989108c0c21d3c096040e7fe9a25a92993
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+      resources:
+        requests:
+          cpu: 100m
+          memory: 50Mi
+        limits:
+          cpu: 250m
+          memory: 100Mi
+    configInline:
+      address-pools:
+      - name: local
+        protocol: layer2
+        addresses:
+        - "${METALLB_RANGE}"

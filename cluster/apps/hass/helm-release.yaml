@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: hass
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: home-assistant
+      version: 13.4.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    hostNetwork: true
+    controller:
+      annotations:
+        backup.velero.io/backup-volumes: hass-config
+    image:
+      repository: ghcr.io/home-assistant/home-assistant
+      tag: 2023.12.4@sha256:8d000332b09b71fd946f596b1f721b0af969263b6f27ebc1d212fdbd13bb1bd8
+    env:
+      TZ: America/Chicago
+    persistence:
+      config:
+        enabled: true
+        size: 5Gi
+        retain: true
+        accessMode: ReadWriteOnce
+        storageClass: "ceph-rbd-ssd"
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "500Mi"
+      limits:
+        cpu: "200m"
+        memory: "1Gi"
