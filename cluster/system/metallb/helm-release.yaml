@@ -18,7 +18,7 @@ spec:
     controller:
       image:
         repository: quay.io/metallb/controller
-        tag: v0.15.0@sha256:190fed34e27608e80f0336f84ba419771017592085eb9a26a717ad3541414f88
+        tag: v0.15.1@sha256:07f904229100d6e6f96b62c9fa81c20b16c51db61bd3a7f3907ade5972093a44
       resources:
         requests:
           cpu: 100m
@@ -29,7 +29,7 @@ spec:
     speaker:
       image:
         repository: quay.io/metallb/speaker
-        tag: v0.15.0@sha256:f033befd5aa69ce2449b437cdf0b3d756d55d4f333c1b16e836399f03f3b2767
+        tag: v0.15.1@sha256:54db071abc6bb9e52bec2ac3906024e410139de84e1e1a48a6eb527071366030
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"
