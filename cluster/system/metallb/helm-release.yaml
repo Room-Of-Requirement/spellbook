@@ -29,7 +29,7 @@ spec:
     speaker:
       image:
         repository: quay.io/metallb/speaker
-        tag: v0.15.1@sha256:54db071abc6bb9e52bec2ac3906024e410139de84e1e1a48a6eb527071366030
+        tag: v0.15.1@sha256:1c9985b1b8eaeb2efa162c48af41df4c1d8cfaea67915e963a33d01c4813da88
       tolerations:
       - key: "RaspberryPi"
         operator: "Exists"
