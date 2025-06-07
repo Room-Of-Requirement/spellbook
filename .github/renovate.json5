@@ -1,0 +1,122 @@
+{
+  enabled: true,
+  timezone: "America/Chicago",
+  extends: ["config:base"],
+  rebaseWhen: "conflicted",
+  dependencyDashboard: false,
+  dependencyDashboardTitle: "Renovate Dashboard",
+  prConcurrentLimit: 0,
+  prHourlyLimit: 0,
+  assignees: ["jmmaloney4"],
+  requiredStatusChecks: null,
+  nix: {
+    enabled: true,
+  },
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true
+  },
+  kubernetes: {
+    fileMatch: ["cluster/.+\\.yaml$"]
+  },
+  "helm-values": {
+    fileMatch: ["cluster/.+\\.yaml$"]
+  },
+  "flux": {
+    "fileMatch": ["cluster/.+\\.yaml$"]
+  },
+  regexManagers: [
+    // regexManager to read and process HelmReleases and CRDs
+    {
+      fileMatch: [
+        "cluster/.+\\.yaml$"
+      ],
+      matchStrings: [
+        // helm releases
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
+        // cert-manager crd
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
+      ],
+      datasourceTemplate: "helm"
+    },
+    {
+      fileMatch: [
+        "cluster/crds/.+\\.yaml$"
+      ],
+      matchStrings: [
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
+      ],
+      datasourceTemplate: "helm"
+    }
+  ],
+  packageRules: [
+    {
+      matchDatasources: ["helm"]
+    },
+    {
+      matchDatasources: ["docker"],
+      enabled: true,
+      commitMessageTopic: "container image {{depName}}",
+      commitMessageExtra: "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      matchUpdateTypes: ["major", "minor", "patch", "digest"],
+    },
+    {
+      matchUpdateTypes: ["major"],
+      labels: ["dep/major"],
+    },
+    {
+      matchUpdateTypes: ["minor"],
+      labels: ["dep/minor"],
+    },
+    {
+      matchDatasources: ["docker"],
+      matchUpdateTypes: ["digest", "patch", "minor"],
+      automerge: true
+    },
+    {
+      matchPackageNames: ["fluxcd/flux2"],
+      matchUpdateTypes: ["patch", "minor"],
+      automerge: true
+    },
+    {
+      matchDatasources: ["helm"],
+      matchUpdateTypes: ["patch", "minor"],
+      automerge: true
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["^ghcr.io/fluxcd/"],
+      groupName: "fluxcd-suite",
+      additionalBranchPrefix: "",
+      enabled: false
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["^quay.io/metallb/"],
+      groupName: "metallb-suite",
+      additionalBranchPrefix: ""
+    },
+    {
+      matchPackagePatterns: ["docker.io/rook/ceph", "quay.io/rook/ceph", "rook-ceph", "rook-ceph-source"],
+      groupName: "rook-ceph",
+      additionalBranchPrefix: "",
+      automerge: false
+    },
+    {
+      matchDatasources: ["helm"],
+      matchPackagePatterns: ["oauth2-proxy"],
+      automerge: false
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackagePatterns: ["^k8s.gcr.io/sig-storage/csi-"],
+      groupName: "csi",
+      additionalBranchPrefix: ""
+    },
+    {
+      matchPackageNames: ["renovatebot/github-action"],
+      matchDatasources: ["github-tags", "github-releases"],
+      automerge: true
+    }
+  ]
+}

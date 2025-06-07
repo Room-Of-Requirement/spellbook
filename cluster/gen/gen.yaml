@@ -1,0 +1,263 @@
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: angelnu
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://angelnu.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: bitnami
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://charts.bitnami.com/bitnami
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: infracloudio
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://infracloudio.github.io/charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jetstack
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://charts.jetstack.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jmmaloney4
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://charts.jmmaloney4.xyz/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jupyterhub
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://jupyterhub.github.io/helm-chart/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: k8s-at-home
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://k8s-at-home.com/charts/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kubitodev
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://charts.kubito.dev
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kured
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://weaveworks.github.io/kured
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: library-charts
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://k8s-at-home.com/library-charts/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: metallb
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://metallb.github.io/metallb
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: minio
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://helm.min.io/
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: node-feature-discovery
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: rancher
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://releases.rancher.com/server-charts/stable
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: rook-ceph
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://charts.rook.io/release
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: stakater
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://stakater.github.io/stakater-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: traefik
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://helm.traefik.io/traefik
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: uptimerobot-operator
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://brennerm.github.io/uptimerobot-operator/helm
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: vmware-tanzu
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://vmware-tanzu.github.io/helm-charts
+
+---
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cattle-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dashy
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hass
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hummingbot
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ipfs
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lfs
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: media
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: network
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: node-feature-discovery
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nvidia
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rook-ceph
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: roon
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: velero
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vpn
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vpn-gateway

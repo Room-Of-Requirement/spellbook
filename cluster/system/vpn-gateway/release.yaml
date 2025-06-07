@@ -1,0 +1,123 @@
+
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vpn-gateway
+  labels:
+    # Avoid variable substitution of shell variables bellow
+    # kustomize.toolkit.fluxcd.io/substitute: disabled
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: pod-gateway
+      version: 6.0.0
+      interval: 1m
+      sourceRef:
+        kind: HelmRepository
+        name: angelnu
+        namespace: flux-system
+  #See https://github.com/angelnu/helm-charts/blob/main/charts/apps/pod-gatewa/values.yaml
+  values:
+    image:
+      repository: ghcr.io/angelnu/pod-gateway
+      # I am using dev version for testing - others should be using latest
+      tag: v1.13.0@sha256:a5b032e15f7570493977b330a5a86dcffebb807d35685ad803e47afb62d105f2
+    webhook:
+      image:
+        repository: ghcr.io/angelnu/gateway-admision-controller
+        tag: v3.12.0@sha256:6f6ab596afd5fef0ca4648eadfb21cd37ba86fa5afa8b85edcc072976a61fbed
+        # Use dev version
+        pullPolicy: Always
+    addons:
+      vpn:
+        enabled: true
+        type: gluetun
+        gluetun:
+          image:
+            repository: docker.io/qmcgaw/gluetun
+            tag: v3.40.0@sha256:2b42bfa046757145a5155acece417b65b4443c8033fb88661a8e9dcf7fda5a00
+
+        env:
+        - name:  VPN_SERVICE_PROVIDER
+          value: custom
+        - name:  VPN_TYPE
+          value: wireguard
+        - name:  VPN_INTERFACE
+          value: wg0
+        - name:  FIREWALL
+          value: "off"
+        - name:  DOT
+          value: "off"
+        - name: WIREGUARD_PRIVATE_KEY
+          value: "${MULLVAD_PRIVATE_KEY}"
+        - name: WIREGUARD_ADDRESSES
+          value: "10.67.253.88/32"
+        - name: WIREGUARD_PUBLIC_KEY
+          value: "${MULLVAD_PUBLIC_KEY}"
+        - name: VPN_ENDPOINT_IP
+          value: "66.63.167.114"
+        - name: VPN_ENDPOINT_PORT
+          value: "51820"
+        - name: BLOCK_MALICIOUS
+          value: "off"
+        - name: DNS_ADDRESS
+          value: "1.1.1.1"
+        # - name:  SERVER_CITIES
+        #   value: Chicago IL
+        # - name: SERVER_HOSTNAMES
+        #   value: "us-chi-wg-101"
+        
+        # envFrom:
+        #   - secretRef:
+        #       name: airvpn
+
+
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - if [ $(wget -q -O- https://ipinfo.io/city) == 'Chicago' ]; then exit 0; else exit $?; fi
+          initialDelaySeconds: 30
+          periodSeconds: 60
+          failureThreshold: 3
+
+        networkPolicy:
+          enabled: false
+
+          # egress:
+          #   - to:
+          #     - ipBlock:
+          #         cidr: 0.0.0.0/0
+          #     ports:
+          #     # VPN traffic
+          #     - port: &vpn_port 1637
+          #       protocol: UDP
+          #   - to:
+          #     - ipBlock:
+          #         cidr: 10.0.0.0/8
+
+    routed_namespaces:
+    - vpn
+    
+    settings:
+      # -- If using a VPN, interface name created by it
+      VPN_INTERFACE: wg0
+      # -- Prevent non VPN traffic to leave the gateway
+      VPN_BLOCK_OTHER_TRAFFIC: true
+      # -- If VPN_BLOCK_OTHER_TRAFFIC is true, allow VPN traffic over this port
+      # VPN_TRAFFIC_PORT: *vpn_port
+      # -- Traffic to these IPs will be send through the K8S gateway
+      VPN_LOCAL_CIDRS: "10.0.0.0/8 192.168.0.0/16"
+    
+    # -- settings to expose ports, usually through a VPN provider.
+    # NOTE: if you change it you will need to manually restart the gateway POD
+    publicPorts:
+    - hostname: qbittorrent
+      IP: 10
+      ports:
+      - type: udp
+        port: 18289
+      - type: tcp
+        port: 18289

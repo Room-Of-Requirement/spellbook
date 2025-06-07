@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitconfig
+data:
+  .gitconfig: |
+    [user]
+        email = jack@maloney.ai
+        name = Jack Maloney
