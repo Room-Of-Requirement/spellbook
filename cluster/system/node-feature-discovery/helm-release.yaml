@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: node-feature-discovery
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: node-feature-discovery
+      version: 0.10.1
+      sourceRef:
+        kind: HelmRepository
+        name: node-feature-discovery
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: gcr.io/k8s-staging-nfd/node-feature-discovery
+      tag: v0.17.3@sha256:5ad4e3ac1afcbeb9d096241b0352614e5e77ee1bfe0f37c45a8d7b4329599d11
+    master:
+      extraLabelNs:
+      - nvidia.com
+      resources:
+        requests:
+          cpu: 75m
+          memory: 100Mi
+        limits:
+          cpu: 150m
+          memory: 200Mi
+    worker:
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+      resources:
+        requests:
+          cpu: 25m
+          memory: 50Mi
+        limits:
+          cpu: 150m
+          memory: 200Mi

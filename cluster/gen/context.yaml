@@ -1,0 +1,42 @@
+repos:
+  angelnu: 'https://angelnu.github.io/helm-charts'
+  bitnami: 'https://charts.bitnami.com/bitnami'
+  infracloudio: 'https://infracloudio.github.io/charts'
+  jetstack: 'https://charts.jetstack.io'
+  jmmaloney4: 'https://charts.jmmaloney4.xyz/'
+  jupyterhub: 'https://jupyterhub.github.io/helm-chart/'
+  k8s-at-home: 'https://k8s-at-home.com/charts/'
+  kubitodev: 'https://charts.kubito.dev'
+  kured: 'https://weaveworks.github.io/kured'
+  library-charts: 'https://k8s-at-home.com/library-charts/'
+  metallb: 'https://metallb.github.io/metallb'
+  minio: 'https://helm.min.io/'
+  node-feature-discovery: 'https://kubernetes-sigs.github.io/node-feature-discovery/charts'
+  prometheus-community: 'https://prometheus-community.github.io/helm-charts'
+  rancher: 'https://releases.rancher.com/server-charts/stable'
+  rook-ceph: 'https://charts.rook.io/release'
+  stakater: 'https://stakater.github.io/stakater-charts'
+  traefik: 'https://helm.traefik.io/traefik'
+  uptimerobot-operator: 'https://brennerm.github.io/uptimerobot-operator/helm'
+  vmware-tanzu: 'https://vmware-tanzu.github.io/helm-charts'
+
+namespaces:
+- cattle-system
+- dashy
+- hass
+- hummingbot
+- ipfs
+- lfs
+- media
+- monitoring
+- network
+- node-feature-discovery
+- nvidia
+- rook-ceph
+- roon
+- velero
+- vpn
+- vpn-gateway
+
+priorityClasses:
+  # high-priority: 10

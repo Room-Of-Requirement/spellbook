@@ -1,0 +1,71 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jackett
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: jackett
+      version: 11.7.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: ghcr.io/linuxserver/jackett
+      tag: 0.22.2016@sha256:728bc4c6a835d9365d6aa5dc253816d1f37b4fcac12c4c214d62d6e26a3afdfc
+    env:
+      TZ: America/Chicago
+    persistence:
+      config:
+        enabled: true
+        size: 500Mi
+        accessMode: ReadWriteOnce
+        storageClass: ceph-rbd-ssd
+        retain: true
+      torrentblackhole:
+        enabled: false
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jacket-icon.png"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/jackett"
+    # service:
+    #   main:
+    #     ports:
+    #       http:
+    #         port: 80
+    #         targetPort: 9117
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1Gi"
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"

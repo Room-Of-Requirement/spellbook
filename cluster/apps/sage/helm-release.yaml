@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sage
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: basic
+      version: 0.3.5
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    command: ['/bin/bash', '-c']
+    args: ['sleep infinity']
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: docker.io/sagemath/sagemath
+      tag: 9.8@sha256:1dca662086a58ea620c54af578ee1d2ee5d0dbad01efed442a58ebf99c09fea9 
+    service:
+      main:
+        enabled: false
+    persistence:
+      data:
+        enabled: true
+        size: 150Gi
+        retain: true
+        accessMode: ReadWriteMany
+        storageClass: "cephfs"

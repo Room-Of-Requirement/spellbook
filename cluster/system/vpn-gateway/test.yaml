@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: test
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: basic
+      version: 0.3.5
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    securityContext:
+      capabilities:
+        add:
+        - "NET_ADMIN"
+    image:
+      repository: lscr.io/linuxserver/wireguard
+      tag: latest
+    ingress:
+      main:
+        enabled: false
+    service:
+      main:
+        enabled: false
+    persistence:
+      wg0:
+        enabled: true
+        mountPath: /config/wg0.conf
+        type: secret
+        name: wg0-conf
+        subPath: wg0.conf
+        

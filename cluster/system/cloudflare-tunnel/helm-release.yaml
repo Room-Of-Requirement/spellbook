@@ -1,0 +1,48 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel
+  namespace: system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: cloudflare-tunnel
+      version: 0.1.3
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+    originCertSecret: cloudflare-tunnel-origin-cert
+    cloudflare:
+      account: "${CLOUDFLARE_TUNNEL_ACCOUNT}"
+      tunnelName: roomofrequirement
+      tunnelId: "${CLOUDFLARE_TUNNEL_ID}"
+      secret: "${CLOUDFLARE_TUNNEL_SECRET}"
+      ingress:
+      - hostname: roomofrequirement.xyz
+        service: ws://rancher.cattle-system.svc.cluster.local:80
+      - hostname: ceph.roomofrequirement.xyz
+        service: http://rook-ceph-mgr-dashboard.rook-ceph.svc.cluster.local:8080
+      - hostname: hass.roomofrequirement.xyz
+        service: http://hass-home-assistant.hass.svc.cluster.local:8123
+      # - hostname: ipfs.roomofrequirement.xyz
+      #   service: http://ipfs-basic.ipfs.svc.cluster.local:8080
+      - hostname: hello.roomofrequirement.xyz
+        service: hello_world
+    image:
+      repository: docker.io/cloudflare/cloudflared
+      tag: latest@sha256:783e0e52ddad1e91f0dba5f305fc7a8dc94afab8b4c8c309bcd17c5a45654dfb
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi

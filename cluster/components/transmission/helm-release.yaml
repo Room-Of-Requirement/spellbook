@@ -1,0 +1,155 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: transmission
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: transmission
+      version: 8.4.3
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/transmission
+      tag: v3.00@sha256:6011182e394695da6bd35fa1a16176ed1257ca6caff568645dae3a26b4f6a7ad
+    # To view more enviornment variables see here:
+    # https://github.com/k8s-at-home/container-images/tree/main/apps/transmission/settings.json.tmpl
+    env:
+      TZ: America/Chicago
+      TRANSMISSION_INCOMPLETE_DIR_ENABLED: true
+      TRANSMISSION_RPC_USERNAME: transmission
+      TRANSMISSION_RPC_PASSWORD: ${TRANSMISSION_RPC_PASSWORD}
+      TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: "false"
+      # TRANSMISSION_PEER_PORT: ${MULLVAD_PEER_PORT}
+      TRANSMISSION_PEX_ENABLED: false
+      TRANSMISSION_DHT_ENABLED: false
+      TRANSMISSION_LPD_ENABLED: false
+      TRANSMISSION_UTP_ENABLED: false
+      TRANSMISSION_SPEED_LIMIT_DOWN_ENABLED: true
+      TRANSMISSION_SPEED_LIMIT_DOWN: 500
+      TRANSMISSION_SPEED_LIMIT_UP_ENABLED: true
+      TRANSMISSION_SPEED_LIMIT_UP: 20
+    persistence:
+      config:
+        enabled: false
+        type: pvc
+        size: 5Gi
+        accessMode: ReadWriteOnce
+        storageClass: ceph-rbd-ssd
+        retain: true
+    ingress:
+      main:
+        enabled: false
+    service:
+      main:
+        enabled: true
+        primary: true
+        ports:
+          http:
+            primary: true
+            port: 80
+            targetPort: 9091
+    addons:
+      vpn:
+        enabled: true
+        # This Should be set to `wireguard`. This will set the add-on to use the default settings for Wireguard based connections.
+        type: wireguard
+        wireguard:
+          image:
+            repository: ghcr.io/k8s-at-home/wireguard
+            tag: v1.0.20210914@sha256:4dd54954cbd06d92d8c8fc6b10871eb07a0c1869edfe7a15029f1a7d3178d432
+        # If the podSecurityContext is set to run as a different user, make sure to run the Wireguard container as UID/GID 568.
+        # This is required for it to be able to read certain configuration files.
+        securityContext:
+          runAsUser: 568
+          runAsGroup: 568
+        env:
+          # Enable a killswitch that kills all trafic when the VPN is not connected
+          KILLSWITCH: "true"
+          TZ: America/Chicago
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "800Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1200Mi"
+
+---
+
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flood
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: flood
+      version: 6.4.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    image:
+      repository: docker.io/jesec/flood
+      tag: 4.9.5@sha256:1a603b5e867aa0018bb1a86882d537469f1ca0cee2860fb3f442cae4445888f6
+    env:
+      TZ: America/Chicago
+      FLOOD_OPTION_RUNDIR: /data
+      FLOOD_OPTION_BASEURI: /flood/unknown
+      FLOOD_OPTION_AUTH: none
+      FLOOD_OPTION_TRURL: http://unknown-transmission.media.svc.cluster.local/transmission/rpc
+      FLOOD_OPTION_TRUSER: transmission
+      FLOOD_OPTION_TRPASS: ${TRANSMISSION_RPC_PASSWORD}
+    persistence:
+      data:
+        enabled: true
+        type: emptyDir
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission-logo.png"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+          nginx.ingress.kubernetes.io/auth-response-headers: Authorization
+          nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            auth_request_set $name_upstream_1 $upstream_cookie_name_1;
+
+            access_by_lua_block {
+              if ngx.var.name_upstream_1 ~= "" then
+                ngx.header["Set-Cookie"] = "name_1=" .. ngx.var.name_upstream_1 .. ngx.var.auth_cookie:match("(; .*)")
+              end
+            }
+        hosts:
+        - host: secure.roomofrequirement.xyz
+          paths:
+          - path: "/flood/unknown"
+    service:
+      main:
+        port:
+          port: 80
+          targetPort: 3000
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "200m"
+        memory: "400Mi"
+    tolerations:
+    - key: "RaspberryPi"
+      operator: "Exists"
+      effect: "NoSchedule"

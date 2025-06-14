@@ -1,0 +1,80 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: jellyfin
+      version: 9.5.3
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 1m
+  values:
+    env:
+      TZ: America/Chicago
+    image:
+      repository: ghcr.io/linuxserver/jellyfin
+      tag: 10.10.7@sha256:58cf629c955968b94157e6607797bd285ad4d408d83ca2ea4bfc7dffbc2c3661
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.201
+        ports:
+          http:
+            targetPort: 8096
+            port: 80
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/icon: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png"
+          kubernetes.io/ingress.class: nginx
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+          uroperator.brennerm.github.io/monitor.type: HTTPS
+        hosts:
+        - host: jf.roomofrequirement.xyz
+          paths:
+          - path: "/"
+        tls:
+        - secretName: jellyfin-cert
+          hosts:
+          - jf.roomofrequirement.xyz
+    persistence:
+      config:
+        enabled: true
+        size: 50Gi
+        storageClass: "ceph-rbd-ssd"
+        accessMode: ReadWriteOnce
+        retain: true
+      cache:
+        enabled: false
+      movies:
+        enabled: true
+        existingClaim: movies-pvc
+        mountPath: /media/movies
+        readOnly: true
+      tv:
+        enabled: true
+        existingClaim: tv-pvc
+        mountPath: /media/tv
+        readOnly: true
+      transcodes:
+        enabled: true
+        type: emptyDir
+    resources:
+      requests:
+        cpu: 6000m
+        memory: 8Gi
+      # limits:
+      #   cpu: 10000m
+      #   memory: 15Gi
+    # nodeSelector:
+    #   kubernetes.io/hostname: "bellatrix"

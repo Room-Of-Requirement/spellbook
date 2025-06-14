@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rook-ceph
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.rook.io/release
+      chart: rook-ceph
+      version: v1.11.9
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+        namespace: flux-system
+      interval: 1m
+  values:
+    logLevel: DEBUG
+    image:
+      repository: docker.io/rook/ceph
+      tag: v1.11.9@sha256:1d20b90c49bbe2c8fe29b085195c5ea09eb91a3b187f4eeafda02dfb4d86fdd3
+    crds:
+      enabled: false
+    currentNamespaceOnly: true
+    resources:
+      requests:
+        cpu: 300m
+        memory: 1024Mi
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+    discover:
+      tolerations:
+      - key: "RaspberryPi"
+        operator: "Exists"
+        effect: "NoSchedule"
+    # csi:
+    #   provisionerTolerations:
+    #   - key: "RaspberryPi"
+    #     operator: "Exists"
+    #     effect: "NoSchedule"
+    #   pluginTolerations:
+    #   - key: "RaspberryPi"
+    #     operator: "Exists"
+    #     effect: "NoSchedule"
+    #   cephcsi:
+    #     image: quay.io/cephcsi/cephcsi:v3.7.0@sha256:6be68ffa9063ce5d01e1d27c25574a6c2c6500ded7bea98882e7dbc5d272cd3f
+    #   registrar:
+    #     image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+    #   provisioner:
+    #     image: k8s.gcr.io/sig-storage/csi-provisioner:v3.2.1@sha256:4ad5fcdbe7e9147b541a863d74e4d1d519bf435ecda4c7bde5abe237a43f7029
+    #   snapshotter:
+    #     image: k8s.gcr.io/sig-storage/csi-snapshotter:v6.0.1@sha256:ad16874e2140256a809cada2b4ac3d931d5b73b0bee23ed0f8d60bdd778cfec2
+    #   attacher:
+    #     image: k8s.gcr.io/sig-storage/csi-attacher:v3.5.0@sha256:dd245051317e957423bc3e2aecddf56c745bd6714920f0dc108e505f5afb3472
+    #   resizer:
+    #     image: k8s.gcr.io/sig-storage/csi-resizer:v1.5.0@sha256:8f7520bd957e7151fda9886eb5090739439811aeec5ddffb50ad7c8191548d97

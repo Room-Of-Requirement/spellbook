@@ -1,0 +1,107 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
+      chart: velero
+      version: 3.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: vmware-tanzu
+        namespace: flux-system
+      interval: 1m
+  values:
+    installCRDs: true
+    upgradeCRDs: true
+    snapshotsEnabled: false``
+    deployRestic: true
+    serviceAccount:
+      server:
+        create: true
+        name: velero
+    configuration:
+      provider: aws
+      backupStorageLocation:
+        name: default
+        bucket: roomofrequirement
+        config:
+          s3Url: "https://s3.us-west-002.backblazeb2.com"
+          region: us-west-002
+      volumeSnapshotLocation:
+        name: default
+        provider: aws
+        bucket: roomofrequirement
+        config:
+          region: us-west-002
+    image:
+      repository: docker.io/velero/velero
+      tag: v1.16.1@sha256:c790429fcd543f0a5eed3a490e85a2c39bf9aefb8ce7ddbc7a158557745ab33f
+    initContainers:
+      - name: velero-plugin-for-aws
+        image: velero/velero-plugin-for-aws:v1.12.1@sha256:b9735c9d08c3244c462bb81263ff5f4ad4e24b96865338c14733a59e3624dfaf
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+    metrics:
+      enabled: false
+    kubectl:
+      image:
+        repository: docker.io/bitnami/kubectl
+        tag: 1.33.1@sha256:9081a6f83f4febf47369fc46b6f0f7683c7db243df5b43fc9defe51b0471a950
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
+    restic:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 512Mi
+        limits:
+          cpu: 2000m
+          memory: 2048Mi
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+    credentials:
+      useSecret: true
+      name: velero-s3-keys
+      secretContents:
+        cloud: |
+          [default]
+          aws_access_key_id=${B2_VELERO_ACCESS_KEY}
+          aws_secret_access_key=${B2_VELERO_SECRET_KEY}
+    schedules:
+      roon:
+        schedule: "0 4 * * *"
+        template:
+          defaultVolumesToRestic: true
+          ttl: 720h
+          includedNamespaces:
+          - roon
+      lfs:
+        schedule: "0 * * * *"
+        template:
+          defaultVolumesToRestic: true
+          ttl: 720h
+          includedNamespaces:
+          - lfs
+      media:
+        schedule: "0 4 * * *"
+        template:
+          defaultVolumesToRestic: true
+          ttl: 720h
+          includedNamespaces:
+          - media
