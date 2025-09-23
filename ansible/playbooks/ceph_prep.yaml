@@ -1,0 +1,23 @@
+- name: Wipe Disks
+  hosts: all
+  become: true
+  tasks:
+  - name: Wipe disk
+    ansible.builtin.shell: |
+      sgdisk --zap-all --clear --mbrtogpt "/dev/{{ item }}"
+      sgdisk --zap-all "/dev/{{ item }}"
+      dd if=/dev/zero of="/dev/{{ item }}" bs=1M count=100 oflag=direct,dsync
+    when: disks is defined
+    loop: "{{ disks }}"
+  - name: find mappers, etc
+    ansible.builtin.find:
+      paths: /dev/
+      patterns:
+      - "ceph-*"
+      - "dm-*"
+      - "/mapper/ceph-*"
+      recurse: no
+    register: find
+  - name: delete mappers, etc
+    ansible.builtin.shell: rm -rf {{ item }}
+    loop: "{{ find.files }}"

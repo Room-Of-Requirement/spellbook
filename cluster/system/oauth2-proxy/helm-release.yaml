@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: oauth2-proxy
+spec:
+  interval: 1m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.jmmaloney4.xyz/
+      chart: oauth2-proxy
+      version: 6.0.5
+      sourceRef:
+        kind: HelmRepository
+        name: jmmaloney4
+        namespace: flux-system
+      interval: 1m
+  values:
+    config:
+      clientID: ${OAUTH2_CLIENT_ID}
+      clientSecret: ${OAUTH2_CLIENT_SECRET}
+      cookieSecret: ${OAUTH2_COOKIE_SECRET} # "{{ randAlphaNum 32 }}"
+      configFile: |
+        reverse_proxy = true
+        provider = "github"
+        cookie_httponly = false
+        cookie_secure = true
+        pass_access_token = true
+        cookie_name = "secure-roomofrequirement"
+        github_org = "Room-Of-Requirement"
+        email_domains = ["*"]
+    ingress:
+      enabled: true
+      path: "/oauth2"
+      hosts:
+      - secure.roomofrequirement.xyz
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        uroperator.brennerm.github.io/monitor.type: HTTPS
+      tls:
+      - secretName: secure-cert
+        hosts:
+        - secure.roomofrequirement.xyz
+    resources:
+      requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi

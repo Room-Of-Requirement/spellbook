@@ -1,0 +1,36 @@
+version: '3'
+
+vars:
+  GPG_EMAIL: "noreply@roomofrequirement.xyz"
+
+tasks:
+
+  gen-key:
+    desc: Generate cluster GPG key for use with SOPS
+    cmds:
+    - | 
+      echo "%no-protection
+          Key-Type: 1
+          Key-Length: 4096
+          Subkey-Type: 1
+          Subkey-Length: 4096
+          Expire-Date: 0
+          Name-Real: Room of Requirement <{{.GPG_EMAIL}}>" | 
+          gpg --batch --full-generate-key 
+
+  create-secret:
+    desc: Create SOPS GPG key secret on the cluster
+    preconditions:
+    - kubectl get ns | grep --silent "flux-system"
+    cmds:
+    - |
+      gpg --export-secret-keys --armor {{.}} |
+      kubectl create secret generic sops-gpg \
+          --namespace=flux-system \
+          --from-file=sops.asc=/dev/stdin
+  
+  fingerprint:
+    desc: Get fingerprint for Room of Requirement GPG key
+    cmds:
+    - |
+      gpg --with-colons --fingerprint {{.GPG_EMAIL}} | head -n 3 | awk -F: '$1 == "fpr" {print $10;}'
